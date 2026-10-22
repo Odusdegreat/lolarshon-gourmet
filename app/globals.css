@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Lolarshons brand palette: burgundy, warm ivory, and champagne */
+:root {
+  --background: #f7f1e8;
+  --foreground: #2b1b1d;
+  --card: #fffcf6;
+  --card-foreground: #2b1b1d;
+  --popover: #fffcf6;
+  --popover-foreground: #2b1b1d;
+  --primary: #4b001f;
+  --primary-foreground: #f7f1e8;
+  --secondary: #f1e7d3;
+  --secondary-foreground: #4a1623;
+  --muted: #f3ecdd;
+  --muted-foreground: #6b5a57;
+  --accent: #e9d8b4;
+  --accent-foreground: #3a1019;
+  --destructive: #b3261e;
+  --border: #e6dac3;
+  --input: #dccfb5;
+  --ring: #b8934a;
+  --brand: #4b001f;
+  --champagne: #d2b988;
+  --panel: #4b001f;
+  --panel-foreground: #f6ead4;
+  --radius: 0.75rem;
+  color-scheme: light;
+}
+
+/* Dark: warm espresso, lifted burgundy, champagne highlights (not an inversion) */
+.dark {
+  --background: #160f0e;
+  --foreground: #f2e9da;
+  --card: #1f1514;
+  --card-foreground: #f2e9da;
+  --popover: #1f1514;
+  --popover-foreground: #f2e9da;
+  --primary: #9c2a44;
+  --primary-foreground: #fff6ea;
+  --secondary: #2a1d1b;
+  --secondary-foreground: #f2e9da;
+  --muted: #271b19;
+  --muted-foreground: #b7a79a;
+  --accent: #3a2a22;
+  --accent-foreground: #e6cf9f;
+  --destructive: #f0786f;
+  --border: #3a2b27;
+  --input: #4a3833;
+  --ring: #cdae72;
+  --brand: #e7a3b1;
+  --champagne: #d9bc84;
+  --panel: #3b0d1a;
+  --panel-foreground: #f2e3c8;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-champagne: var(--champagne);
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: clip;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  a:not([class]),
+  summary {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: var(--champagne);
+    color: #2b1b1d;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
