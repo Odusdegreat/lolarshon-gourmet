@@ -10,7 +10,7 @@ export const primaryNav: NavItem[] = [
     children: [
       { label: "Food Menu", href: "/menu/food", description: "Signature dishes, cakes, desserts and hampers" },
       { label: "Beverages", href: "/menu/beverages", description: "Juices, chilled drinks and refreshers" },
-      { label: "Mixology", href: "/menu/mixology", description: "Cocktails and mocktails for your occasion" },
+      { label: "Bar & Mixology", href: "/menu/mixology", description: "Cocktails and mocktails for your occasion" },
     ],
   },
   { label: "Book a Reservation", href: "/reservations" },
@@ -26,7 +26,7 @@ export const footerExplore: { label: string; href: string }[] = [
   { label: "Our Story", href: "/our-story" },
   { label: "Food Menu", href: "/menu/food" },
   { label: "Beverages", href: "/menu/beverages" },
-  { label: "Mixology", href: "/menu/mixology" },
+  { label: "Bar & Mixology", href: "/menu/mixology" },
   { label: "Gallery", href: "/gallery" },
   { label: "Blog", href: "/blog" },
 ];

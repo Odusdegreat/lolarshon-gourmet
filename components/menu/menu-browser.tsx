@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { MenuCard } from "@/components/menu/menu-card";
 import { cn } from "@/lib/utils";
@@ -9,10 +8,19 @@ import type { MenuItem } from "@/types";
 
 export function MenuBrowser({ section, items }: { section: MenuSectionConfig; items: MenuItem[] }) {
   const params = useSearchParams();
-  const [active, setActive] = useState<string>(() => {
-    const requested = params.get("category");
-    return section.categories.some((c) => c.id === requested) ? (requested as string) : "all";
-  });
+  const requested = params.get("category");
+  const active = section.categories.some((c) => c.id === requested) ? (requested as string) : "all";
+
+  const selectCategory = (id: string) => {
+    const search = new URLSearchParams(params.toString());
+    if (id === "all") {
+      search.delete("category");
+    } else {
+      search.set("category", id);
+    }
+    const query = search.toString();
+    window.history.replaceState(null, "", query ? `?${query}` : window.location.pathname);
+  };
 
   const visible = active === "all" ? items : items.filter((i) => i.category === active);
   const showFilters = section.categories.length > 1;
@@ -26,7 +34,7 @@ export function MenuBrowser({ section, items }: { section: MenuSectionConfig; it
               key={c.id}
               type="button"
               aria-pressed={active === c.id}
-              onClick={() => setActive(c.id)}
+              onClick={() => selectCategory(c.id)}
               className={cn(
                 "min-h-11 shrink-0 cursor-pointer rounded-full border px-5 text-sm font-medium transition-[color,background-color,border-color,transform] duration-200 active:scale-[0.98]",
                 active === c.id ? "border-primary bg-primary text-primary-foreground" : "bg-card hover:bg-secondary",

@@ -1,21 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Photo } from "@/components/shared/photo";
 import { galleryCategories } from "@/data/gallery";
 import { cn } from "@/lib/utils";
+import * as anime from "animejs";
 import type { GalleryEntry } from "@/types";
 
 export function GalleryGrid({ entries }: { entries: GalleryEntry[] }) {
   const [category, setCategory] = useState<string>("all");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const visible = category === "all" ? entries : entries.filter((e) => e.category === category);
   const current = openIndex !== null ? visible[openIndex] : null;
   const step = (delta: number) => setOpenIndex((i) => (i === null ? i : (i + delta + visible.length) % visible.length));
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const timeline = anime.createTimeline({
+      defaults: {
+        ease: "ease-out",
+        duration: 0.7,
+      },
+    });
+
+    // Staggered image reveal with subtle zoom
+    timeline.add(
+      containerRef.current.querySelectorAll("img"),
+      { opacity: [0, 1], translateY: [20, 0], scale: [0.95, 1] }
+    );
+  }, [visible]);
 
   return (
     <div>

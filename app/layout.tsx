@@ -3,6 +3,7 @@ import { montserrat, playfair } from "@/app/fonts";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { BackToTop } from "@/components/ui/back-to-top";
 import { OG_IMAGE } from "@/lib/seo";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -55,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning className={`${playfair.variable} ${montserrat.variable}`}>
       <body className="flex min-h-dvh flex-col">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
         <Providers>
           <Header />
           <main id="main" className="flex-1">
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
           <Footer />
         </Providers>
+        <BackToTop />
       </body>
     </html>
   );

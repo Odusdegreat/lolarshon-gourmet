@@ -9,9 +9,12 @@ import { MobileNav } from "@/components/layout/mobile-nav";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { CartButton } from "@/components/cart/cart-button";
 import { cn } from "@/lib/utils";
+import * as anime from "animejs";
+import { useRef } from "react";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -20,10 +23,28 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!headerRef.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const timeline = anime.createTimeline({
+      defaults: {
+        ease: "easeOutQuad",
+        duration: 500,
+      },
+    });
+
+    timeline.add(
+      headerRef.current,
+      { opacity: [0, 1], translateY: [-10, 0] },
+    );
+  }, []);
+
   return (
     <header
+      ref={headerRef}
       className={cn(
-        "sticky top-0 z-40 w-full border-b transition-[background-color,box-shadow,border-color] duration-300",
+        "sticky top-0 z-40 w-full border-b transition-[background-color,box-shadow,border_color] duration-300",
         scrolled ? "border-border bg-background/92 shadow-sm backdrop-blur" : "border-transparent bg-background",
       )}
     >

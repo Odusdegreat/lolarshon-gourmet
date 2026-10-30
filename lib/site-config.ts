@@ -35,9 +35,8 @@ export const siteConfig = {
 
   // TODO: client to supply real social profile URLs. A null href renders a non-clickable label.
   social: [
-    { label: "Instagram", href: null },
-    { label: "Facebook", href: null },
-    { label: "TikTok", href: null },
+    { label: "Instagram", href: "https://www.instagram.com/lolarshongourmet?utm_source=ig_web_button_share_sheet&obrf=ZDNlZDc0MzIxNw==" },
+    { label: "WhatsApp", href: "https://wa.me/+2348029447889" },
   ] satisfies SocialLink[],
 
   /** Illustrative until the client supplies real prices. */

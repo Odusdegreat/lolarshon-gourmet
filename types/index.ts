@@ -1,9 +1,16 @@
 export type MenuSection = "food" | "beverages" | "mixology";
 
 export type MenuCategoryId =
-  | "signature-dishes"
-  | "cakes-desserts"
-  | "hampers"
+  | "appetizer"
+  | "sides"
+  | "salad-dishes"
+  | "platter"
+  | "ls-specials"
+  | "pastas-noodles-dishes"
+  | "rice-meal"
+  | "grills"
+  | "africana"
+  | "desserts"
   | "beverages"
   | "mixology";
 

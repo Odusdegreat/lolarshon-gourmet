@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { Logo } from "@/components/layout/logo";
 import { Separator } from "@/components/ui/separator";
@@ -17,18 +18,10 @@ function SocialIcon({ label }: { label: string }) {
       </svg>
     );
   }
-  if (label === "Facebook") {
-    return (
-      <svg aria-hidden viewBox="0 0 24 24" fill="currentColor" className="size-[18px]">
-        <path d="M13.5 21v-8.2h2.8l.42-3.2H13.5V7.55c0-.93.26-1.56 1.6-1.56h1.72V3.12A23 23 0 0 0 14.3 3c-2.5 0-4.22 1.53-4.22 4.35V9.6H7.25v3.2h2.83V21h3.42Z" />
-      </svg>
-    );
+  if (label === "WhatsApp") {
+    return <FaWhatsapp className="size-[18px]" />;
   }
-  return (
-    <svg aria-hidden viewBox="0 0 24 24" fill="currentColor" className="size-[18px]">
-      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.2V2h-3.56v13.67a2.9 2.9 0 0 1-2.9 2.9 2.9 2.9 0 1 1 2.9-2.9c0-.23-.03-.46-.08-.68v-3.63a6.5 6.5 0 1 0 3.64 5.84V9.86a8.37 8.37 0 0 0 4.9 1.57V7.87c-.39 0-.77-.06-1.13-.18Z" />
-    </svg>
-  );
+  return null;
 }
 
 export function Footer() {
