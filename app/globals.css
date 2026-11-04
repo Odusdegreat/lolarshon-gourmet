@@ -112,8 +112,13 @@
   p {
     text-wrap: pretty;
   }
-  a:not([class]),
-  summary {
+  a[href],
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary,
+  label[for],
+  input[type="checkbox"],
+  input[type="radio"] {
     cursor: pointer;
   }
   :focus-visible {

@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FaChevronUp } from "react-icons/fa";
-import { cn } from "@/lib/utils";
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -38,10 +36,21 @@ export function BackToTop() {
   return (
     <button
       id="back-to-top"
-      className="fixed bottom-6 right-6 z-30 rounded-full bg-primary p-3 hover:bg-primary/90 focus:outline-none focus:ring-3 focus:ring-primary focus:ring-offset-2 bg-primary/10 transition-colors duration-200 cursor-pointer shadow-lg"
+      className="fixed bottom-6 right-6 z-30 flex size-14 cursor-pointer items-center justify-center rounded-full bg-primary shadow-lg transition-colors duration-200 hover:bg-primary/90 focus:outline-none focus:ring-3 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
       aria-label="Back to top"
     >
-      <FaChevronUp className="size-6 text-primary" />
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="size-7"
+        fill="none"
+        stroke="var(--primary-foreground)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="5"
+      >
+        <path d="m4 14 8-8 8 8" />
+      </svg>
     </button>
   );
 }

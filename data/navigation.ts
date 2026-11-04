@@ -5,12 +5,12 @@ export type NavItem = { label: string; href: string; children?: NavChild[] };
 export const primaryNav: NavItem[] = [
   { label: "Home", href: "/" },
   {
-    label: "Menus",
+    label: "Menu",
     href: "/menu/food",
     children: [
-      { label: "Food Menu", href: "/menu/food", description: "Signature dishes, cakes, desserts and hampers" },
-      { label: "Beverages", href: "/menu/beverages", description: "Juices, chilled drinks and refreshers" },
-      { label: "Bar & Mixology", href: "/menu/mixology", description: "Cocktails and mocktails for your occasion" },
+      { label: "Food Menu", href: "/menu/food", description: "Small bites, platters, rice, grills, African dishes and desserts" },
+      { label: "Beverages", href: "/menu/beverages", description: "Soft drinks, juices, zobo, tea, coffee and energy drinks" },
+      { label: "Bar & Mixology", href: "/menu/mixology", description: "Cocktails, mocktails, beers, wines and spirits" },
     ],
   },
   { label: "Book a Reservation", href: "/reservations" },

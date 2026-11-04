@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { ContactRound, Mail, MapPin, Phone, Clock } from "lucide-react";
 import { Logo } from "@/components/layout/logo";
 import { Separator } from "@/components/ui/separator";
 import { footerExplore, footerServices } from "@/data/navigation";
@@ -59,6 +59,7 @@ export function Footer() {
               {footerExplore.map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className={linkClass}>
+                    {l.href === "/contact" && <ContactRound aria-hidden className="mr-2 inline size-4 align-text-bottom text-champagne" />}
                     {l.label}
                   </Link>
                 </li>

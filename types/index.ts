@@ -12,7 +12,15 @@ export type MenuCategoryId =
   | "africana"
   | "desserts"
   | "beverages"
-  | "mixology";
+  | "beverage-refreshments"
+  | "beverage-tea-coffee"
+  | "beverage-energy"
+  | "mixology"
+  | "mixology-cocktails"
+  | "mixology-mocktails"
+  | "mixology-beer-cider"
+  | "mixology-wine"
+  | "mixology-spirits";
 
 export type MenuItem = {
   id: string;

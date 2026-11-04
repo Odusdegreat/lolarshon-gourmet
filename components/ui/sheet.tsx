@@ -26,8 +26,12 @@ function SheetContent({
   className,
   children,
   side = "right",
+  closeIcon,
   ...props
-}: React.ComponentProps<typeof SheetPrimitive.Content> & { side?: "top" | "right" | "bottom" | "left" }) {
+}: React.ComponentProps<typeof SheetPrimitive.Content> & {
+  side?: "top" | "right" | "bottom" | "left";
+  closeIcon?: React.ReactNode;
+}) {
   return (
     <SheetPrimitive.Portal>
       <SheetOverlay />
@@ -45,7 +49,7 @@ function SheetContent({
       >
         {children}
         <SheetPrimitive.Close className="absolute top-4 right-4 inline-flex size-10 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring">
-          <X className="size-5" />
+          {closeIcon ?? <X aria-hidden className="size-5" />}
           <span className="sr-only">Close</span>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>

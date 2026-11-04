@@ -5,6 +5,7 @@ import { PageHero } from "@/components/shared/page-hero";
 import { Photo } from "@/components/shared/photo";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { buildMetadata } from "@/lib/seo";
+import { ContactRound } from "lucide-react";
 
 export const metadata = buildMetadata({
   title: "Our Story",
@@ -49,7 +50,10 @@ export default function OurStoryPage() {
               <Link href="/menu/food">Explore Our Menu</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="/contact">Contact Us</Link>
+              <Link href="/contact">
+                <ContactRound aria-hidden />
+                Contact Us
+              </Link>
             </Button>
           </div>
         </Container>

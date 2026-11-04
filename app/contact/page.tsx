@@ -1,4 +1,4 @@
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
@@ -38,6 +38,7 @@ export default function ContactPage() {
                     </span>
                   ))}
                   <a href={mapsDirectionsUrl()} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block text-brand underline underline-offset-4">
+                    <ArrowUpRight aria-hidden className="mr-1 inline size-4 align-text-bottom" />
                     Get directions<span className="sr-only"> (opens Google Maps)</span>
                   </a>
                 </span>
@@ -78,7 +79,10 @@ export default function ContactPage() {
             </div>
           </div>
           <div className="rounded-xl border bg-card p-6 sm:p-8">
-            <h2 className="mb-6 text-2xl font-semibold">Send a message</h2>
+            <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold">
+              <MessageCircle aria-hidden className="size-5 text-brand" />
+              Send a message
+            </h2>
             <EnquiryForm heading="Website enquiry" fields={fields} submitLabel="Send on WhatsApp" toastTitle="Message ready" note="Your message is only sent once you press send in WhatsApp." />
           </div>
         </Container>

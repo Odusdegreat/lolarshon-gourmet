@@ -4,6 +4,7 @@ import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
+import { ContactRound } from "lucide-react";
 
 export function ContactCta() {
   return (
@@ -18,7 +19,10 @@ export function ContactCta() {
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <WhatsAppButton size="lg" label="Message us on WhatsApp" message="Hello Lolarshons Gourmet, I would like to make an enquiry." />
               <Button asChild size="lg" variant="outline">
-                <Link href="/contact">Contact details</Link>
+                <Link href="/contact">
+                  <ContactRound aria-hidden />
+                  Contact details
+                </Link>
               </Button>
             </div>
           </div>

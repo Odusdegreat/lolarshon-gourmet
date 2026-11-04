@@ -24,7 +24,15 @@ export function MenuCard({ item }: { item: MenuItem }) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
       <div className="overflow-hidden">
-        <Photo src={item.image} alt={item.name} aspect="aspect-[4/3]" className="rounded-none" imgClassName="transition-transform duration-500 group-hover:scale-[1.04]" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
+        <Photo
+          src={item.image}
+          alt={item.name}
+          aspect="aspect-[4/3]"
+          className="rounded-none"
+          imgClassName={`${item.image.endsWith(".cutout.png") ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-[1.04]`}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          quality={90}
+        />
       </div>
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-start justify-between gap-3">
