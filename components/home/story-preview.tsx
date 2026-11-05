@@ -29,24 +29,22 @@ export function StoryPreview() {
 
     // Text elements fade in with gentle staggered delay
     timeline.add(
-      containerRef.current.querySelectorAll(
-        "h2.text-3xl.leading-tight.font-semibold, div.h-px.w-16.bg-champagne, p.mt-5.max-w-prose.leading-relaxed.text-muted-foreground",
-      ),
+      containerRef.current.querySelectorAll("h2, [aria-hidden='true'], p"),
       { opacity: [0, 1], translateY: [20, 0] }
     );
 
     // CTA button with slight later delay
     timeline.add(
-      containerRef.current.querySelectorAll("Button.asChild.variant.outline.size.lg"),
+      containerRef.current.querySelectorAll("a[href='/our-story']"),
       { opacity: [0, 1], translateY: [20, 0] }
     );
   }, []);
 
   return (
     <Section>
-      <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        <div ref={containerRef}>
-          <Photo src="/images/hero/kitchen.jpg" alt="Food being prepared in the Lolarshons Gourmet kitchen" aspect="aspect-[4/3]" className="shadow-md" />
+      <Container ref={containerRef} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <Photo src="/images/hero/kitchen.jpg" alt="Food being prepared in the Lolarshons Gourmet kitchen" aspect="aspect-[4/3]" className="shadow-md" sizes="(min-width: 1024px) 50vw, 100vw" />
         </div>
         <div>
           <h2 className="text-3xl leading-tight font-semibold sm:text-4xl">A Passion for Great Food</h2>

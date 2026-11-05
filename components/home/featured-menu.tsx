@@ -46,13 +46,13 @@ export function FeaturedMenu() {
     <Section className="bg-secondary/40">
       <Container>
         <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-          <SectionHeading title="Featured from the Menu" description="A taste of what we prepare. Prices shown are illustrative until confirmed." />
+          <SectionHeading title="Featured from the Menu" description="A taste of what we prepare." />
           <Button asChild variant="outline">
             <Link href="/menu/food">View full menu</Link>
           </Button>
         </div>
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {getFeaturedItems().map((item, i) => (
+          {getFeaturedItems().map((item) => (
             <li key={item.id} className="opacity-0 transform scale-95">
               <MenuCard item={item} />
             </li>

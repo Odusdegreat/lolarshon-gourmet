@@ -98,7 +98,7 @@ export function CartSheet() {
         {lines.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-3 p-8 text-center">
             <p className="font-serif text-lg">Your order is empty</p>
-            <p className="max-w-xs text-sm text-muted-foreground">Add dishes, cakes, hampers or drinks from the menu to start an order.</p>
+            <p className="max-w-xs text-sm text-muted-foreground">Add dishes, cakes or drinks from the menu to start an order.</p>
             <Button asChild onClick={() => handleOpenChange(false)}>
               <Link href="/menu/food">Browse the menu</Link>
             </Button>
@@ -231,7 +231,7 @@ export function CartSheet() {
               <span className="text-sm text-muted-foreground">Subtotal ({count} {count === 1 ? "item" : "items"})</span>
               <span className="font-serif text-xl font-semibold tabular-nums">{formatPrice(subtotal)}</span>
             </p>
-            <p className="text-xs text-muted-foreground">Prices are illustrative until confirmed. Delivery fee, if any, is added when we confirm your order.</p>
+            <p className="text-xs text-muted-foreground">Delivery fee, if any, is added when we confirm your order.</p>
             {step === "cart" ? (
               <>
                 <Button size="lg" onClick={() => setStep("details")}>

@@ -26,7 +26,7 @@ export type MenuItem = {
   id: string;
   name: string;
   description: string;
-  /** NGN. Illustrative until the client confirms real prices. */
+  /** Price in NGN. */
   price: number;
   section: MenuSection;
   category: MenuCategoryId;
@@ -50,25 +50,33 @@ export type OrderDetails = {
   notes?: string;
 };
 
-export type GalleryCategory = "food" | "events" | "cakes" | "hampers";
+export type GalleryCategory = "food" | "drinks" | "events" | "videos";
 
 export type GalleryEntry = {
   id: string;
   title: string;
   alt: string;
   category: GalleryCategory;
+  additionalCategories?: GalleryCategory[];
   image: string;
+  video?: string;
 };
 
-export type BlogBlock = { type: "h2" | "p"; text: string };
-
 export type BlogPost = {
+  id: string;
   slug: string;
   title: string;
   excerpt: string;
   date: string; // ISO
   category: string;
+  categories: { _id: string; name: string; slug: string }[];
+  tags: string[];
   image: string;
+  author: { name: string; biography?: string; image: string | null } | null;
+  seoTitle?: string;
+  seoDescription?: string;
+  openGraphImage: string | null;
+  featured: boolean;
   readingMinutes: number;
-  body: BlogBlock[];
+  body: import("@portabletext/react").PortableTextBlock[];
 };

@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { montserrat, playfair } from "@/app/fonts";
 import { Providers } from "@/components/providers";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { BackToTop } from "@/components/ui/back-to-top";
+import { SiteChrome } from "@/components/layout/site-chrome";
 import { OG_IMAGE } from "@/lib/seo";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -58,13 +56,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex min-h-dvh flex-col">
 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
         <Providers>
-          <Header />
-          <main id="main" className="flex-1">
-            {children}
-          </main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
         </Providers>
-        <BackToTop />
       </body>
     </html>
   );

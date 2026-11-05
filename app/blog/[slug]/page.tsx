@@ -6,29 +6,60 @@ import { BlogCard } from "@/components/shared/blog-card";
 import { Container, Section } from "@/components/shared/container";
 import { Photo } from "@/components/shared/photo";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
-import { blogPosts, getPost, getRelatedPosts } from "@/data/blog";
+import { DraftPreviewBanner } from "@/components/shared/draft-preview-banner";
+import { PortableBlogBody } from "@/components/shared/portable-blog-body";
+import { getBlogPost, getRelatedBlogPosts, isDraftPreviewEnabled } from "@/sanity/lib/blog";
 import { formatDate } from "@/lib/format";
 import { buildMetadata } from "@/lib/seo";
+import type { BlogPost } from "@/types";
 
-export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }));
-}
+export const instant = false;
 
 export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPost(slug);
+  let post: BlogPost | null;
+  try {
+    post = await getBlogPost(slug, await isDraftPreviewEnabled());
+  } catch (error) {
+    console.error(`Could not load blog article metadata for "${slug}".`, error);
+    return {};
+  }
   if (!post) return {};
-  return buildMetadata({ title: post.title, description: post.excerpt, path: `/blog/${post.slug}` });
+  const metadata = buildMetadata({
+    title: post.seoTitle ?? post.title,
+    description: post.seoDescription ?? post.excerpt,
+    path: `/blog/${post.slug}`,
+  });
+  if (post.openGraphImage) {
+    metadata.openGraph = { ...metadata.openGraph, images: [post.openGraphImage] };
+    metadata.twitter = { ...metadata.twitter, images: [post.openGraphImage] };
+  }
+  return metadata;
 }
 
 export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const preview = await isDraftPreviewEnabled();
+  let post;
+  let related: BlogPost[] = [];
+  try {
+    post = await getBlogPost(slug, preview);
+    if (post) related = await getRelatedBlogPosts(post.slug, preview);
+  } catch (error) {
+    console.error(`Could not load blog article "${slug}" from Sanity.`, error);
+    return (
+      <Container className="max-w-3xl py-14">
+        <p className="rounded-xl border border-dashed p-10 text-center text-muted-foreground">
+          This article is temporarily unavailable. Please try again later.
+        </p>
+      </Container>
+    );
+  }
   if (!post) notFound();
-  const related = getRelatedPosts(post.slug);
 
   return (
     <>
+      {preview && <DraftPreviewBanner />}
       <article>
         <header className="border-b border-champagne/30 bg-panel text-panel-foreground">
           <Container className="max-w-3xl py-14 sm:py-20">
@@ -38,23 +69,14 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
             <h1 className="text-3xl leading-tight font-semibold sm:text-5xl">{post.title}</h1>
             <p className="mt-5 text-sm text-panel-foreground/75">
               {post.category} · <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.readingMinutes} min read
+              {post.author && <> · By {post.author.name}</>}
             </p>
           </Container>
         </header>
         <Container className="max-w-3xl py-10 sm:py-14">
           <Photo src={post.image} alt={post.title} aspect="aspect-[16/9]" priority sizes="(min-width: 768px) 768px, 100vw" />
           <div className="mt-10 space-y-5 text-[17px] leading-8">
-            {post.body.map((block, i) =>
-              block.type === "h2" ? (
-                <h2 key={i} className="pt-4 text-2xl font-semibold">
-                  {block.text}
-                </h2>
-              ) : (
-                <p key={i} className="text-foreground/90">
-                  {block.text}
-                </p>
-              ),
-            )}
+            <PortableBlogBody body={post.body} />
           </div>
           <div className="mt-12 flex flex-col items-start gap-4 rounded-xl border bg-card p-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-muted-foreground">Have a question or an event in mind? Message us.</p>

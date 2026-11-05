@@ -11,7 +11,6 @@ const offerings = [
   { title: "Signature Dishes", description: "Hearty, beautifully plated meals prepared fresh to order.", href: "/menu/food?category=signature-dishes", action: "Order dishes", image: "/images/menu/jollof-grilled-chicken.jpg" },
   { title: "Event Catering", description: "Menus and service planned around your guests and venue.", href: "/events", action: "Plan your event", image: "/images/gallery/events-1.jpg" },
   { title: "Cakes & Desserts", description: "Celebration cakes and sweet treats, made for your occasion.", href: "/menu/food?category=cakes-desserts", action: "Order a cake", image: "/images/menu/red-velvet-cake.jpg" },
-  { title: "Food Hampers", description: "Thoughtfully curated gift boxes for birthdays and corporate gifting.", href: "/menu/food?category=hampers", action: "Order a hamper", image: "/images/menu/classic-hamper.jpg" },
 ];
 
 export function Offerings() {
@@ -56,8 +55,8 @@ export function Offerings() {
     <Section>
       <Container>
         <h3 className="text-xl font-semibold mb-6">Signature Offerings</h3>
-        <ul ref={containerRef} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {offerings.map((o, i) => (
+        <ul ref={containerRef} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {offerings.map((o) => (
             <li key={o.title}>
               <Link href={o.href} className="group flex h-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-md motion-reduce:transform-none">
                 <Photo src={o.image} alt={o.title} aspect="aspect-[4/3]" className="rounded-none" imgClassName="transition-transform duration-700 group-hover:scale-[1.05]" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" />

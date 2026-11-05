@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Container, Section } from "@/components/shared/container";
 import { BlogCard } from "@/components/shared/blog-card";
 import { SectionHeading } from "@/components/shared/section-heading";
-import { blogPosts } from "@/data/blog";
+import type { BlogPost } from "@/types";
 import * as anime from "animejs";
 
-export function BlogPreview() {
+export function BlogPreview({ posts }: { posts: BlogPost[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export function BlogPreview() {
           </Button>
         </div>
         <ul className="mt-12 grid gap-6 md:grid-cols-3">
-          {blogPosts.slice(0, 3).map((post, i) => (
+          {posts.slice(0, 3).map((post) => (
             <li key={post.slug}>
               <BlogCard post={post} />
             </li>

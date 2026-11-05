@@ -33,7 +33,7 @@ export function Footer() {
           <div>
             <Logo footer />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-panel-foreground/80">
-              Premium cuisine, catering, cakes, desserts and hampers, made with care in Surulere, Lagos.
+              Premium cuisine, catering, cakes and desserts, made with care in Surulere, Lagos.
             </p>
             <ul className="mt-5 flex flex-wrap gap-2" aria-label="Social media">
               {siteConfig.social.map((s) => (
@@ -119,7 +119,7 @@ export function Footer() {
         <Separator className="my-10 bg-panel-foreground/15" />
         <div className="flex flex-col gap-2 text-xs text-panel-foreground/65 sm:flex-row sm:justify-between">
           <p>© {siteConfig.name}. All rights reserved.</p>
-          <p>Orders and enquiries are confirmed through WhatsApp. Prices shown are illustrative until confirmed.</p>
+          <p>Orders and enquiries are confirmed through WhatsApp.</p>
         </div>
       </div>
     </footer>

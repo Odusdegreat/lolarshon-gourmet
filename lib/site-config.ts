@@ -9,7 +9,7 @@ export const siteConfig = {
   name: "Lolarshons Gourmet",
   tagline: "More Than Food, It's an Experience",
   description:
-    "Premium cuisine, catering, cakes, desserts, mixology and gourmet hampers by Lolarshons Gourmet in Surulere, Lagos.",
+    "Premium cuisine, catering, cakes, desserts and mixology by Lolarshons Gourmet in Surulere, Lagos.",
   /** Set NEXT_PUBLIC_SITE_URL in production, e.g. https://www.example.com */
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/+$/, ""),
   locale: "en_NG",
@@ -39,7 +39,6 @@ export const siteConfig = {
     { label: "WhatsApp", href: "https://wa.me/+2348029447889" },
   ] satisfies SocialLink[],
 
-  /** Illustrative until the client supplies real prices. */
   currency: "NGN",
 } as const;
 

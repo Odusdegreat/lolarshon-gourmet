@@ -7,8 +7,17 @@ import { FeaturedMenu } from "@/components/home/featured-menu";
 import { GalleryPreview } from "@/components/home/gallery-preview";
 import { BlogPreview } from "@/components/home/blog-preview";
 import { ContactCta } from "@/components/home/contact-cta";
+import { getBlogPosts } from "@/sanity/lib/blog";
+import type { BlogPost } from "@/types";
 
-export default function HomePage() {
+export default async function HomePage() {
+  let posts: BlogPost[] = [];
+  try {
+    posts = await getBlogPosts();
+  } catch (error) {
+    console.error("Could not load homepage blog articles from Sanity.", error);
+  }
+
   return (
     <>
       <Hero />
@@ -18,7 +27,7 @@ export default function HomePage() {
       <BrandQuote />
       <FeaturedMenu />
       <GalleryPreview />
-      <BlogPreview />
+      <BlogPreview posts={posts} />
       <ContactCta />
     </>
   );

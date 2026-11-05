@@ -51,7 +51,7 @@ export function Hero() {
             More Than Food, It&rsquo;s an Experience
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-            From signature dishes and celebration cakes to full-service catering and gourmet hampers, Lolarshons Gourmet brings carefully prepared food to your table, your event and your door.
+            From signature dishes and celebration cakes to full-service catering, Lolarshons Gourmet brings carefully prepared food to your table, your event and your door.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">

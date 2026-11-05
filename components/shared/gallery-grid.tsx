@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -8,16 +9,29 @@ import { Photo } from "@/components/shared/photo";
 import { galleryCategories } from "@/data/gallery";
 import { cn } from "@/lib/utils";
 import * as anime from "animejs";
-import type { GalleryEntry } from "@/types";
+import type { GalleryCategory, GalleryEntry } from "@/types";
 
 export function GalleryGrid({ entries }: { entries: GalleryEntry[] }) {
-  const [category, setCategory] = useState<string>("all");
+  const searchParams = useSearchParams();
+  const requestedCategory = searchParams.get("galleryCategory");
+  const category = galleryCategories.find((item) => item.id === requestedCategory)?.id ?? "all";
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const visible = category === "all" ? entries : entries.filter((e) => e.category === category);
+  const visible = category === "all" ? entries : entries.filter((e) => e.category === category || e.additionalCategories?.includes(category));
   const current = openIndex !== null ? visible[openIndex] : null;
   const step = (delta: number) => setOpenIndex((i) => (i === null ? i : (i + delta + visible.length) % visible.length));
+  const selectCategory = (nextCategory: GalleryCategory | "all") => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (nextCategory === "all") {
+      params.delete("galleryCategory");
+    } else {
+      params.set("galleryCategory", nextCategory);
+    }
+
+    const query = params.toString();
+    window.history.pushState(null, "", query ? `?${query}` : window.location.pathname);
+  };
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -32,7 +46,7 @@ export function GalleryGrid({ entries }: { entries: GalleryEntry[] }) {
 
     // Staggered image reveal with subtle zoom
     timeline.add(
-      containerRef.current.querySelectorAll("img"),
+      containerRef.current.querySelectorAll("img, video"),
       { opacity: [0, 1], translateY: [20, 0], scale: [0.95, 1] }
     );
   }, [visible]);
@@ -45,7 +59,7 @@ export function GalleryGrid({ entries }: { entries: GalleryEntry[] }) {
             key={c.id}
             type="button"
             aria-pressed={category === c.id}
-            onClick={() => setCategory(c.id)}
+            onClick={() => selectCategory(c.id)}
             className={cn("min-h-11 shrink-0 cursor-pointer rounded-full border px-5 text-sm font-medium transition-[color,background-color,border-color,transform] duration-200 active:scale-[0.98]", category === c.id ? "border-primary bg-primary text-primary-foreground" : "bg-card hover:bg-secondary")}
           >
             {c.label}
@@ -54,14 +68,26 @@ export function GalleryGrid({ entries }: { entries: GalleryEntry[] }) {
       </div>
 
       {visible.length === 0 ? (
-        <p className="rounded-xl border border-dashed p-10 text-center text-muted-foreground">No photos in this category yet.</p>
+        <p className="rounded-xl border border-dashed p-10 text-center text-muted-foreground">No items in this category yet.</p>
       ) : (
         <ul className="columns-2 gap-3 sm:gap-4 lg:columns-3">
           {visible.map((entry, i) => (
             <li key={entry.id} className="mb-3 break-inside-avoid sm:mb-4">
-              <button type="button" onClick={() => setOpenIndex(i)} className="group block w-full cursor-zoom-in overflow-hidden rounded-xl text-left focus-visible:ring-2 focus-visible:ring-ring" aria-label={`View larger: ${entry.title}`}>
-                <Photo src={entry.image} alt={entry.alt} aspect={i % 3 === 0 ? "aspect-[3/4]" : i % 3 === 1 ? "aspect-square" : "aspect-[4/3]"} imgClassName="transition-transform duration-500 group-hover:scale-[1.04]" sizes="(min-width: 1024px) 33vw, 50vw" />
-              </button>
+              {entry.video ? (
+                <video
+                  src={entry.video}
+                  poster={entry.image}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  aria-label={entry.alt}
+                  className="aspect-[4/3] w-full rounded-xl bg-black object-cover"
+                />
+              ) : (
+                <button type="button" onClick={() => setOpenIndex(i)} className="group block w-full cursor-zoom-in overflow-hidden rounded-xl text-left focus-visible:ring-2 focus-visible:ring-ring" aria-label={`View larger: ${entry.title}`}>
+                  <Photo src={entry.image} alt={entry.alt} aspect={i % 3 === 0 ? "aspect-[3/4]" : i % 3 === 1 ? "aspect-square" : "aspect-[4/3]"} imgClassName="transition-transform duration-500 group-hover:scale-[1.04]" sizes="(min-width: 1024px) 33vw, 50vw" />
+                </button>
+              )}
             </li>
           ))}
         </ul>

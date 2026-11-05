@@ -10,13 +10,13 @@ Write-Host 'hero.jpg created'
 Write-Host 'kitchen.jpg created'
 
 # menu placeholders
-'jollof-grilled-chicken','red-velvet-cake','classic-hamper'|ForEach-Object{
+'jollof-grilled-chicken','red-velvet-cake'|ForEach-Object{
   [IO.File]::WriteAllBytes("public/images/menu/$_",$placeholder)
 }
 Write-Host 'Menu placeholders created'
 
 # gallery placeholders
-'food-1','food-2','food-3','events-1','events-2','events-3','cakes-1','cakes-3','hampers-1','hampers-2'|ForEach-Object{
+'food-1','food-2','food-3','events-1','events-2','events-3','cakes-1','cakes-3'|ForEach-Object{
   [IO.File]::WriteAllBytes("public/images/gallery/$_",$placeholder)
 }
 Write-Host 'Gallery placeholders created'

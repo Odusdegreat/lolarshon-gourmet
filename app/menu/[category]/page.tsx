@@ -6,7 +6,7 @@ import { MenuBrowser } from "@/components/menu/menu-browser";
 import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
-import { getItemsBySection, menuSections, PRICES_ARE_ILLUSTRATIVE } from "@/data/menu";
+import { getItemsBySection, menuSections } from "@/data/menu";
 import { buildMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import type { MenuSection } from "@/types";
@@ -51,8 +51,6 @@ export default async function MenuCategoryPage({ params }: PageProps<"/menu/[cat
           </nav>
 
           {section.notice && <p className="mb-6 rounded-lg border border-champagne/60 bg-accent/50 px-4 py-3 text-sm">{section.notice}</p>}
-          {PRICES_ARE_ILLUSTRATIVE && <p className="mb-8 text-sm text-muted-foreground">Prices are illustrative until confirmed by Lolarshons Gourmet.</p>}
-
           <Suspense fallback={<p className="py-10 text-center text-muted-foreground">Loading menu…</p>}>
             <MenuBrowser section={section} items={getItemsBySection(section.slug)} />
           </Suspense>

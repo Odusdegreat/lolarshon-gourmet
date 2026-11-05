@@ -1,10 +1,6 @@
 import type { MenuCategoryId, MenuItem, MenuSection } from "@/types";
 
-/**
- * Mock menu data. PRICES ARE ILLUSTRATIVE (NGN) until the client supplies real ones.
- * Images are expected at the given paths; a branded placeholder shows when a file is missing.
- */
-export const PRICES_ARE_ILLUSTRATIVE = true;
+/** Menu data and item prices in NGN. */
 
 export type MenuSectionConfig = {
   slug: MenuSection;
