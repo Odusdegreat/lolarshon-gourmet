@@ -21,23 +21,18 @@ export function Photo({
   ...imageProps
 }: PhotoProps) {
   const imgRef = useRef<HTMLImageElement>(null);
-  const [showFallback, setShowFallback] = useState(false);
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
 
   useEffect(() => {
     // Check if image failed before hydration (naturalWidth === 0 on mount)
     if (imgRef.current?.complete && imgRef.current.naturalWidth === 0) {
-      setShowFallback(true);
+      setFailedSrc(src);
     }
-  }, []);
-
-  useEffect(() => {
-    // Reset fallback state when src changes, allowing image to try again
-    setShowFallback(false);
   }, [src]);
 
   return (
     <div className={cn("relative overflow-hidden rounded-xl bg-secondary", aspect, className)}>
-      {showFallback ? (
+      {failedSrc === src || !src ? (
         <div
           className="flex size-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-panel via-primary/80 to-champagne/50 p-4 text-center text-panel-foreground"
         >
@@ -53,6 +48,7 @@ export function Photo({
           fill
           className={cn("object-cover", imgClassName)}
           ref={imgRef}
+          onError={() => setFailedSrc(src)}
         />
       )}
     </div>

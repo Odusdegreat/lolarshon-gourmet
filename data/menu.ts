@@ -94,7 +94,7 @@ export const menuItems: MenuItem[] = [
 
   // Lolar shon [ls] specials
   { id: "ls-pasta-special", name: "Ls Pasta Special", description: "mixture of macaroni and spaghetti with vegetables, goat meat & tomato chili sauce", price: 15000, section: "food", category: "ls-specials", image: "", orderable: true },
-  { id: "gourmet-special", name: "Gourmet Special", description: "crispy chicken with green salad served with rice and pepper sauce", price: 20000, section: "food", category: "ls-specials", image: "", orderable: true },
+  { id: "ls-gourmet-special", name: "Gourmet Special", description: "crispy chicken with green salad served with rice and pepper sauce", price: 20000, section: "food", category: "ls-specials", image: "", orderable: true },
   { id: "ls-chilli-goat-meat-rice", name: "Ls chilli goat meat rice", description: "diced chili goat meat, stir fried basmati rice with vegetables & eggs", price: 15000, section: "food", category: "ls-specials", image: "", orderable: true },
   { id: "irish-vegetables-potatoe-turkey-curry", name: "Irish Vegetables Potatoe in Turkey Curry Sauce", description: "Irish potatoe boiled with vegetables and turkey in curry sauce", price: 15000, section: "food", category: "ls-specials", image: "", orderable: true },
    
