@@ -1,68 +1,89 @@
 import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
 import { Photo } from "@/components/shared/photo";
-import { Reveal } from "@/components/shared/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { EnquiryForm, type EnquiryField } from "@/components/forms/enquiry-form";
-import { eventTypes } from "@/data/services";
 import { galleryEntries } from "@/data/gallery";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Events & Catering",
-  description: "Catering for weddings, birthdays, private dining and receptions in Lagos. Send an event enquiry on WhatsApp.",
+  title: "Events",
+  description: "Discover lively events and experiences at Lolarshons Gourmet in Lagos, and ask about attending.",
   path: "/events",
 });
 
-const fields: EnquiryField[] = [
+const attendanceFields: EnquiryField[] = [
   { name: "name", label: "Your name", type: "text", required: true, half: true },
   { name: "phone", label: "Phone number", type: "tel", required: true, half: true },
-  { name: "type", label: "Event type", type: "select", required: true, options: [...eventTypes.map((e) => e.title), "Other"], half: true },
-  { name: "guests", label: "Estimated guests", type: "number", required: true, min: 1, half: true },
-  { name: "date", label: "Event date", type: "date", required: true, half: true },
-  { name: "venue", label: "Venue or area", type: "text", half: true },
-  { name: "notes", label: "Tell us about your event", type: "textarea", placeholder: "Menu ideas, drinks, cakes, service style…" },
+  { name: "event", label: "Event you are interested in", type: "text", required: true, placeholder: "Event name or type" },
+  { name: "attendees", label: "Number attending", type: "number", required: true, min: 1, half: true },
+  { name: "notes", label: "Questions or additional details", type: "textarea", placeholder: "Ask us about upcoming events or attending…" },
 ];
 
 export default function EventsPage() {
-  const photos = galleryEntries.filter((g) => g.category === "events");
+  const eventVideos = galleryEntries.filter((entry) => entry.category === "events" && entry.video);
   return (
     <>
-      <PageHero title="Events & Catering" description="From intimate dinners to large celebrations, we plan the food and drinks around your guests." />
-      <Section className="py-14 sm:py-20">
+      <PageHero title="Events" description="Join us for lively events and memorable experiences at Lolarshons Gourmet." />
+      <Section className="py-10 sm:py-16">
         <Container>
-          <Reveal>
-            <SectionHeading title="What we cater" />
-          </Reveal>
-          <ul className="mt-10 grid gap-6 sm:grid-cols-2">
-            {eventTypes.map((e) => (
-              <li key={e.title} className="rounded-xl border bg-card p-6">
-                <h3 className="text-xl font-semibold">{e.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{e.description}</p>
+          <SectionHeading title="Moments from our events" description="Watch highlights from events at Lolarshons Gourmet." />
+          <div className="relative mt-8 overflow-hidden rounded-xl border bg-card shadow-sm">
+            <Photo
+              src="/images/menu/sunset.png"
+              alt="Sunset at Lolarshons Gourmet"
+              aspect="aspect-[16/7]"
+              sizes="(min-width: 1280px) 1184px, calc(100vw - 40px)"
+              className="rounded-none bg-black/10"
+              imgClassName="object-contain"
+            />
+            <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 via-black/10 to-transparent p-5 sm:p-8">
+              <p className="rounded-full border border-white/40 bg-black/35 px-4 py-2 text-sm font-semibold tracking-wide text-white backdrop-blur-sm sm:text-base">
+                Upcoming events — coming soon
+              </p>
+            </div>
+          </div>
+          {eventVideos.length > 0 ? (
+            <ul className="mt-8 grid gap-6 sm:grid-cols-2">
+              {eventVideos.map((entry) => (
+                <li key={entry.id} className="overflow-hidden rounded-xl border bg-card shadow-sm">
+                  <video
+                    src={entry.video}
+                    poster={entry.image}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    aria-label={entry.alt}
+                    className="aspect-video w-full bg-black object-cover"
+                  />
+                  <div className="p-4">
+                    <h2 className="font-semibold">{entry.title}</h2>
+                  </div>
               </li>
             ))}
           </ul>
-          <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {photos.map((p) => (
-              <li key={p.id}>
-                <Photo src={p.image} alt={p.alt} aspect="aspect-[4/3]" />
-              </li>
-            ))}
-          </ul>
+          ) : (
+            <p className="mt-8 rounded-xl border border-dashed p-8 text-center text-muted-foreground">
+              Event videos will be shared here.
+            </p>
+          )}
         </Container>
       </Section>
-      <Section className="bg-secondary/40 py-14 sm:py-20">
-        <Container className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+      <Section className="bg-secondary/40 py-12 sm:py-16">
+        <Container className="grid gap-8 lg:grid-cols-[1fr_1.4fr]">
           <div>
-            <SectionHeading title="Plan your event with us" description="Share the details and we will come back with menu suggestions and next steps on WhatsApp." />
+            <SectionHeading
+              title="Plan your event"
+              description="Interested in joining us? Ask about upcoming events and attendance. Sending a request does not reserve a place; our team will confirm details with you."
+            />
           </div>
           <EnquiryForm
-            heading="Event enquiry"
-            fields={fields}
-            submitLabel="Send enquiry on WhatsApp"
+            heading="Event attendance enquiry"
+            fields={attendanceFields}
+            submitLabel="Ask about attending on WhatsApp"
             toastTitle="Event enquiry ready"
-            closing="Please share menu options and next steps. Thank you!"
-            note="Your enquiry is only sent once you press send in WhatsApp. We then reply with options and pricing."
+            closing="Please share details about upcoming events and how I can attend. Thank you!"
+            note="Your enquiry opens in WhatsApp and is only sent when you press send. Attendance is not confirmed until our team replies."
           />
         </Container>
       </Section>

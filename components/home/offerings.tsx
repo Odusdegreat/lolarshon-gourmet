@@ -8,9 +8,9 @@ import { Photo } from "@/components/shared/photo";
 import * as anime from "animejs";
 
 const offerings = [
-  { title: "Signature Dishes", description: "Hearty, beautifully plated meals prepared fresh to order.", href: "/menu/food?category=signature-dishes", action: "Order dishes", image: "/images/menu/jollof-grilled-chicken.jpg" },
-  { title: "Event Catering", description: "Menus and service planned around your guests and venue.", href: "/events", action: "Plan your event", image: "/images/gallery/events-1.jpg" },
-  { title: "Cakes & Desserts", description: "Celebration cakes and sweet treats, made for your occasion.", href: "/menu/food?category=cakes-desserts", action: "Order a cake", image: "/images/menu/red-velvet-cake.jpg" },
+  { title: "Signature Dishes", description: "Hearty, beautifully plated meals prepared fresh to order.", href: "/menu/food?category=signature-dishes", action: "Order dishes", image: "/images/menu/suya.jpg" },
+  { title: "Events", description: "Join us for lively events and experiences at Lolarshons Gourmet.", href: "/events", action: "See our events", image: "/images/menu/partying.png" },
+  { title: "Takeaway & Delivery", description: "Enjoy freshly prepared Lolarshons Gourmet meals wherever you are.", href: "/delivery", action: "Order for delivery", image: "/images/menu/take-away-featured.jpg" },
 ];
 
 export function Offerings() {
