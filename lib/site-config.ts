@@ -9,9 +9,9 @@ export const siteConfig = {
   name: "Lolarshons Gourmet",
   tagline: "More Than Food, It's an Experience",
   description:
-    "Premium cuisine, catering, cakes, desserts and mixology by Lolarshons Gourmet in Surulere, Lagos.",
-  /** Set NEXT_PUBLIC_SITE_URL in production, e.g. https://www.example.com */
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/+$/, ""),
+    "Premium cuisine, catering and dining experiences by Lolarshons Gourmet in Surulere, Lagos.",
+  /** Override only when deploying to a different canonical domain. */
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://lolarshonsgourmet.com").replace(/\/+$/, ""),
   locale: "en_NG",
 
   contact: {

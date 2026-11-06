@@ -10,8 +10,9 @@ import { DraftPreviewBanner } from "@/components/shared/draft-preview-banner";
 import { PortableBlogBody } from "@/components/shared/portable-blog-body";
 import { getBlogPost, getRelatedBlogPosts, isDraftPreviewEnabled } from "@/sanity/lib/blog";
 import { formatDate } from "@/lib/format";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, OG_IMAGE } from "@/lib/seo";
 import type { BlogPost } from "@/types";
+import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
 export const instant = false;
 
@@ -30,10 +31,16 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
     description: post.seoDescription ?? post.excerpt,
     path: `/blog/${post.slug}`,
   });
-  if (post.openGraphImage) {
-    metadata.openGraph = { ...metadata.openGraph, images: [post.openGraphImage] };
-    metadata.twitter = { ...metadata.twitter, images: [post.openGraphImage] };
-  }
+  const image = post.openGraphImage ?? (post.image === "/images/logo.png" ? absoluteUrl(OG_IMAGE) : post.image);
+  const absoluteImage = image.startsWith("http") ? image : absoluteUrl(image);
+  metadata.openGraph = {
+    ...metadata.openGraph,
+    siteName: siteConfig.name,
+    type: "article",
+    publishedTime: post.date,
+    images: [{ url: absoluteImage, alt: post.title }],
+  };
+  metadata.twitter = { ...metadata.twitter, images: [absoluteImage] };
   return metadata;
 }
 

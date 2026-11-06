@@ -19,9 +19,14 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: siteConfig.locale,
     type: "website",
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: siteConfig.name }],
+    images: [{ url: absoluteUrl(OG_IMAGE), width: 1200, height: 630, alt: siteConfig.name }],
   },
-  twitter: { card: "summary_large_image", title: siteConfig.name, description: siteConfig.description, images: [OG_IMAGE] },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [absoluteUrl(OG_IMAGE)],
+  },
 };
 
 export const viewport: Viewport = {
