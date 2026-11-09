@@ -7,14 +7,14 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Gallery",
-  description: "Photos and videos of Lolarshons Gourmet food, drinks and catered events.",
+  description: "Photos and videos of Lolar Shon's Gourmet food, drinks and catered events.",
   path: "/gallery",
 });
 
 export default function GalleryPage() {
   return (
     <>
-      <PageHero title="Gallery" description="Food, drinks, events and videos from Lolarshons Gourmet." />
+      <PageHero title="Gallery" description="Food, drinks, events and videos from Lolar Shon's Gourmet." />
       <Section className="py-10 sm:py-16">
         <Container>
           <Suspense fallback={<p className="py-10 text-center text-muted-foreground">Loading gallery…</p>}>

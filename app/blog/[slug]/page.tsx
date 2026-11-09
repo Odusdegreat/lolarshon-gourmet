@@ -87,7 +87,7 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
           </div>
           <div className="mt-12 flex flex-col items-start gap-4 rounded-xl border bg-card p-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-muted-foreground">Have a question or an event in mind? Message us.</p>
-            <WhatsAppButton variant="outline" label="Ask on WhatsApp" message={`Hello Lolarshons Gourmet, I read "${post.title}" and have a question.`} />
+            <WhatsAppButton variant="outline" label="Ask on WhatsApp" message={`Hello Lolar Shon's Gourmet, I read "${post.title}" and have a question.`} />
           </div>
         </Container>
       </article>

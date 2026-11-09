@@ -9,7 +9,7 @@ const siteOrigin = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export default defineConfig({
   ...sanityConfig,
   name: "lolarshons-gourmet",
-  title: "Lolarshons Gourmet",
+  title: "Lolar Shon's Gourmet",
   basePath: "/studio",
   plugins: [
     structureTool(),

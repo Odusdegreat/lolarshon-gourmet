@@ -19,7 +19,7 @@ export default async function BlogManagerLoginPage() {
   return (
     <section className="mx-auto flex min-h-[65dvh] max-w-lg flex-col justify-center px-4 py-12">
       <div className="rounded-xl border bg-card p-6 shadow-sm sm:p-8">
-        <p className="text-xs font-semibold tracking-[0.16em] text-brand uppercase">Lolarshons Gourmet</p>
+        <p className="text-xs font-semibold tracking-[0.16em] text-brand uppercase">Lolar Shon&apos;s Gourmet</p>
         <h1 className="mt-3 text-3xl font-semibold">AI Blog Manager</h1>
         {isBlogManagerAuthConfigured() ? (
           <>

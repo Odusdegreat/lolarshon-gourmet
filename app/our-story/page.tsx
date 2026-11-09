@@ -9,7 +9,7 @@ import { ContactRound } from "lucide-react";
 
 export const metadata = buildMetadata({
   title: "Our Story",
-  description: "The story and values behind Lolarshons Gourmet, a premium food, catering and events brand in Surulere, Lagos.",
+  description: "The story and values behind Lolar Shon's Gourmet, a premium food, catering and events brand in Surulere, Lagos.",
   path: "/our-story",
 });
 
@@ -22,13 +22,13 @@ const values = [
 export default function OurStoryPage() {
   return (
     <>
-      <PageHero title="A Passion for Great Food" description="The thinking behind Lolarshons Gourmet." />
+      <PageHero title="A Passion for Great Food" description="The thinking behind Lolar Shon's Gourmet." />
       <Section className="py-14 sm:py-20">
         <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <Photo src="/images/hero/kitchen.jpg" alt="Preparing food in the Lolarshons Gourmet kitchen" aspect="aspect-[4/3]" className="shadow-md" sizes="(min-width: 1024px) 50vw, 100vw" />
+          <Photo src="/images/hero/kitchen.jpg" alt="Preparing food in the Lolar Shon's Gourmet kitchen" aspect="aspect-[4/3]" className="shadow-md" sizes="(min-width: 1024px) 50vw, 100vw" />
           <div className="space-y-5 leading-relaxed text-muted-foreground">
             {/* TODO: client to supply their real brand story. This is placeholder copy. */}
-            <p>Lolarshons Gourmet creates food for the moments that matter, from everyday meals to weddings, birthdays and company events in Lagos.</p>
+            <p>Lolar Shon&apos;s Gourmet creates food for the moments that matter, from everyday meals to weddings, birthdays and company events in Lagos.</p>
             <p>Our approach is simple: use good ingredients, cook with care and present every dish as if it were for our own table. Whether you order a single plate or plan a full event, you deal directly with our team.</p>
             <p>We are based in Surulere, Lagos, and take orders, reservations and enquiries through WhatsApp so you can speak to a real person.</p>
           </div>

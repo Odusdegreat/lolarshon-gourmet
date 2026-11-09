@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container, Section } from "@/components/shared/container";
+import { GalleryVideo } from "@/components/shared/gallery-video";
 import { Photo } from "@/components/shared/photo";
 import { Reveal } from "@/components/shared/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
@@ -24,14 +25,10 @@ export function GalleryPreview() {
             <li key={g.id} className="group overflow-hidden rounded-xl">
               <Reveal delay={i * 0.06}>
                 {g.video ? (
-                  <video
+                  <GalleryVideo
                     src={g.video}
-                    poster={g.image}
-                    controls
-                    playsInline
-                    preload="metadata"
-                    aria-label={g.alt}
                     className="aspect-square w-full rounded-xl bg-black object-cover"
+                    alt={g.alt}
                   />
                 ) : (
                   <Photo src={g.image} alt={g.alt} aspect="aspect-square" imgClassName="transition-transform duration-700 group-hover:scale-[1.05]" sizes="(min-width: 640px) 33vw, 50vw" />

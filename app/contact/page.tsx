@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Contact",
-  description: "Contact Lolarshons Gourmet: phone, email, WhatsApp and address in Surulere, Lagos.",
+  description: "Contact Lolar Shon's Gourmet: phone, email, WhatsApp and address in Surulere, Lagos.",
   path: "/contact",
 });
 
@@ -70,7 +70,7 @@ export default function ContactPage() {
               </p>
             </address>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <WhatsAppButton size="lg" label="Message on WhatsApp" message="Hello Lolarshons Gourmet, I would like to make an enquiry." />
+              <WhatsAppButton size="lg" label="Message on WhatsApp" message="Hello Lolar Shon's Gourmet, I would like to make an enquiry." />
               <Button asChild size="lg" variant="outline">
                 <a href={`tel:${contact.phoneTel}`}>
                   <Phone /> Call us

@@ -1,4 +1,4 @@
-# Lolarshons Gourmet
+# Lolar Shon's Gourmet
 
 Premium food, catering, cakes and mixology website. Next.js (App Router), TypeScript (strict), Tailwind CSS v4, shadcn/ui-style components, Lucide, Motion, Bun.
 

@@ -37,7 +37,7 @@ export default async function BlogManagerOverviewPage() {
     <div>
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-sm text-muted-foreground">Lolarshons Gourmet</p>
+          <p className="text-sm text-muted-foreground">Lolar Shon&apos;s Gourmet</p>
           <h1 className="mt-1 text-3xl font-semibold">AI Blog Manager</h1>
           <p className="mt-2 text-sm text-muted-foreground">Manage articles and review recent content activity.</p>
         </div>

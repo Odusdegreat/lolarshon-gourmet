@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Food to Your Door",
-  description: "Order Lolarshons Gourmet for delivery. Build your order online, then confirm delivery details and payment with us on WhatsApp.",
+  description: "Order Lolar Shon's Gourmet for delivery. Build your order online, then confirm delivery details and payment with us on WhatsApp.",
   path: "/delivery",
 });
 
@@ -39,7 +39,7 @@ export default function DeliveryPage() {
               <Button asChild size="lg">
                 <Link href="/menu/food">Order Now</Link>
               </Button>
-              <WhatsAppButton size="lg" variant="outline" label="Chat on WhatsApp" message="Hello Lolarshons Gourmet, I would like to ask about delivery." />
+              <WhatsAppButton size="lg" variant="outline" label="Chat on WhatsApp" message="Hello Lolar Shon's Gourmet, I would like to ask about delivery." />
             </div>
           </div>
         </Container>

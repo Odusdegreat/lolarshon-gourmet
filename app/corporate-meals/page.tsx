@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata = buildMetadata({
   title: "Corporate Meals",
-  description: "Office lunch boxes, boardroom platters and staff event catering from Lolarshons Gourmet in Lagos.",
+  description: "Office lunch boxes, boardroom platters and staff event catering from Lolar Shon's Gourmet in Lagos.",
   path: "/corporate-meals",
 });
 

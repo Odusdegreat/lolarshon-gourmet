@@ -6,10 +6,10 @@
 export type SocialLink = { label: string; href: string | null };
 
 export const siteConfig = {
-  name: "Lolarshons Gourmet",
+  name: "Lolar Shon's Gourmet",
   tagline: "More Than Food, It's an Experience",
   description:
-    "Premium cuisine, catering and dining experiences by Lolarshons Gourmet in Surulere, Lagos.",
+    "Premium cuisine, catering and dining experiences by Lolar Shon's Gourmet in Surulere, Lagos.",
   /** Override only when deploying to a different canonical domain. */
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://lolarshonsgourmet.com").replace(/\/+$/, ""),
   locale: "en_NG",

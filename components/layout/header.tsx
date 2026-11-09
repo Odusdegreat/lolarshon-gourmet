@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/logo";
 import { DesktopNav } from "@/components/layout/desktop-nav";
 import { MobileNav } from "@/components/layout/mobile-nav";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { CartButton } from "@/components/cart/cart-button";
 import { cn } from "@/lib/utils";
 import * as anime from "animejs";
@@ -58,7 +57,6 @@ export function Header() {
         </div>
         <DesktopNav />
         <div className="flex items-center gap-1 sm:gap-2">
-          <ThemeToggle />
           <CartButton />
           <Button asChild className="hidden sm:inline-flex">
             <Link href="/menu/food">Order Now</Link>

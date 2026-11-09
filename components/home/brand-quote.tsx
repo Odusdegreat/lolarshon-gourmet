@@ -11,7 +11,7 @@ export function BrandQuote() {
               <p>&ldquo;Great food is how we say welcome, thank you and celebrate.&rdquo;</p>
             </blockquote>
             <div aria-hidden className="mx-auto my-7 h-px w-16 bg-champagne" />
-            <figcaption className="text-sm tracking-wide text-champagne">Lolarshons Gourmet</figcaption>
+            <figcaption className="text-sm tracking-wide text-champagne">Lolar Shon&apos;s Gourmet</figcaption>
           </figure>
         </Reveal>
       </Container>

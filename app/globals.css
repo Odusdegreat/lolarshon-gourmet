@@ -3,36 +3,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Lolarshons brand palette: burgundy, warm ivory, and champagne */
+/* Lolarshons brand palette: warm espresso, burgundy, and champagne */
 :root {
-  --background: #f7f1e8;
-  --foreground: #2b1b1d;
-  --card: #fffcf6;
-  --card-foreground: #2b1b1d;
-  --popover: #fffcf6;
-  --popover-foreground: #2b1b1d;
-  --primary: #4b001f;
-  --primary-foreground: #f7f1e8;
-  --secondary: #f1e7d3;
-  --secondary-foreground: #4a1623;
-  --muted: #f3ecdd;
-  --muted-foreground: #6b5a57;
-  --accent: #e9d8b4;
-  --accent-foreground: #3a1019;
-  --destructive: #b3261e;
-  --border: #e6dac3;
-  --input: #dccfb5;
-  --ring: #b8934a;
-  --brand: #4b001f;
-  --champagne: #d2b988;
-  --panel: #4b001f;
-  --panel-foreground: #f6ead4;
-  --radius: 0.75rem;
-  color-scheme: light;
-}
-
-/* Dark: warm espresso, lifted burgundy, champagne highlights (not an inversion) */
-.dark {
   --background: #160f0e;
   --foreground: #f2e9da;
   --card: #1f1514;
@@ -56,6 +28,7 @@
   --panel: #3b0d1a;
   --panel-foreground: #f2e3c8;
   color-scheme: dark;
+  --radius: 0.75rem;
 }
 
 @theme inline {

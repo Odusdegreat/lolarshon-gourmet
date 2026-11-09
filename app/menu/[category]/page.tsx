@@ -57,7 +57,7 @@ export default async function MenuCategoryPage({ params }: PageProps<"/menu/[cat
 
           <div className="mt-14 flex flex-col items-start gap-4 rounded-xl border bg-card p-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-xl text-sm text-muted-foreground">Looking for something that is not listed, or a larger order? Message us and we will help.</p>
-            <WhatsAppButton variant="outline" label="Ask on WhatsApp" message="Hello Lolarshons Gourmet, I have a question about your menu." />
+            <WhatsAppButton variant="outline" label="Ask on WhatsApp" message="Hello Lolar Shon's Gourmet, I have a question about your menu." />
           </div>
         </Container>
       </Section>

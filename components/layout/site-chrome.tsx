@@ -5,7 +5,6 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Logo } from "@/components/layout/logo";
 import { BackToTop } from "@/components/ui/back-to-top";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -19,7 +18,6 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
           <div className="mx-auto max-w-7xl">
             <div className="flex items-center justify-between gap-3">
               <Logo priority />
-              <ThemeToggle />
             </div>
           </div>
         </header>

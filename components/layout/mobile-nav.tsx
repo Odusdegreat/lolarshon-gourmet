@@ -45,7 +45,7 @@ export function MobileNav() {
         <SheetHeader className="items-center border-b pb-4 pr-5">
           <Logo />
           <SheetTitle className="sr-only">Site navigation</SheetTitle>
-          <SheetDescription className="sr-only">Browse the Lolarshons Gourmet website</SheetDescription>
+          <SheetDescription className="sr-only">Browse the Lolar Shon&apos;s Gourmet website</SheetDescription>
         </SheetHeader>
         <nav aria-label="Mobile" className="flex flex-col gap-1 px-3 pb-6">
           {primaryNav.map((item) => {

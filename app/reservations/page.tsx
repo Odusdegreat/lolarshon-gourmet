@@ -5,7 +5,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Book a Reservation",
-  description: "Request a table at Lolarshons Gourmet. Send your reservation request on WhatsApp and our team will confirm.",
+  description: "Request a table at Lolar Shon's Gourmet. Send your reservation request on WhatsApp and our team will confirm.",
   path: "/reservations",
 });
 

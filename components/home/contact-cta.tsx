@@ -17,7 +17,7 @@ export function ContactCta() {
               Ask about the menu, a celebration or a corporate order. Message us on WhatsApp on {siteConfig.contact.phoneDisplay} and we will reply with the details.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <WhatsAppButton size="lg" label="Message us on WhatsApp" message="Hello Lolarshons Gourmet, I would like to make an enquiry." />
+              <WhatsAppButton size="lg" label="Message us on WhatsApp" message="Hello Lolar Shon's Gourmet, I would like to make an enquiry." />
               <Button asChild size="lg" variant="outline">
                 <Link href="/contact">
                   <ContactRound aria-hidden />

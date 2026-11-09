@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Photo } from "@/components/shared/photo";
+import { GalleryVideo } from "@/components/shared/gallery-video";
 import { galleryCategories } from "@/data/gallery";
 import { cn } from "@/lib/utils";
 import * as anime from "animejs";
@@ -72,22 +73,24 @@ export function GalleryGrid({ entries }: { entries: GalleryEntry[] }) {
       ) : (
         <ul className="columns-2 gap-3 sm:gap-4 lg:columns-3">
           {visible.map((entry, i) => (
-            <li key={entry.id} className="mb-3 break-inside-avoid sm:mb-4">
-              {entry.video ? (
-                <video
-                  src={entry.video}
-                  poster={entry.image}
-                  controls
-                  playsInline
-                  preload="metadata"
-                  aria-label={entry.alt}
-                  className="aspect-[4/3] w-full rounded-xl bg-black object-cover"
-                />
-              ) : (
-                <button type="button" onClick={() => setOpenIndex(i)} className="group block w-full cursor-zoom-in overflow-hidden rounded-xl text-left focus-visible:ring-2 focus-visible:ring-ring" aria-label={`View larger: ${entry.title}`}>
-                  <Photo src={entry.image} alt={entry.alt} aspect={i % 3 === 0 ? "aspect-[3/4]" : i % 3 === 1 ? "aspect-square" : "aspect-[4/3]"} imgClassName="transition-transform duration-500 group-hover:scale-[1.04]" sizes="(min-width: 1024px) 33vw, 50vw" />
-                </button>
-              )}
+            <li key={entry.id} className="mb-3 break-inside-avoid overflow-hidden rounded-xl border bg-card sm:mb-4">
+              <figure>
+                {entry.video ? (
+                  <GalleryVideo
+                    src={entry.video}
+                    className="aspect-[4/3] w-full bg-black object-cover"
+                    alt={entry.alt}
+                  />
+                ) : (
+                  <button type="button" onClick={() => setOpenIndex(i)} className="group block w-full cursor-zoom-in overflow-hidden text-left focus-visible:ring-2 focus-visible:ring-ring" aria-label={`View larger: ${entry.title}`}>
+                    <Photo src={entry.image} alt={entry.alt} aspect={i % 3 === 0 ? "aspect-[3/4]" : i % 3 === 1 ? "aspect-square" : "aspect-[4/3]"} imgClassName="transition-transform duration-500 group-hover:scale-[1.04]" sizes="(min-width: 1024px) 33vw, 50vw" />
+                  </button>
+                )}
+                <figcaption className="space-y-1 px-3 py-3">
+                  <h2 className="text-sm font-semibold">{entry.title}</h2>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{entry.alt}</p>
+                </figcaption>
+              </figure>
             </li>
           ))}
         </ul>
@@ -100,7 +103,7 @@ export function GalleryGrid({ entries }: { entries: GalleryEntry[] }) {
             if (e.key === "ArrowLeft") step(-1);
           }}
         >
-          {current && (
+          {current && !current.video && (
             <>
               <Photo src={current.image} alt={current.alt} aspect="aspect-[4/3]" sizes="(min-width: 768px) 768px, 100vw" imgClassName="object-contain bg-black/5" className="max-h-[70dvh] w-full" />
               <div className="flex items-center justify-between gap-3 px-1 pb-1">

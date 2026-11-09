@@ -30,10 +30,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7f1e8" },
-    { media: "(prefers-color-scheme: dark)", color: "#160f0e" },
-  ],
+  themeColor: "#160f0e",
 };
 
 const { address, contact } = siteConfig;
@@ -57,7 +54,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning className={`${playfair.variable} ${montserrat.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning className={`dark ${playfair.variable} ${montserrat.variable}`}>
       <body className="flex min-h-dvh flex-col">
 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
         <Providers>

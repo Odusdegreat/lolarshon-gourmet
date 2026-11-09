@@ -6,7 +6,6 @@ import { isBlogManagerAuthenticated, isBlogManagerAuthConfigured } from "@/lib/b
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 export const metadata: Metadata = {
   title: "AI Blog Manager",
@@ -48,7 +47,7 @@ export default async function BlogManagerLayout({ children }: Readonly<{ childre
       <header className="border-b border-champagne/40 bg-card">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4 lg:px-8">
           <div className="min-w-0">
-            <p className="text-xs font-semibold tracking-[0.16em] text-brand uppercase">Lolarshons Gourmet</p>
+            <p className="text-xs font-semibold tracking-[0.16em] text-brand uppercase">Lolar Shon&apos;s Gourmet</p>
             <p className="mt-1 truncate font-serif text-lg sm:text-xl">AI Blog Manager</p>
           </div>
           <div className="flex shrink-0 items-center gap-2">
@@ -65,7 +64,6 @@ export default async function BlogManagerLayout({ children }: Readonly<{ childre
                 <Button size="sm" variant="secondary" type="submit">Sign out</Button>
               </form>
             </nav>
-            <ThemeToggle />
             <Sheet>
               <SheetTrigger asChild>
                 <Button type="button" size="icon-sm" variant="outline" className="xl:hidden" aria-label="Open Blog Manager navigation">

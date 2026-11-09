@@ -10,7 +10,7 @@ export const instant = false;
 
 export const metadata = buildMetadata({
   title: "Blog",
-  description: "Ideas and advice from Lolarshons Gourmet on planning events and feeding your team.",
+  description: "Ideas and advice from Lolar Shon's Gourmet on planning events and feeding your team.",
   path: "/blog",
 });
 

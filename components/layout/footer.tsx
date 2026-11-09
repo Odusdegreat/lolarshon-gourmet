@@ -31,7 +31,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.4fr]">
           <div>
-            <Logo footer />
+            <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-panel-foreground/80">
               Premium cuisine and catering, made with care in Surulere, Lagos.
             </p>
