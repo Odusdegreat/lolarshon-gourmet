@@ -5,13 +5,21 @@
 
 export type SocialLink = { label: string; href: string | null };
 
+function getCanonicalSiteUrl(value: string): string {
+  const url = new URL(value);
+  if (url.hostname === "lolarshonsgourmet.com") {
+    url.hostname = "www.lolarshonsgourmet.com";
+  }
+  return url.origin;
+}
+
 export const siteConfig = {
   name: "Lolar Shon's Gourmet",
   tagline: "More Than Food, It's an Experience",
   description:
-    "Premium cuisine, catering and dining experiences by Lolar Shon's Gourmet in Surulere, Lagos.",
-  /** Override only when deploying to a different canonical domain. */
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://lolarshonsgourmet.com").replace(/\/+$/, ""),
+    "Enjoy Nigerian food, restaurant dining, takeaway and catering at Lolar Shon's Gourmet in Surulere, Lagos. Ask us to confirm delivery availability for your address.",
+  /** The apex domain redirects to www; keep generated SEO URLs on the destination host. */
+  url: getCanonicalSiteUrl(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lolarshonsgourmet.com"),
   locale: "en_NG",
 
   contact: {
@@ -61,5 +69,6 @@ export function mapsDirectionsUrl(): string {
 }
 
 export function absoluteUrl(path = "/"): string {
-  return `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`;
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return normalizedPath === "/" ? siteConfig.url : `${siteConfig.url}${normalizedPath}`;
 }

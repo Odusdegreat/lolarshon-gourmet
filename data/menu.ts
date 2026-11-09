@@ -144,7 +144,7 @@ export const menuItems: MenuItem[] = [
 
 
   // Beverages
- { id: "zobo", name: "Chilled Zobo", description: "", price: 2000, section: "beverages", category: "beverage-refreshments", image: "/images/menu/zobo.png", orderable: true },
+ { id: "zobo", name: "Chilled Zobo", description: "", price: 2000, section: "beverages", category: "beverage-refreshments", image: "/images/menu/zobo.webp", orderable: true },
   { id: "coke", name: "Coke", description: "", price: 700, section: "beverages", category: "beverages", image: "/images/menu/coke.cutout.png", orderable: true },
   { id: "fanta", name: "Fanta", description: "", price: 700, section: "beverages", category: "beverages", image: "/images/menu/fanta.cutout.png", orderable: true },
   { id: "sprite", name: "Sprite", description: "", price: 700, section: "beverages", category: "beverages", image: "/images/menu/sprite.cutout.png", orderable: true },
@@ -191,12 +191,12 @@ export const menuItems: MenuItem[] = [
   // Cocktails
   { id: "gourmet-firing-squad", name: "Gourmet Firing Squad", description: "", price: 15000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/gourmet-firing-squad.jpg", orderable: true },
   { id: "baby-blue-bond", name: "Baby Blue Bond", description: "", price: 15000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/blue-cocktail.jpg", orderable: true },
-  { id: "tequila-sunrise", name: "Tequila Sunrise", description: "", price: 12000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/tequila-sunrise.jpg", orderable: true },
+  { id: "tequila-sunrise", name: "Tequila Sunrise", description: "", price: 12000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/tequila-sunrise.webp", orderable: true },
   { id: "pina-colada", name: "Pina Colada", description: "", price: 15000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/pina-colada.webp", orderable: true },
   { id: "margarita", name: "Margarita", description: "", price: 15000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/magarita.webp", orderable: true },
   { id: "mojito", name: "Mojito", description: "", price: 12000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/mojito.jpg", orderable: true },
   { id: "espresso-martini", name: "Espresso Martini", description: "", price: 12000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/espresso.jpg", orderable: true },
-  { id: "sex-on-the-beach", name: "Sex On The Beach", description: "", price: 12000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/sex-beach.jpg", orderable: true },
+  { id: "sex-on-the-beach", name: "Sex On The Beach", description: "", price: 12000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/sex-beach.webp", orderable: true },
   { id: "long-island-iced-tea", name: "Long Island Iced Tea", description: "", price: 12000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/long-island.jpg", orderable: true },
   { id: "ice-americano", name: "Ice Americano", description: "", price: 12000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/iced-americano.jpg", orderable: true },
   // Mocktails
@@ -206,7 +206,7 @@ export const menuItems: MenuItem[] = [
   // Beers
   { id: "action-bitters", name: "Action Bitters", description: "", price: 1500, section: "mixology", category: "mixology-spirits", image: "/images/menu/action-bitters.cutout.png", orderable: true },
   { id: "origin-bitters-pet", name: "Orijin Bitters Pet", description: "", price: 1500, section: "mixology", category: "mixology-spirits", image: "/images/menu/orijin-bitters.cutout.png", orderable: true },
-  { id: "guinness-big", name: "Guinness (Big)", description: "", price: 2500, section: "mixology", category: "mixology-beer-cider", image: "/images/menu/guiness-big.cutout.png", orderable: true },
+  { id: "guinness-big", name: "Guinness (Big)", description: "", price: 2500, section: "mixology", category: "mixology-beer-cider", image: "/images/menu/guiness-big.cutout.webp", orderable: true },
   { id: "guinness-small", name: "Guinness (Small)", description: "", price: 2000, section: "mixology", category: "mixology-beer-cider", image: "/images/menu/guiness-small.cutout.png", orderable: true },
   { id: "legend", name: "Legend", description: "", price: 2000, section: "mixology", category: "mixology-beer-cider", image: "/images/menu/legend-beer.cutout.png", orderable: true },
   { id: "large-origin", name: "Large Origin", description: "", price: 2000, section: "mixology", category: "mixology-beer-cider", image: "/images/menu/orijin-sweet.cutout.png", orderable: true },
@@ -233,7 +233,7 @@ export const menuItems: MenuItem[] = [
   { id: "american-honey", name: "American Honey", description: "", price: 35000, section: "mixology", category: "mixology-spirits", image: "/images/menu/american-honey.cutout.png", orderable: true },
   { id: "jameson-green", name: "Jameson (Green)", description: "", price: 40000, section: "mixology", category: "mixology-spirits", image: "/images/menu/jameson-green.cutout.png", orderable: true },
   { id: "jameson-black-barel", name: "Jameson (Black Barel)", description: "", price: 60000, section: "mixology", category: "mixology-spirits", image: "/images/menu/jameson-black.webp", orderable: true },
-  { id: "glenfidich-15", name: "Glenfidich (15)", description: "", price: 120000, section: "mixology", category: "mixology-spirits", image: "/images/menu/glenfidich-15.cutout.png", orderable: true },
+  { id: "glenfidich-15", name: "Glenfidich (15)", description: "", price: 120000, section: "mixology", category: "mixology-spirits", image: "/images/menu/glenfidich-15.cutout.webp", orderable: true },
   { id: "glenfidich-12", name: "Glenfidich (12)", description: "", price: 80000, section: "mixology", category: "mixology-spirits", image: "/images/menu/glendfidich-12.cutout.png", orderable: true },
   { id: "jack-daniel", name: "Jack Daniel", description: "", price: 35000, section: "mixology", category: "mixology-spirits", image: "/images/menu/jack-daniels.cutout.png", orderable: true },
   { id: "johnny-walker-red-label", name: "Johnny Walker Red Label", description: "", price: 25000, section: "mixology", category: "mixology-spirits", image: "/images/menu/red-label.cutout.png", orderable: true },
@@ -250,7 +250,7 @@ export const menuItems: MenuItem[] = [
   { id: "smirnoff-chocolate-small", name: "Smirnoff Chocolate Small", description: "", price: 4000, section: "mixology", category: "mixology-spirits", image: "/images/menu/smirnoff-chocolate.cutout.png", orderable: true },
   { id: "flirt-vodka", name: "Flirt Vodka", description: "", price: 18000, section: "mixology", category: "mixology-spirits", image: "/images/menu/flirt-vodkha.cutout.png", orderable: true },
   // Champagne
-  { id: "velve-rosee", name: "Velve Rosee", description: "", price: 25000, section: "mixology", category: "mixology-wine", image: "/images/menu/moet-chandon.cutout.png", orderable: true },
+  { id: "velve-rosee", name: "Velve Rosee", description: "", price: 25000, section: "mixology", category: "mixology-wine", image: "/images/menu/moet-chandon.cutout.webp", orderable: true },
   { id: "moet-nectar-rose", name: "Moet Nectar Rose", description: "", price: 160000, section: "mixology", category: "mixology-wine", image: "/images/menu/moet-nectar.cutout.png", orderable: true },
   // Whiskey (Hennessy)
   { id: "henessy-vsop", name: "Hennessy VSOP", description: "", price: 150000, section: "mixology", category: "mixology-spirits", image: "/images/menu/hennessy-vsop.cutout.png", orderable: true },

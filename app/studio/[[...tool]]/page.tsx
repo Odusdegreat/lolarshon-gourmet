@@ -1,7 +1,13 @@
 import { SanityStudio } from "@/components/sanity/studio";
-import { metadata, viewport } from "next-sanity/studio";
+import type { Metadata } from "next";
+import { metadata as studioMetadata, viewport } from "next-sanity/studio";
 
-export { metadata, viewport };
+export const metadata: Metadata = {
+  ...studioMetadata,
+  robots: { index: false, follow: false },
+};
+
+export { viewport };
 
 export const instant = false;
 

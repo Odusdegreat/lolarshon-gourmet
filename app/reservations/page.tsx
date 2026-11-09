@@ -1,11 +1,12 @@
 import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
+import { BreadcrumbStructuredData } from "@/components/shared/structured-data";
 import { EnquiryForm, type EnquiryField } from "@/components/forms/enquiry-form";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Book a Reservation",
-  description: "Request a table at Lolar Shon's Gourmet. Send your reservation request on WhatsApp and our team will confirm.",
+  title: "Restaurant Reservations in Surulere",
+  description: "Request a table at Lolar Shon's Gourmet in Surulere, Lagos. Send your preferred date and time on WhatsApp for our team to confirm availability.",
   path: "/reservations",
 });
 
@@ -22,6 +23,7 @@ const fields: EnquiryField[] = [
 export default function ReservationsPage() {
   return (
     <>
+      <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Reservations", path: "/reservations" }]} />
       <PageHero title="Book a Reservation" description="Tell us when you would like to dine and we will confirm your table on WhatsApp." />
       <Section className="py-12 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">

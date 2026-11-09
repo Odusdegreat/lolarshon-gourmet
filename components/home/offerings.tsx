@@ -8,9 +8,9 @@ import { Photo } from "@/components/shared/photo";
 import * as anime from "animejs";
 
 const offerings = [
-  { title: "Signature Dishes", description: "Hearty, beautifully plated meals prepared fresh to order.", href: "/menu/food?category=signature-dishes", action: "Order dishes", image: "/images/menu/suya.jpg" },
-  { title: "Events", description: "Join us for lively events and experiences at Lolar Shon's Gourmet.", href: "/events", action: "See our events", image: "/images/menu/partying.png" },
-  { title: "Takeaway & Delivery", description: "Enjoy freshly prepared Lolar Shon's Gourmet meals wherever you are.", href: "/delivery", action: "Order for delivery", image: "/images/menu/take-away-featured.jpg" },
+  { title: "Signature Dishes", description: "Hearty, beautifully plated meals prepared fresh to order.", href: "/menu/food?category=signature-dishes", action: "Order dishes", image: "/images/menu/suya.jpg", alt: "Suya and other Nigerian dishes served at Lolar Shon's Gourmet" },
+  { title: "Events", description: "Join us for lively events and experiences at Lolar Shon's Gourmet.", href: "/events", action: "See our events", image: "/images/menu/ama.webp", alt: "Guests enjoying a paint-and-sip event at Lolar Shon's Gourmet" },
+  { title: "Takeaway & Delivery", description: "Enjoy freshly prepared meals as takeaway or ask us to confirm delivery for your address.", href: "/delivery", action: "Order for delivery", image: "/images/menu/rice-sauce.webp", alt: "Rice, chicken, vegetables and sauce served at Lolar Shon's Gourmet" },
 ];
 
 export function Offerings() {
@@ -54,12 +54,12 @@ export function Offerings() {
   return (
     <Section>
       <Container>
-        <h3 className="text-xl font-semibold mb-6">Signature Offerings</h3>
+        <h2 className="mb-6 text-xl font-semibold">Signature Offerings</h2>
         <ul ref={containerRef} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {offerings.map((o) => (
             <li key={o.title}>
               <Link href={o.href} className="group flex h-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-md motion-reduce:transform-none">
-                <Photo src={o.image} alt={o.title} aspect="aspect-[4/3]" className="rounded-none" imgClassName="transition-transform duration-700 group-hover:scale-[1.05]" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" />
+                <Photo src={o.image} alt={o.alt} aspect="aspect-[4/3]" className="rounded-none" imgClassName="transition-transform duration-700 group-hover:scale-[1.05]" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" />
                 <div className="flex flex-1 flex-col gap-2 p-5">
                   <h3 className="text-xl font-semibold">{o.title}</h3>
                   <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{o.description}</p>

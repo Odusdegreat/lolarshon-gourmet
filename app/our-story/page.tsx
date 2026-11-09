@@ -4,11 +4,12 @@ import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
 import { Photo } from "@/components/shared/photo";
 import { SectionHeading } from "@/components/shared/section-heading";
+import { BreadcrumbStructuredData } from "@/components/shared/structured-data";
 import { buildMetadata } from "@/lib/seo";
 import { ContactRound } from "lucide-react";
 
 export const metadata = buildMetadata({
-  title: "Our Story",
+  title: "Our Story and Values",
   description: "The story and values behind Lolar Shon's Gourmet, a premium food, catering and events brand in Surulere, Lagos.",
   path: "/our-story",
 });
@@ -22,6 +23,7 @@ const values = [
 export default function OurStoryPage() {
   return (
     <>
+      <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Our Story", path: "/our-story" }]} />
       <PageHero title="A Passion for Great Food" description="The thinking behind Lolar Shon's Gourmet." />
       <Section className="py-14 sm:py-20">
         <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">

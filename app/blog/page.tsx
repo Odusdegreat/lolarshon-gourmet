@@ -2,6 +2,7 @@ import { BlogCard } from "@/components/shared/blog-card";
 import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
 import { DraftPreviewBanner } from "@/components/shared/draft-preview-banner";
+import { BreadcrumbStructuredData } from "@/components/shared/structured-data";
 import { buildMetadata } from "@/lib/seo";
 import { getBlogPosts, isDraftPreviewEnabled } from "@/sanity/lib/blog";
 import type { BlogPost } from "@/types";
@@ -9,8 +10,8 @@ import type { BlogPost } from "@/types";
 export const instant = false;
 
 export const metadata = buildMetadata({
-  title: "Blog",
-  description: "Ideas and advice from Lolar Shon's Gourmet on planning events and feeding your team.",
+  title: "Food, Catering and Event Planning Articles",
+  description: "Read practical ideas from Lolar Shon's Gourmet on food, catering, event planning and feeding your team well.",
   path: "/blog",
 });
 
@@ -28,6 +29,7 @@ export default async function BlogPage() {
 
   return (
     <>
+      <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }]} />
       {preview && <DraftPreviewBanner />}
       <PageHero title="Blog" description="Ideas for planning events, gifting and feeding your team well." />
       <Section className="py-12 sm:py-20">

@@ -16,9 +16,10 @@ bun run build && bun run start
 
 - **Business details** (phone, WhatsApp, email, structured address, hours, social links): `lib/site-config.ts`. Everything reads from here.
 - **WhatsApp helpers** (number normalisation, URL building, order/enquiry messages): `lib/whatsapp.ts`.
-- **Env vars**: copy `.env.example` to `.env.local`. Set `NEXT_PUBLIC_SITE_URL` for production.
+- **Env vars**: copy `.env.example` to `.env.local`. Set `NEXT_PUBLIC_SITE_URL` to `https://www.lolarshonsgourmet.com` for production; the apex domain redirects to `www`, and generated canonical and sitemap URLs are normalized to `www`.
 - **Content**: `data/` (menu, gallery, blog, services, navigation). Menu prices are listed in NGN.
 - **Logo**: `public/images/logo.png`, rendered only by `components/layout/logo.tsx`. A higher-resolution transparent PNG or SVG is recommended.
+- **Media and Git LFS**: video assets (`.mp4`, `.MP4`, `.mov`, `.webm`) are configured for Git LFS. Install Git LFS before cloning; run `git lfs install` and `git lfs pull` if media files appear as pointer files. Existing video history has not yet been migrated, pending repository-owner coordination. Optimized raster photography is served as WebP; high-resolution originals are kept outside the deployed assets.
 - **Blog CMS**: Sanity Studio is available at `/studio`. The blog, homepage preview, and sitemap use published Sanity posts. Presentation Tool previews drafts through Next.js Draft Mode.
 
 ## Sanity setup

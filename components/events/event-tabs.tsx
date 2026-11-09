@@ -29,13 +29,13 @@ const events = [
     media: [
       {
         type: "image",
-        src: "/images/menu/look-paint.JPG",
+        src: "/images/menu/look-paint.webp",
         alt: "A guest painting at Lolar Shon's Gourmet",
         caption: "A guest enjoying the creative side of Paint & Sip.",
       },
       {
         type: "image",
-        src: "/images/menu/snap.JPG",
+        src: "/images/menu/snap.webp",
         alt: "Guests enjoying a Paint & Sip event",
         caption: "Good company and creative moments at Paint & Sip.",
       },

@@ -1,6 +1,7 @@
 import { ArrowUpRight, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
+import { BreadcrumbStructuredData } from "@/components/shared/structured-data";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import { EnquiryForm, type EnquiryField } from "@/components/forms/enquiry-form";
 import { Button } from "@/components/ui/button";
@@ -8,8 +9,8 @@ import { addressLines, mapsDirectionsUrl, siteConfig } from "@/lib/site-config";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Contact",
-  description: "Contact Lolar Shon's Gourmet: phone, email, WhatsApp and address in Surulere, Lagos.",
+  title: "Contact and Location in Surulere",
+  description: "Find the address, phone, email and WhatsApp for Lolar Shon's Gourmet, a restaurant in Surulere, Lagos. Get directions or send an enquiry.",
   path: "/contact",
 });
 
@@ -23,6 +24,7 @@ export default function ContactPage() {
   const { contact } = siteConfig;
   return (
     <>
+      <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]} />
       <PageHero title="Contact Us" description="Call, email or message us on WhatsApp. We are happy to help with orders, events and questions." />
       <Section className="py-14 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">

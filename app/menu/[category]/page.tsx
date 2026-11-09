@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { MenuBrowser } from "@/components/menu/menu-browser";
 import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
+import { BreadcrumbStructuredData } from "@/components/shared/structured-data";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import { getItemsBySection, menuSections } from "@/data/menu";
 import { buildMetadata } from "@/lib/seo";
@@ -21,7 +22,21 @@ export async function generateMetadata({ params }: PageProps<"/menu/[category]">
   const { category } = await params;
   const section = menuSections[category as MenuSection];
   if (!section) return {};
-  return buildMetadata({ title: section.title, description: section.description, path: `/menu/${section.slug}` });
+  const seoContent: Record<MenuSection, { title: string; description: string }> = {
+    food: {
+      title: "Nigerian Food Menu in Surulere",
+      description: "Browse Nigerian dishes including jollof rice, grills, sides, cakes and desserts from Lolar Shon's Gourmet in Surulere, Lagos.",
+    },
+    beverages: {
+      title: "Drinks and Beverages Menu",
+      description: "Explore soft drinks, juices, zobo, tea, coffee and energy drinks on the Lolar Shon's Gourmet menu in Surulere, Lagos.",
+    },
+    mixology: {
+      title: "Cocktails and Mixology Menu",
+      description: "Browse cocktails, mocktails, beer, cider, wine and spirits at Lolar Shon's Gourmet in Surulere, Lagos.",
+    },
+  };
+  return buildMetadata({ ...seoContent[section.slug], path: `/menu/${section.slug}` });
 }
 
 export default async function MenuCategoryPage({ params }: PageProps<"/menu/[category]">) {
@@ -31,6 +46,7 @@ export default async function MenuCategoryPage({ params }: PageProps<"/menu/[cat
 
   return (
     <>
+      <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: section.title, path: `/menu/${section.slug}` }]} />
       <PageHero title={section.title} description={section.description} eyebrow="Menus" />
       <Section className="py-10 sm:py-16">
         <Container>

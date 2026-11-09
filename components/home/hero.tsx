@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Photo } from "@/components/shared/photo";
 import * as anime from "animejs";
 
 export function Hero() {
@@ -45,13 +44,13 @@ export function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 sm:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-8 lg:py-24">
         <div>
           <p className="mb-5 text-sm font-medium tracking-wide text-brand">
-            Premium Cuisine · Catering · Events
+            Nigerian Food · Restaurant Dining · Catering
           </p>
           <h1 className="text-4xl leading-[1.1] font-semibold sm:text-5xl lg:text-6xl">
-            More Than Food, It&rsquo;s an Experience
+            Nigerian Restaurant in Surulere, Lagos
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-            From signature dishes and celebration cakes to full-service catering, Lolar Shon&apos;s Gourmet brings carefully prepared food to your table, your event and your door.
+            Looking for where to eat in Surulere? Enjoy Nigerian food and jollof rice at Lolar Shon&apos;s Gourmet. Takeaway and catering are available; ask us to confirm delivery for your address.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">

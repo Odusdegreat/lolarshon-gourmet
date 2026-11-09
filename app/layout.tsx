@@ -2,13 +2,14 @@ import type { Metadata, Viewport } from "next";
 import { montserrat, playfair } from "@/app/fonts";
 import { Providers } from "@/components/providers";
 import { SiteChrome } from "@/components/layout/site-chrome";
+import { StructuredData } from "@/components/shared/structured-data";
 import { OG_IMAGE } from "@/lib/seo";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: { default: `${siteConfig.name} | Premium Food, Catering & Events in Lagos`, template: `%s | ${siteConfig.name}` },
+  title: { default: `${siteConfig.name} | Nigerian Restaurant in Surulere, Lagos`, template: `%s | ${siteConfig.name}` },
   description: siteConfig.description,
   applicationName: siteConfig.name,
   alternates: { canonical: absoluteUrl("/") },
@@ -34,29 +35,62 @@ export const viewport: Viewport = {
 };
 
 const { address, contact } = siteConfig;
+const socialProfiles = siteConfig.social.flatMap((social) =>
+  social.href && social.label !== "WhatsApp" ? [social.href] : [],
+);
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Restaurant",
-  name: siteConfig.name,
-  url: siteConfig.url,
-  image: absoluteUrl("/images/logo.png"),
-  telephone: contact.phoneTel,
-  email: contact.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: address.streetAddress,
-    addressLocality: `${address.area}, ${address.city}`,
-    addressRegion: address.state,
-    addressCountry: address.countryCode,
-  },
-  sameAs: siteConfig.social.flatMap((s) => (s.href ? [s.href] : [])),
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/images/logo.png"),
+      },
+      sameAs: socialProfiles,
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: contact.phoneTel,
+        email: contact.email,
+        contactType: "reservations and enquiries",
+      },
+    },
+    {
+      "@type": "Restaurant",
+      "@id": `${siteConfig.url}/#restaurant`,
+      name: siteConfig.name,
+      url: siteConfig.url,
+      image: absoluteUrl(OG_IMAGE),
+      telephone: contact.phoneTel,
+      email: contact.email,
+      parentOrganization: { "@id": `${siteConfig.url}/#organization` },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: address.streetAddress,
+        addressLocality: address.area,
+        addressRegion: address.state,
+        addressCountry: address.countryCode,
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteConfig.url}/#website`,
+      name: siteConfig.name,
+      url: siteConfig.url,
+      inLanguage: "en-NG",
+      publisher: { "@id": `${siteConfig.url}/#organization` },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning className={`dark ${playfair.variable} ${montserrat.variable}`}>
       <body className="flex min-h-dvh flex-col">
-<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+        <StructuredData data={jsonLd} />
         <Providers>
           <SiteChrome>{children}</SiteChrome>
         </Providers>

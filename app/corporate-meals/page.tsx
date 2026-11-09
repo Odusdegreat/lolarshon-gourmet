@@ -3,13 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
 import { SectionHeading } from "@/components/shared/section-heading";
+import { BreadcrumbStructuredData } from "@/components/shared/structured-data";
 import { EnquiryForm, type EnquiryField } from "@/components/forms/enquiry-form";
 import { corporateOptions } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata = buildMetadata({
-  title: "Corporate Meals",
+  title: "Corporate Meals and Catering",
   description: "Office lunch boxes, boardroom platters and staff event catering from Lolar Shon's Gourmet in Lagos.",
   path: "/corporate-meals",
 });
@@ -29,6 +30,7 @@ const fields: EnquiryField[] = [
 export default function CorporateMealsPage() {
   return (
     <>
+      <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Corporate Meals", path: "/corporate-meals" }]} />
       <PageHero title="Corporate Meals" description="Reliable, well-presented food for your team, your meetings and your company events." />
       <Section className="py-14 sm:py-20">
         <Container>

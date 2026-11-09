@@ -4,18 +4,20 @@ import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
+import { BreadcrumbStructuredData } from "@/components/shared/structured-data";
 import { deliverySteps } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Food to Your Door",
-  description: "Order Lolar Shon's Gourmet for delivery. Build your order online, then confirm delivery details and payment with us on WhatsApp.",
+  title: "Food Delivery and Takeaway Orders",
+  description: "Order from Lolar Shon's Gourmet in Surulere, Lagos. Ask our team to confirm delivery availability for your address, plus fees and timing, on WhatsApp.",
   path: "/delivery",
 });
 
 export default function DeliveryPage() {
   return (
     <>
+      <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Delivery", path: "/delivery" }]} />
       <PageHero title="Food to Your Door" description="Order from the menu and we will arrange delivery with you directly on WhatsApp." />
       <Section className="py-14 sm:py-20">
         <Container>

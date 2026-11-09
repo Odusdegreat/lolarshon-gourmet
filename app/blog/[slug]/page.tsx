@@ -8,6 +8,7 @@ import { Photo } from "@/components/shared/photo";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import { DraftPreviewBanner } from "@/components/shared/draft-preview-banner";
 import { PortableBlogBody } from "@/components/shared/portable-blog-body";
+import { BreadcrumbStructuredData, StructuredData } from "@/components/shared/structured-data";
 import { getBlogPost, getRelatedBlogPosts, isDraftPreviewEnabled } from "@/sanity/lib/blog";
 import { formatDate } from "@/lib/format";
 import { buildMetadata, OG_IMAGE } from "@/lib/seo";
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
 export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">) {
   const { slug } = await params;
   const preview = await isDraftPreviewEnabled();
-  let post;
+  let post: BlogPost | null = null;
   let related: BlogPost[] = [];
   try {
     post = await getBlogPost(slug, preview);
@@ -64,8 +65,34 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
   }
   if (!post) notFound();
 
+  const image = post.openGraphImage ?? (post.image === "/images/logo.png" ? absoluteUrl(OG_IMAGE) : post.image);
+  const absoluteImage = image.startsWith("http") ? image : absoluteUrl(image);
+  const description = post.seoDescription ?? post.excerpt;
+
   return (
     <>
+      <BreadcrumbStructuredData
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]}
+      />
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description,
+          image: [absoluteImage],
+          datePublished: post.date,
+          author: post.author?.name ? { "@type": "Person", name: post.author.name } : undefined,
+          publisher: { "@id": `${siteConfig.url}/#organization` },
+          articleSection: post.category,
+          inLanguage: "en-NG",
+          mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+        }}
+      />
       {preview && <DraftPreviewBanner />}
       <article>
         <header className="border-b border-champagne/30 bg-panel text-panel-foreground">

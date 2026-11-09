@@ -2,11 +2,12 @@ import { Container, Section } from "@/components/shared/container";
 import { EventTabs } from "@/components/events/event-tabs";
 import { PageHero } from "@/components/shared/page-hero";
 import { SectionHeading } from "@/components/shared/section-heading";
+import { BreadcrumbStructuredData } from "@/components/shared/structured-data";
 import { EnquiryForm, type EnquiryField } from "@/components/forms/enquiry-form";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Events",
+  title: "Restaurant Events in Surulere, Lagos",
   description: "Discover lively events and experiences at Lolar Shon's Gourmet in Lagos, and ask about attending.",
   path: "/events",
 });
@@ -22,6 +23,7 @@ const attendanceFields: EnquiryField[] = [
 export default function EventsPage() {
   return (
     <>
+      <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Events", path: "/events" }]} />
       <PageHero title="Events" description="Join us for lively events and memorable experiences at Lolar Shon's Gourmet." />
       <Section className="py-10 sm:py-16">
         <Container>
