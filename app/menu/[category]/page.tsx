@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: PageProps<"/menu/[category]">
   if (!section) return {};
   const seoContent: Record<MenuSection, { title: string; description: string }> = {
     food: {
-      title: "Nigerian Food Menu in Surulere",
-      description: "Browse Nigerian dishes including jollof rice, grills, sides, cakes and desserts from Lolar Shon's Gourmet in Surulere, Lagos.",
+      title: "Restaurant Food Menu in Surulere",
+      description: "Browse a varied selection of meals, grills, sides, cakes and desserts from Lolar Shon's Gourmet in Surulere, Lagos.",
     },
     beverages: {
       title: "Drinks and Beverages Menu",

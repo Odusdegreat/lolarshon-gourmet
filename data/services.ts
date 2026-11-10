@@ -8,7 +8,7 @@ export const eventTypes = [
 export const corporateOptions = [
   { title: "Office Lunch Boxes", description: "Individually packed meals for teams, delivered on time to your office." },
   { title: "Meeting & Boardroom Platters", description: "Shareable platters and refreshments for meetings and workshops." },
-  { title: "Conferences & Staff Events", description: "Catering for larger gatherings, with service options to suit your venue." },
+  { title: "Conferences & Staff Events", description: "Meal and refreshment options for larger gatherings, with choices to suit your team." },
   { title: "Recurring Meal Plans", description: "A regular schedule for teams that eat together every week. Pricing on request." },
 ];
 

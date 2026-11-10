@@ -10,8 +10,8 @@ import type { BlogPost } from "@/types";
 export const instant = false;
 
 export const metadata = buildMetadata({
-  title: "Food, Catering and Event Planning Articles",
-  description: "Read practical ideas from Lolar Shon's Gourmet on food, catering, event planning and feeding your team well.",
+  title: "Food and Dining Articles",
+  description: "Read practical ideas from Lolar Shon's Gourmet about food, menu discoveries, restaurant dining and feeding your team well.",
   path: "/blog",
 });
 

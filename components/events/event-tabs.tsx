@@ -16,6 +16,7 @@ const events = [
       {
         type: "video",
         src: "/images/menu/singing.mp4",
+        poster: "/images/menu/lolar-smile.webp",
         alt: "Karaoke and singing at Lolar Shon's Gourmet",
         caption: "A lively karaoke moment at Lolar Shon's Gourmet.",
       },
@@ -50,12 +51,14 @@ const events = [
       {
         type: "video",
         src: "/images/menu/hype.MP4",
+        poster: "/images/gallery/video-hype.jpg",
         alt: "High-energy event at Lolar Shon's Gourmet",
         caption: "A high-energy moment from Friday night.",
       },
       {
         type: "video",
         src: "/images/menu/party.mp4",
+        poster: "/images/gallery/video-party.jpg",
         alt: "Party at Lolar Shon's Gourmet",
         caption: "Party highlights from Lolar Shon's Gourmet.",
       },
@@ -100,6 +103,7 @@ export function EventTabs() {
                   {media.type === "video" ? (
                     <GalleryVideo
                       src={media.src}
+                      poster={media.poster}
                       className="aspect-video w-full bg-black object-cover"
                       alt={media.alt}
                     />

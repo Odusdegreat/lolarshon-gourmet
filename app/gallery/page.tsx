@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Food, Drinks and Events Gallery",
-  description: "Photos and videos of Lolar Shon's Gourmet food, drinks and catered events.",
+  description: "Photos and videos of food, drinks and moments at Lolar Shon's Gourmet.",
   path: "/gallery",
 });
 

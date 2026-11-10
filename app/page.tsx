@@ -13,13 +13,13 @@ import { siteConfig } from "@/lib/site-config";
 import { getBlogPosts } from "@/sanity/lib/blog";
 import type { BlogPost } from "@/types";
 
-const homeTitle = "Nigerian Restaurant in Surulere, Lagos";
+const homeTitle = "Gourmet Restaurant in Surulere, Lagos";
 
 export const metadata: Metadata = {
   ...buildMetadata({
     title: homeTitle,
     description:
-      "Enjoy Nigerian food, jollof rice and takeaway at Lolar Shon's Gourmet in Surulere, Lagos. Ask us to confirm delivery availability for your address.",
+      "Discover an exceptional dining experience at Lolar Shon's Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine. Enjoy a carefully curated selection of freshly prepared gourmet dishes, crafted with premium ingredients, creativity and a passion for exceptional taste. Whether you're planning a delightful meal, a special celebration or a corporate event, we bring quality, flavour and elegance to every occasion. Takeaway and catering services are available, with delivery subject to confirmation for your location.",
     path: "/",
   }),
   title: { absolute: `${homeTitle} | ${siteConfig.name}` },

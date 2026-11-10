@@ -33,7 +33,7 @@ export function Footer() {
           <div>
             <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-panel-foreground/80">
-              Premium cuisine and catering, made with care in Surulere, Lagos.
+              A varied menu of food, drinks and desserts, made with care in Surulere, Lagos.
             </p>
             <ul className="mt-5 flex flex-wrap gap-2" aria-label="Social media">
               {siteConfig.social.map((s) => (

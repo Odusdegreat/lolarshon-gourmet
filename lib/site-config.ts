@@ -17,7 +17,7 @@ export const siteConfig = {
   name: "Lolar Shon's Gourmet",
   tagline: "More Than Food, It's an Experience",
   description:
-    "Enjoy Nigerian food, restaurant dining, takeaway and catering at Lolar Shon's Gourmet in Surulere, Lagos. Ask us to confirm delivery availability for your address.",
+    "Discover an exceptional dining experience at Lolar Shon's Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine. Enjoy a carefully curated selection of freshly prepared gourmet dishes, crafted with premium ingredients, creativity and a passion for exceptional taste. Whether you're planning a delightful meal, a special celebration or a corporate event, we bring quality, flavour and elegance to every occasion. Takeaway and catering services are available, with delivery subject to confirmation for your location.",
   /** The apex domain redirects to www; keep generated SEO URLs on the destination host. */
   url: getCanonicalSiteUrl(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lolarshonsgourmet.com"),
   locale: "en_NG",

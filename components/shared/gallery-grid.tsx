@@ -78,6 +78,7 @@ export function GalleryGrid({ entries }: { entries: GalleryEntry[] }) {
                 {entry.video ? (
                   <GalleryVideo
                     src={entry.video}
+                    poster={entry.image}
                     className="aspect-[4/3] w-full bg-black object-cover"
                     alt={entry.alt}
                   />

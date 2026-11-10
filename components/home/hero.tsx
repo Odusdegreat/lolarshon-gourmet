@@ -44,13 +44,13 @@ export function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 sm:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-8 lg:py-24">
         <div>
           <p className="mb-5 text-sm font-medium tracking-wide text-brand">
-            Nigerian Food · Restaurant Dining · Catering
+            Nigerian Food · Restaurant Dining · Intercontinental Cuisine
           </p>
           <h1 className="text-4xl leading-[1.1] font-semibold sm:text-5xl lg:text-6xl">
-            Nigerian Restaurant in Surulere, Lagos
+            Gourmet Restaurant in Surulere, Lagos
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Looking for where to eat in Surulere? Enjoy Nigerian food and jollof rice at Lolar Shon&apos;s Gourmet. Takeaway and catering are available; ask us to confirm delivery for your address.
+            Discover an exceptional dining experience at Lolar Shon&apos;s Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine. Enjoy a carefully curated selection of freshly prepared gourmet dishes, crafted with premium ingredients, creativity and a passion for exceptional taste. Whether you&apos;re planning a delightful meal, a special celebration or a corporate event, we bring quality, flavour and elegance to every occasion. Takeaway and catering services are available, with delivery subject to confirmation for your location.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">

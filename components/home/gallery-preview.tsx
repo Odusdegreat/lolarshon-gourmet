@@ -15,7 +15,7 @@ export function GalleryPreview() {
     <Section>
       <Container>
         <Reveal className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-          <SectionHeading title="From Our Gallery" description="Food, drinks and moments from the events we have catered." />
+          <SectionHeading title="From Our Gallery" description="Food, drinks and moments from Lolar Shon's Gourmet." />
           <Button asChild variant="outline">
             <Link href="/gallery">See the gallery</Link>
           </Button>
@@ -27,6 +27,7 @@ export function GalleryPreview() {
                 {g.video ? (
                   <GalleryVideo
                     src={g.video}
+                    poster={g.image}
                     className="aspect-square w-full rounded-xl bg-black object-cover"
                     alt={g.alt}
                   />
