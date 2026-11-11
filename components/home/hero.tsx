@@ -50,7 +50,7 @@ export function Hero() {
             Gourmet Restaurant in Surulere, Lagos
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Discover an exceptional dining experience at Lolar Shon&apos;s Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine. Enjoy a carefully curated selection of freshly prepared gourmet dishes, crafted with premium ingredients, creativity and a passion for exceptional taste. Whether you&apos;re planning a delightful meal, a special celebration or a corporate event, we bring quality, flavour and elegance to every occasion. Takeaway and catering services are available, with delivery subject to confirmation for your location.
+            Discover exceptional dining at Lolar Shon&apos;s Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine. Savour freshly prepared gourmet dishes crafted with premium ingredients, creativity and passion. Whether for a memorable meal, special celebration or corporate event, we bring quality, flavour and elegance to every occasion. Takeaway and catering services are available, with delivery subject to confirmation for your location
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">

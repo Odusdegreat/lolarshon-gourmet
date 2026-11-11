@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { galleryEntries } from "@/data/gallery";
 
 export function GalleryPreview() {
-  const imagePicks = galleryEntries.filter((entry) => !entry.video).slice(0, 2);
+  const imagePicks = galleryEntries.filter((entry) => entry.id === "g1" || entry.id === "g13");
   const videoPick = galleryEntries.find((entry) => entry.video);
   const picks = videoPick ? [...imagePicks, videoPick] : imagePicks;
   return (

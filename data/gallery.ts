@@ -10,11 +10,11 @@ export const galleryCategories: { id: GalleryCategory | "all"; label: string }[]
 
 /** Gallery photography and video clips, including supplied Lolar Shon's Gourmet media. */
 export const galleryEntries: GalleryEntry[] = [
-  { id: "g1", title: "Lolar Shon's Gourmet food", alt: "A Lolar Shon's Gourmet meal served with sides and sauce", category: "food", image: "/images/menu/lolarshon-food.jpg" },
+  { id: "g1", title: "Paint & Sip", alt: "A guest painting at a Lolar Shon's Gourmet Paint & Sip event", category: "events", image: "/images/menu/look-paint.webp" },
   { id: "g2", title: "Lolar Shon's Gourmet drink", alt: "A colorful drink served at Lolar Shon's Gourmet", category: "drinks", image: "/images/menu/bish.webp" },
   { id: "g4", title: "Hype at Lolar Shon's Gourmet", alt: "Hype video from a Lolar Shon's Gourmet event", category: "events", additionalCategories: ["videos"], image: "/images/gallery/video-hype.jpg", video: "/images/menu/hype.MP4" },
   { id: "g5", title: "Party at Lolar Shon's Gourmet", alt: "Party video from a Lolar Shon's Gourmet event", category: "events", additionalCategories: ["videos"], image: "/images/gallery/video-party.jpg", video: "/images/menu/party.mp4" },
-  { id: "g13", title: "Lolar Shon's Gourmet drinks", alt: "Freshly prepared drinks served at Lolar Shon's Gourmet", category: "drinks", image: "/images/menu/lolarshon-drink.jpg" },
+  { id: "g13", title: "Blue Cocktail", alt: "A blue cocktail served at Lolar Shon's Gourmet", category: "drinks", image: "/images/menu/blue-cocktail.jpg" },
   { id: "g14", title: "Lolar Shon's Gourmet video 1", alt: "Video from Lolar Shon's Gourmet", category: "videos", image: "/images/gallery/video-lolar.jpg", video: "/images/menu/lolar.mov" },
   { id: "g15", title: "Lolar Shon's Gourmet video 2", alt: "Video from Lolar Shon's Gourmet", category: "videos", image: "/images/gallery/video-shon.jpg", video: "/images/menu/shon.mov" },
   { id: "ama", title: "At Lolar Shon's Gourmet", alt: "A guest enjoying a moment at Lolar Shon's Gourmet", category: "events", image: "/images/menu/ama.webp" },

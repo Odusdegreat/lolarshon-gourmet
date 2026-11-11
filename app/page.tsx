@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   ...buildMetadata({
     title: homeTitle,
     description:
-      "Discover an exceptional dining experience at Lolar Shon's Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine. Enjoy a carefully curated selection of freshly prepared gourmet dishes, crafted with premium ingredients, creativity and a passion for exceptional taste. Whether you're planning a delightful meal, a special celebration or a corporate event, we bring quality, flavour and elegance to every occasion. Takeaway and catering services are available, with delivery subject to confirmation for your location.",
+      "Discover exceptional dining at Lolar Shon's Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine. Savour freshly prepared gourmet dishes crafted with premium ingredients, creativity and passion. Whether for a memorable meal, special celebration or corporate event, we bring quality, flavour and elegance to every occasion. Takeaway and catering services are available, with delivery subject to confirmation for your location",
     path: "/",
   }),
   title: { absolute: `${homeTitle} | ${siteConfig.name}` },
