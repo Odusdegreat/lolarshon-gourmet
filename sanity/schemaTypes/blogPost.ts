@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { isSafeBlogHref } from "@/lib/blog-links";
 
 export const blogPost = defineType({
   name: "blogPost",
@@ -35,6 +36,7 @@ export const blogPost = defineType({
           name: "alt",
           title: "Alternative text",
           type: "string",
+          description: "Describe the image for readers using screen readers.",
           validation: (rule) => rule.max(160),
         }),
       ],
@@ -42,7 +44,8 @@ export const blogPost = defineType({
     }),
     defineField({
       name: "body",
-      title: "Article body",
+      title: "Article body (Portable Text)",
+      description: "Write the article as movable text, headings, links, lists, and inline images.",
       type: "array",
       of: [
         {
@@ -67,9 +70,12 @@ export const blogPost = defineType({
                   {
                     name: "href",
                     title: "URL",
-                    type: "url",
-                    validation: (rule) =>
-                      rule.required().uri({ scheme: ["https", "http", "mailto", "tel"] }),
+                    type: "string",
+                    validation: (rule) => rule.required().custom((value) =>
+                      typeof value === "string" && isSafeBlogHref(value)
+                        ? true
+                        : "Enter an http(s), mailto, tel, or site-relative URL.",
+                    ),
                   },
                 ],
               }),
@@ -84,12 +90,27 @@ export const blogPost = defineType({
               name: "alt",
               title: "Alternative text",
               type: "string",
+              description: "Describe the image. Required for accessibility.",
               validation: (rule) => rule.required().max(160),
+            }),
+            defineField({
+              name: "caption",
+              title: "Caption",
+              type: "string",
+              description: "Optional caption displayed below the image.",
+              validation: (rule) => rule.max(240),
             }),
           ],
         },
       ],
-      validation: (rule) => rule.required().min(1),
+      validation: (rule) => rule.min(1),
+    }),
+    defineField({
+      name: "bodyMarkdown",
+      title: "Legacy article body (Markdown)",
+      type: "text",
+      rows: 12,
+      description: "Kept for older articles. The website uses this only when the Portable Text body above is empty.",
     }),
     defineField({
       name: "author",

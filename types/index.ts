@@ -79,4 +79,6 @@ export type BlogPost = {
   featured: boolean;
   readingMinutes: number;
   body: import("@portabletext/react").PortableTextBlock[];
+  bodyMarkdown?: string;
+  imageAlt: string;
 };

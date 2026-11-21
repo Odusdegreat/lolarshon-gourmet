@@ -17,6 +17,7 @@ type SanityArticle = {
     url?: string;
   };
   body?: PortableTextBlock[];
+  bodyMarkdown?: string;
   author?: { _ref?: string };
   categories?: { _ref?: string }[];
   tags?: string[];
@@ -58,6 +59,7 @@ export default async function BlogManagerCreatePage({
           _id, title, slug, excerpt,
           "featuredImage": featuredImage{alt, asset, "url": asset->url},
           "body": body[]{..., "assetUrl": asset->url},
+          bodyMarkdown,
           "author": author->{"_ref": _id},
           "categories": categories[]->{"_ref": _id},
           tags, seo
@@ -80,6 +82,7 @@ export default async function BlogManagerCreatePage({
               }
             : null,
           body: document.body ?? [],
+          bodyMarkdown: document.bodyMarkdown,
           authorId: document.author?._ref ?? "",
           categoryId: document.categories?.[0]?._ref ?? "",
           tags: document.tags ?? [],

@@ -8,6 +8,7 @@ import { Photo } from "@/components/shared/photo";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import { DraftPreviewBanner } from "@/components/shared/draft-preview-banner";
 import { PortableBlogBody } from "@/components/shared/portable-blog-body";
+import { MarkdownBlogBody } from "@/components/shared/markdown-blog-body";
 import { BreadcrumbStructuredData, StructuredData } from "@/components/shared/structured-data";
 import { getBlogPost, getRelatedBlogPosts, isDraftPreviewEnabled } from "@/sanity/lib/blog";
 import { formatDate } from "@/lib/format";
@@ -98,7 +99,7 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
         <header className="border-b border-champagne/30 bg-panel text-panel-foreground">
           <Container className="max-w-3xl py-14 sm:py-20">
             <Link href="/blog" className="mb-6 inline-flex items-center gap-2 text-sm text-champagne hover:underline">
-              <ArrowLeft aria-hidden className="size-4" /> All articles
+              <ArrowLeft aria-hidden className="size-4" /> Back
             </Link>
             <h1 className="text-3xl leading-tight font-semibold sm:text-5xl">{post.title}</h1>
             <p className="mt-5 text-sm text-panel-foreground/75">
@@ -108,9 +109,13 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
           </Container>
         </header>
         <Container className="max-w-3xl py-10 sm:py-14">
-          <Photo src={post.image} alt={post.title} aspect="aspect-[16/9]" priority sizes="(min-width: 768px) 768px, 100vw" />
+          <Photo src={post.image} alt={post.imageAlt || post.title} aspect="aspect-[16/9]" priority sizes="(min-width: 768px) 768px, 100vw" />
           <div className="mt-10 space-y-5 text-[17px] leading-8">
-            <PortableBlogBody body={post.body} />
+            {post.body.length > 0 ? (
+              <PortableBlogBody body={post.body} />
+            ) : post.bodyMarkdown ? (
+              <MarkdownBlogBody markdown={post.bodyMarkdown} />
+            ) : null}
           </div>
           <div className="mt-12 flex flex-col items-start gap-4 rounded-xl border bg-card p-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-muted-foreground">Have a question or an event in mind? Message us.</p>

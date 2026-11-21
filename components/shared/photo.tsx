@@ -18,8 +18,12 @@ export function Photo({
   aspect = "aspect-[4/3]",
   className,
   imgClassName,
+  unoptimized,
   ...imageProps
 }: PhotoProps) {
+  // Let the browser fetch Sanity CDN assets directly. The Next image optimizer
+  // can time out when it proxies those remote requests in restricted networks.
+  const skipOptimization = unoptimized ?? src.startsWith("https://cdn.sanity.io/");
   const imgRef = useRef<HTMLImageElement>(null);
   const [failedSrc, setFailedSrc] = useState<string | null>(null);
 
@@ -43,6 +47,7 @@ export function Photo({
       ) : (
         <Image
           {...imageProps}
+          unoptimized={skipOptimization}
           src={src}
           alt={alt}
           fill

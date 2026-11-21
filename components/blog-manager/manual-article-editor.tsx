@@ -25,6 +25,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { MarkdownBlogBody } from "@/components/shared/markdown-blog-body";
+import { isExternalBlogHref, isSafeBlogHref } from "@/lib/blog-links";
 
 type Choice = { id: string; name: string };
 type UploadedImage = { assetId: string; url: string; alt: string };
@@ -35,6 +37,7 @@ export type ExistingArticle = {
   excerpt: string;
   featuredImage: UploadedImage | null;
   body: PortableTextBlock[];
+  bodyMarkdown?: string;
   authorId: string;
   categoryId: string;
   tags: string[];
@@ -52,6 +55,7 @@ const editorSchema = defineSchema({
     fields: [
       { name: "asset", type: "object" },
       { name: "alt", type: "string" },
+      { name: "caption", type: "string" },
       { name: "assetUrl", type: "string" },
     ],
   }],
@@ -74,17 +78,19 @@ const linkMark = defineAnnotation({
   type: "link",
   render: ({ annotation, children }) => {
     const href = typeof annotation.href === "string" ? annotation.href : "";
-    return <a href={href} className="text-brand underline">{children}</a>;
+    if (!isSafeBlogHref(href)) return <>{children}</>;
+    return <a href={href} className="text-brand underline" rel={isExternalBlogHref(href) ? "noopener noreferrer" : undefined}>{children}</a>;
   },
 });
 const imageBlock = defineBlockObject({
   type: "image",
   render: ({ attributes, children, node }) => {
-    const image = node as typeof node & { assetUrl?: string; alt?: string };
+    const image = node as typeof node & { assetUrl?: string; alt?: string; caption?: string };
     return (
       <figure {...attributes} className="my-5">
         {children}
         {image.assetUrl && <Image src={image.assetUrl} alt={image.alt ?? ""} width={1200} height={800} unoptimized className="max-h-96 rounded-lg object-contain" />}
+        {image.caption && <figcaption className="mt-2 text-sm text-muted-foreground">{image.caption}</figcaption>}
       </figure>
     );
   },
@@ -108,15 +114,20 @@ const previewComponents: PortableTextComponents = {
   marks: {
     link: ({ children, value }) => {
       const href = typeof value?.href === "string" ? value.href : "";
-      if (!/^(https?:|mailto:|tel:)/i.test(href)) return <>{children}</>;
-      return <a href={href} className="text-brand underline" rel={href.startsWith("http") ? "noopener noreferrer" : undefined}>{children}</a>;
+      if (!isSafeBlogHref(href)) return <>{children}</>;
+      return <a href={href} className="text-brand underline" rel={isExternalBlogHref(href) ? "noopener noreferrer" : undefined}>{children}</a>;
     },
   },
   types: {
     image: ({ value }) => {
       const src = typeof value.assetUrl === "string" ? value.assetUrl : "";
       if (!src) return null;
-      return <Image src={src} alt={typeof value.alt === "string" ? value.alt : ""} width={1200} height={800} unoptimized className="my-5 max-h-96 rounded-lg object-contain" />;
+      return (
+        <figure className="my-5">
+          <Image src={src} alt={typeof value.alt === "string" ? value.alt : ""} width={1200} height={800} unoptimized className="max-h-96 rounded-lg object-contain" />
+          {typeof value.caption === "string" && value.caption && <figcaption className="mt-2 text-center text-sm text-muted-foreground">{value.caption}</figcaption>}
+        </figure>
+      );
     },
   },
 };
@@ -147,14 +158,8 @@ function ArticleToolbar({ onAddImage, uploading }: { onAddImage: () => void; upl
   function addLink() {
     const href = window.prompt("Enter a link URL (https://, http://, mailto:, or tel:)");
     if (!href) return;
-    try {
-      const url = new URL(href);
-      if (!["https:", "http:", "mailto:", "tel:"].includes(url.protocol)) {
-        setLinkError("Use an http, https, mailto, or tel URL.");
-        return;
-      }
-    } catch {
-      setLinkError("Enter a valid http, https, mailto, or tel URL.");
+    if (!isSafeBlogHref(href)) {
+      setLinkError("Use an http(s), mailto, tel, or site-relative URL.");
       return;
     }
     setLinkError(null);
@@ -211,6 +216,14 @@ function PortableTextEditorContent({
     const file = event.currentTarget.files?.[0];
     event.currentTarget.value = "";
     if (!file) return;
+    const suggestedAlt = file.name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ").slice(0, 160);
+    const alt = window.prompt("Describe this image for screen readers", suggestedAlt);
+    if (alt === null) return;
+    if (!alt.trim()) {
+      window.alert("Alternative text is required for inline images.");
+      return;
+    }
+    const caption = window.prompt("Optional image caption", "");
     try {
       const uploaded = await onUploadImage(file);
       editor.send({
@@ -221,7 +234,8 @@ function PortableTextEditorContent({
           _key: crypto.randomUUID().replaceAll("-", ""),
           asset: { _type: "reference", _ref: uploaded.assetId },
           assetUrl: uploaded.url,
-          alt: file.name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ").slice(0, 160),
+          alt: alt.trim().slice(0, 160),
+          ...(caption?.trim() ? { caption: caption.trim().slice(0, 240) } : {}),
         }],
       });
       editor.send({ type: "focus" });
@@ -261,6 +275,7 @@ export function ManualArticleEditor({
   const [excerpt, setExcerpt] = useState(initialArticle?.excerpt ?? "");
   const [featuredImage, setFeaturedImage] = useState<UploadedImage | null>(initialArticle?.featuredImage ?? null);
   const [body, setBody] = useState<PortableTextBlock[]>(initialArticle?.body ?? []);
+  const [bodyMarkdown, setBodyMarkdown] = useState(initialArticle?.bodyMarkdown ?? "");
   const [authorId, setAuthorId] = useState(initialArticle?.authorId ?? authors[0]?.id ?? "");
   const [categoryId, setCategoryId] = useState(initialArticle?.categoryId ?? categories[0]?.id ?? "");
   const [tagsText, setTagsText] = useState(initialArticle?.tags.join(", ") ?? "");
@@ -322,6 +337,7 @@ export function ManualArticleEditor({
           excerpt,
           featuredImage: { assetId: featuredImage.assetId, alt: featuredImage.alt },
           body: normalizeBodyForSave(body),
+          bodyMarkdown,
           authorId,
           categoryId,
           tags: tagsText.split(",").map((tag) => tag.trim()).filter(Boolean),
@@ -347,6 +363,7 @@ export function ManualArticleEditor({
     excerpt,
     featuredImage: featuredImage ? { asset: { _ref: featuredImage.assetId }, alt: featuredImage.alt } : null,
     body,
+    bodyMarkdown,
   } as unknown as BlogPost;
 
   return (
@@ -426,7 +443,16 @@ export function ManualArticleEditor({
             <p className="mt-1 text-sm text-muted-foreground">Format paragraphs, headings, lists, links, quotes, and images.</p>
           </div>
           {!preview ? (
-            <PortableTextEditor initialValue={body} onChange={setBody} onUploadImage={uploadImage} uploading={uploading} />
+            <>
+              <PortableTextEditor initialValue={body} onChange={setBody} onUploadImage={uploadImage} uploading={uploading} />
+              {initialArticle?.bodyMarkdown !== undefined && (
+                <div className="space-y-2 border-t p-5">
+                  <Label htmlFor="legacy-markdown">Existing Markdown content</Label>
+                  <p className="text-sm text-muted-foreground">This legacy content is preserved and shown when the Portable Text body is empty.</p>
+                  <Textarea id="legacy-markdown" rows={12} value={bodyMarkdown} onChange={(event) => setBodyMarkdown(event.currentTarget.value)} />
+                </div>
+              )}
+            </>
           ) : (
             <div className="p-5">
               <article className="mx-auto max-w-3xl">
@@ -434,7 +460,9 @@ export function ManualArticleEditor({
                 <p className="mt-3 text-muted-foreground">{excerpt || "Article excerpt preview"}</p>
                 {featuredImage && <Image src={featuredImage.url} alt={featuredImage.alt} width={1200} height={675} unoptimized className="my-6 aspect-video w-full rounded-xl object-cover" />}
                 <div className="space-y-4 leading-7">
-                  <PortableText value={previewArticle.body} components={previewComponents} />
+                  {previewArticle.body.length > 0
+                    ? <PortableText value={previewArticle.body} components={previewComponents} />
+                    : <MarkdownBlogBody markdown={bodyMarkdown} />}
                 </div>
               </article>
             </div>

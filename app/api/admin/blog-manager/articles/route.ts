@@ -47,15 +47,17 @@ export async function POST(request: NextRequest) {
     let featured = false;
     let publishedAt = new Date().toISOString();
     let openGraphImage: unknown;
+    let existingBodyMarkdown = "";
     if (article.id) {
-      const existing = await readClient.fetch<{ _id: string; featured?: boolean; publishedAt?: string; seo?: { openGraphImage?: unknown } } | null>(
-        `*[_type == "blogPost" && _id in [$id, $draftId]][0]{_id, featured, publishedAt, "seo": seo{openGraphImage}}`,
+      const existing = await readClient.fetch<{ _id: string; featured?: boolean; publishedAt?: string; bodyMarkdown?: string; seo?: { openGraphImage?: unknown } } | null>(
+        `*[_type == "blogPost" && _id in [$draftId, $id]][0]{_id, featured, publishedAt, bodyMarkdown, "seo": seo{openGraphImage}}`,
         { id: article.id, draftId: `drafts.${article.id}` },
         { cache: "no-store" },
       );
       if (!existing) return NextResponse.json({ error: "That article could not be found." }, { status: 404 });
       featured = existing.featured ?? false;
       publishedAt = existing.publishedAt ?? publishedAt;
+      existingBodyMarkdown = existing.bodyMarkdown ?? "";
       openGraphImage = existing.seo?.openGraphImage;
     }
 
@@ -72,6 +74,7 @@ export async function POST(request: NextRequest) {
         alt: article.featuredImage.alt,
       },
       body: article.body,
+      bodyMarkdown: article.bodyMarkdown || existingBodyMarkdown,
       author: { _type: "reference", _ref: article.authorId },
       categories: [{ _type: "reference", _ref: article.categoryId, _key: crypto.randomUUID() }],
       tags: article.tags,

@@ -1,4 +1,5 @@
 import "server-only";
+import { isSafeBlogHref } from "@/lib/blog-links";
 
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const assetIdPattern = /^image-[a-zA-Z0-9_-]+$/;
@@ -11,6 +12,7 @@ export type ArticleDraftInput = {
   excerpt: string;
   featuredImage: { assetId: string; alt: string };
   body: Record<string, unknown>[];
+  bodyMarkdown: string;
   authorId: string;
   categoryId: string;
   tags: string[];
@@ -58,12 +60,7 @@ function normalizeTextBlock(block: Record<string, unknown>) {
     if (!Array.isArray(block.markDefs) || block.markDefs.length > 50) return null;
     for (const definition of block.markDefs) {
       if (!isRecord(definition) || definition._type !== "link" || !validKey(definition._key) || !text(definition.href, 1, 2048)) return null;
-      try {
-        const url = new URL(definition.href);
-        if (!["http:", "https:", "mailto:", "tel:"].includes(url.protocol)) return null;
-      } catch {
-        return null;
-      }
+      if (!isSafeBlogHref(definition.href)) return null;
       markDefs.push({ _type: "link", _key: definition._key, href: definition.href });
     }
   }
@@ -94,13 +91,15 @@ function normalizeBody(value: unknown) {
       !isRecord(item.asset) ||
       typeof item.asset._ref !== "string" ||
       !assetIdPattern.test(item.asset._ref) ||
-      !text(item.alt, 1, 160)
+      !text(item.alt, 1, 160) ||
+      (item.caption !== undefined && !text(item.caption, 0, 240))
     ) return null;
     blocks.push({
       _type: "image",
       _key: validKey(item._key) ? item._key : crypto.randomUUID(),
       asset: { _type: "reference", _ref: item.asset._ref },
       alt: item.alt.trim(),
+      ...(typeof item.caption === "string" ? { caption: item.caption.trim() } : {}),
     });
   }
   const hasText = blocks.some((block) =>
@@ -138,15 +137,20 @@ export function validateArticleDraft(value: unknown): ArticleDraftInput | null {
     new Set(value.tags.map((tag) => (tag as string).trim().toLowerCase())).size !== value.tags.length
   ) return null;
 
-  const body = normalizeBody(value.body);
-  if (!body) return null;
+  const bodyMarkdown = value.bodyMarkdown === undefined ? "" : value.bodyMarkdown;
+  if (typeof bodyMarkdown !== "string" || bodyMarkdown.length > 200_000) return null;
+  const body = value.body === undefined ? [] : normalizeBody(value.body);
+  const emptyBody = Array.isArray(value.body) && value.body.length === 0;
+  if (value.body !== undefined && !body && !emptyBody) return null;
+  if (!body?.length && !bodyMarkdown.trim()) return null;
   return {
     ...(typeof id === "string" ? { id: id.replace(/^drafts\./, "") } : {}),
     title: value.title.trim(),
     slug: value.slug,
     excerpt: value.excerpt.trim(),
     featuredImage: { assetId: image.assetId, alt: image.alt.trim() },
-    body,
+    body: body ?? [],
+    bodyMarkdown: bodyMarkdown.trim(),
     authorId: value.authorId,
     categoryId: value.categoryId,
     tags: value.tags.map((tag) => (tag as string).trim()),

@@ -31,3 +31,9 @@ export function sanityImageUrl(source: SanityImageSource | null | undefined, wid
   if (!source) return null;
   return imageBuilder.image(source).width(width).auto("format").url();
 }
+
+export function sanityImageSrcSet(source: SanityImageSource, widths = [480, 768, 1200, 1600]): string {
+  return widths
+    .map((width) => `${imageBuilder.image(source).width(width).fit("max").auto("format").url()} ${width}w`)
+    .join(", ");
+}

@@ -13,7 +13,8 @@ type SanityBlogPost = {
   title: string;
   slug: string;
   excerpt: string;
-  featuredImage: SanityImageSource | null;
+  featuredImage: (SanityImageSource & { alt?: string }) | null;
+  bodyMarkdown?: string | null;
   author: {
     name: string;
     biography?: string;
@@ -28,7 +29,7 @@ type SanityBlogPost = {
   };
   publishedAt?: string;
   featured: boolean;
-  body: PortableTextBlock[];
+  body?: PortableTextBlock[] | null;
 };
 
 const postProjection = groq`{
@@ -38,13 +39,17 @@ const postProjection = groq`{
   "slug": slug.current,
   excerpt,
   featuredImage,
+  bodyMarkdown,
   "author": author->{name, biography, "profileImage": profileImage},
   "categories": categories[]->{_id, name, "slug": slug.current},
   tags,
   seo,
   publishedAt,
   featured,
-  body
+  "body": body[]{
+    ...,
+    "assetMetadata": asset->metadata{dimensions{width, height}}
+  }
 }`;
 
 const publishedPostsQuery = groq`*[
@@ -68,18 +73,26 @@ const draftPostQuery = groq`*[_type == "blogPost" && slug.current == $slug][0] $
 
 function mapPost(document: SanityBlogPost): BlogPost {
   const body = document.body ?? [];
-  const wordCount = toPlainText(body).trim().split(/\s+/).filter(Boolean).length;
+  const bodyMarkdown = document.bodyMarkdown?.trim() ?? "";
+  const articleText = body.length
+    ? toPlainText(body)
+    : bodyMarkdown
+        .replace(/!??\[([^\]]*)\]\([^)]*\)/g, "$1")
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+        .replace(/[#>*_~`]/g, " ");
+  const wordCount = articleText.trim().split(/\s+/).filter(Boolean).length;
 
   return {
     id: document._id,
     slug: document.slug,
-    title: document.title || "Untitled draft",
+    title: document.title?.trim() || "Untitled draft",
     excerpt: document.excerpt ?? "",
     date: document.publishedAt ?? document._updatedAt,
     category: document.categories?.[0]?.name ?? "Article",
     categories: document.categories ?? [],
     tags: document.tags ?? [],
     image: sanityImageUrl(document.featuredImage) ?? "/images/logo.png",
+    imageAlt: document.featuredImage?.alt?.trim() || document.title?.trim() || "Featured article image",
     author: document.author
       ? {
           name: document.author.name,
@@ -93,6 +106,7 @@ function mapPost(document: SanityBlogPost): BlogPost {
     featured: document.featured ?? false,
     readingMinutes: Math.max(1, Math.ceil(wordCount / 200)),
     body,
+    bodyMarkdown: body.length ? undefined : bodyMarkdown || undefined,
   };
 }
 
