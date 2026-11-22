@@ -50,9 +50,20 @@ export function Hero() {
             Lolar Shon&apos;s <span className="text-brand">Gourmet</span> and{" "}
             <span className="text-champagne">Hangout Spot</span>
           </h1>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Discover exceptional dining at Lolar Shon&apos;s Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine. Savour freshly prepared gourmet dishes crafted with premium ingredients, creativity and passion. Whether for a memorable meal, special celebration or corporate event, we bring quality, flavour and elegance to every occasion. Takeaway and catering services are available, with delivery subject to confirmation for your location
-          </p>
+          <div className="mt-6 max-w-lg space-y-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p>
+              Discover exceptional dining and a vibrant hangout at Lolar Shon&apos;s Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine.
+            </p>
+            <p>
+              Enjoy freshly prepared gourmet dishes, refreshing drinks, cocktails, alcoholic beverages, exciting games and talented DJs spinning dynamic mixes across diverse music genres in a relaxed, welcoming atmosphere.
+            </p>
+            <p>
+              Perfect for casual hangouts, memorable meals, pre-club nights out, special celebrations and corporate events, we combine great food, drinks, music and entertainment for unforgettable experiences.
+            </p>
+            <p>
+              Takeaway and catering available, with delivery subject to location confirmation.
+            </p>
+          </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
               <Link href="/menu/food">Explore Our Menu</Link>

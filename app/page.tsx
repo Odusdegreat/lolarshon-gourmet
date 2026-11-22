@@ -5,6 +5,7 @@ import { Offerings } from "@/components/home/offerings";
 import { StoryPreview } from "@/components/home/story-preview";
 import { BrandQuote } from "@/components/home/brand-quote";
 import { FeaturedMenu } from "@/components/home/featured-menu";
+import { FreshPalmWineFeature } from "@/components/home/fresh-palm-wine-feature";
 import { GalleryPreview } from "@/components/home/gallery-preview";
 import { BlogPreview } from "@/components/home/blog-preview";
 import { ContactCta } from "@/components/home/contact-cta";
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   ...buildMetadata({
     title: homeTitle,
     description:
-      "Discover exceptional dining at Lolar Shon's Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine. Savour freshly prepared gourmet dishes crafted with premium ingredients, creativity and passion. Whether for a memorable meal, special celebration or corporate event, we bring quality, flavour and elegance to every occasion. Takeaway and catering services are available, with delivery subject to confirmation for your location",
+      "Discover exceptional dining and a vibrant hangout at Lolar Shon's Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine. Enjoy freshly prepared gourmet dishes, refreshing drinks, cocktails, alcoholic beverages, exciting games and talented DJs spinning dynamic mixes across diverse music genres. Perfect for casual hangouts, memorable meals, pre-club nights out, special celebrations and corporate events. Takeaway and catering available, with delivery subject to location confirmation.",
     path: "/",
   }),
   title: { absolute: `${homeTitle} | ${siteConfig.name}` },
@@ -41,6 +42,7 @@ export default async function HomePage() {
       <StoryPreview />
       <BrandQuote />
       <FeaturedMenu />
+      <FreshPalmWineFeature />
       <GalleryPreview />
       <BlogPreview posts={posts} />
       <ContactCta />

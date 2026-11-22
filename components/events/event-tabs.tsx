@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Mic2, Palette, Zap } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { Mic2, Palette, PartyPopper, Zap } from "lucide-react";
 import { GalleryVideo } from "@/components/shared/gallery-video";
 import { Photo } from "@/components/shared/photo";
 import { cn } from "@/lib/utils";
@@ -16,9 +16,16 @@ const events = [
       {
         type: "video",
         src: "/images/menu/singing.mp4",
-        poster: "/images/menu/lolar-smile.webp",
+        poster: "/images/menu/fan.webp",
         alt: "Karaoke and singing at Lolar Shon's Gourmet",
         caption: "A lively karaoke moment at Lolar Shon's Gourmet.",
+      },
+      {
+        type: "video",
+        src: "/images/menu/white-karaoke.mov",
+        poster: "/images/menu/partying.webp",
+        alt: "Guests singing karaoke at Lolar Shon's Gourmet",
+        caption: "More karaoke fun at Lolar Shon's Gourmet.",
       },
     ],
   },
@@ -39,6 +46,21 @@ const events = [
         src: "/images/menu/snap.webp",
         alt: "Guests enjoying a Paint & Sip event",
         caption: "Good company and creative moments at Paint & Sip.",
+      },
+    ],
+  },
+  {
+    id: "birthday-party",
+    label: "Parties/Games",
+    description: "Enjoy parties, games and special moments at Lolar Shon's Gourmet.",
+    icon: PartyPopper,
+    media: [
+      {
+        type: "video",
+        src: "/images/menu/birthday-party.mov",
+        poster: "/images/menu/lolar-smile.webp",
+        alt: "Birthday party celebration at Lolar Shon's Gourmet",
+        caption: "Birthday party moments at Lolar Shon's Gourmet.",
       },
     ],
   },
@@ -67,8 +89,16 @@ const events = [
 ] as const;
 
 export function EventTabs() {
-  const [selectedId, setSelectedId] = useState<(typeof events)[number]["id"]>(events[0].id);
+  const searchParams = useSearchParams();
+  const requestedEvent = searchParams.get("event");
+  const selectedId = events.find((event) => event.id === requestedEvent)?.id ?? events[0].id;
   const selectedEvent = events.find((event) => event.id === selectedId) ?? events[0];
+
+  const selectEvent = (id: (typeof events)[number]["id"]) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("event", id);
+    window.history.pushState(null, "", `?${params.toString()}`);
+  };
 
   return (
     <section aria-label="Explore our events" className="mt-10">
@@ -78,7 +108,7 @@ export function EventTabs() {
             key={id}
             type="button"
             aria-pressed={selectedId === id}
-            onClick={() => setSelectedId(id)}
+            onClick={() => selectEvent(id)}
             className={cn(
               "inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border px-5 text-sm font-medium transition-colors",
               selectedId === id

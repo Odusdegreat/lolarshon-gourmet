@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Container, Section } from "@/components/shared/container";
 import { EventTabs } from "@/components/events/event-tabs";
 import { PageHero } from "@/components/shared/page-hero";
@@ -28,7 +29,9 @@ export default function EventsPage() {
       <Section className="py-10 sm:py-16">
         <Container>
           <SectionHeading title="Explore our events" description="Choose an event to see highlights and moments from Lolar Shon's Gourmet." />
-          <EventTabs />
+          <Suspense fallback={<p className="mt-10 text-center text-muted-foreground">Loading events…</p>}>
+            <EventTabs />
+          </Suspense>
         </Container>
       </Section>
       <Section className="bg-secondary/40 py-12 sm:py-16">
