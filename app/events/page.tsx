@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Events and Entertainment in Surulere",
-  description: "Explore karaoke, Paint & Sip, parties, games and Friday events at Lolar Shon's Gourmet in Surulere, Lagos. Ask about upcoming events.",
+  description: "Find karaoke, Paint & Sip, birthday parties, games and High Voltage Friday events at Lolar Shon's Gourmet in Surulere, Lagos. Ask about upcoming events.",
   path: "/events",
 });
 

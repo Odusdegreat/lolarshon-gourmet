@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   ...buildMetadata({
     title: homeTitle,
     description:
-      "Enjoy Nigerian and intercontinental dishes, cocktails, karaoke, Paint & Sip, parties and games at Lolar Shon's Gourmet in Surulere, Lagos. Ask about reservations, catering, takeaway and delivery.",
+      "Nigerian and international food, cocktails, karaoke, Paint & Sip and games at Lolar Shon's in Surulere, Lagos. Book a table or ask about delivery.",
     path: "/",
   }),
   title: { absolute: `${homeTitle} | ${siteConfig.name}` },

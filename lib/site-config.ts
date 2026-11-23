@@ -17,7 +17,7 @@ export const siteConfig = {
   name: "Lolar Shon's Gourmet",
   tagline: "More Than Food, It's an Experience",
   description:
-    "Visit Lolar Shon's Gourmet in Surulere, Lagos for Nigerian and intercontinental cuisine, cocktails, karaoke, Paint & Sip, parties and games. Ask about reservations, catering, takeaway and delivery availability.",
+    "Restaurant in Surulere, Lagos for Nigerian and intercontinental food, cocktails, karaoke, Paint & Sip, parties and games. Ask about reservations, catering, takeaway and delivery.",
   /** The apex domain redirects to www; keep generated SEO URLs on the destination host. */
   url: getCanonicalSiteUrl(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lolarshonsgourmet.com"),
   locale: "en_NG",

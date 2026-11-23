@@ -25,15 +25,15 @@ export async function generateMetadata({ params }: PageProps<"/menu/[category]">
   const seoContent: Record<MenuSection, { title: string; description: string }> = {
     food: {
       title: "Restaurant Food Menu in Surulere",
-      description: "Browse a varied selection of meals, grills, sides, cakes and desserts from Lolar Shon's Gourmet in Surulere, Lagos.",
+      description: "Find jollof and Ofada rice, grilled fish and chicken, Nigerian soups, seafood, pasta and desserts at Lolar Shon's Gourmet in Surulere, Lagos.",
     },
     beverages: {
-      title: "Juices and Beverages in Surulere",
-      description: "Explore soft drinks, juices, zobo, tea, coffee and energy drinks on the Lolar Shon's Gourmet menu in Surulere, Lagos.",
+      title: "Juices, Zobo and Beverages in Surulere",
+      description: "Explore zobo, palm wine, soft drinks, juices, tea, coffee and energy drinks at Lolar Shon's Gourmet in Surulere, Lagos.",
     },
     mixology: {
       title: "Cocktails, Mocktails and Bar Menu in Surulere",
-      description: "Browse cocktails, mocktails, beer, cider, wine and spirits at Lolar Shon's Gourmet in Surulere, Lagos.",
+      description: "Find Mojitos, Margaritas, Pina Coladas, mocktails, beer, wine and spirits at Lolar Shon's Gourmet in Surulere, Lagos.",
     },
   };
   return buildMetadata({ ...seoContent[section.slug], path: `/menu/${section.slug}` });

@@ -14,7 +14,7 @@ export const menuSections: Record<MenuSection, MenuSectionConfig> = {
   food: {
     slug: "food",
     title: "Food Menu",
-    description: "Explore Nigerian and intercontinental dishes, grills, rice meals, pasta, sides and desserts at our Surulere restaurant.",
+    description: "Explore jollof and Ofada rice, Nigerian soups, grilled fish and chicken, seafood, pasta, sides and desserts at our Surulere restaurant.",
     categories: [
       { id: "appetizer", label: "Appetizer" },
       { id: "sides", label: "Sides" },
@@ -31,7 +31,7 @@ export const menuSections: Record<MenuSection, MenuSectionConfig> = {
   beverages: {
     slug: "beverages",
     title: "Beverages",
-    description: "Soft drinks, juices, local refreshers, tea, coffee and energy drinks.",
+    description: "Zobo, palm wine, soft drinks, juices, local refreshers, tea, coffee and energy drinks.",
     categories: [
       { id: "beverages", label: "Soft Drinks & Water" },
       { id: "beverage-refreshments", label: "Juices & Refreshments" },
@@ -42,7 +42,7 @@ export const menuSections: Record<MenuSection, MenuSectionConfig> = {
   mixology: {
     slug: "mixology",
     title: "Bar & Mixology",
-    description: "Cocktails, mocktails, beers, wines, and spirits for every occasion.",
+    description: "Mojitos, Margaritas, Pina Coladas, mocktails, beers, wines and spirits for every occasion.",
     categories: [
       { id: "mixology-cocktails", label: "Cocktails" },
       { id: "mixology-mocktails", label: "Mocktails" },

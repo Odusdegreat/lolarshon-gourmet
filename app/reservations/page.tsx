@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Restaurant Reservations in Surulere",
-  description: "Request a table at Lolar Shon's Gourmet in Surulere, Lagos. Send your preferred date and time on WhatsApp for our team to confirm availability.",
+  description: "Book a table for date night, family dining or a group meal at Lolar Shon's Gourmet in Surulere, Lagos. Request a time on WhatsApp.",
   path: "/reservations",
 });
 

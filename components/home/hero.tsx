@@ -58,7 +58,7 @@ export function Hero() {
               Enjoy cocktails, mocktails, karaoke, Paint & Sip, parties and games in a relaxed, welcoming atmosphere.
             </p>
             <p>
-              Join us for a casual meal, a night out, a celebration or a corporate gathering. Ask our team about upcoming events and reservations.
+              Find a restaurant for date night, family dining, group hangouts and celebrations. Ask about reservations and upcoming events.
             </p>
             <p>
               Takeaway, catering and delivery are available; ask us to confirm delivery to your location.

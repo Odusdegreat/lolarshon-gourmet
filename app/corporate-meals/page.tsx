@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata = buildMetadata({
   title: "Corporate Catering in Surulere",
-  description: "Order office lunch boxes, meeting platters and catering for company events from Lolar Shon's Gourmet in Surulere, Lagos.",
+  description: "Get office lunch boxes, meeting platters, wedding and birthday catering, private dining and company event meals from Lolar Shon's Gourmet in Surulere, Lagos.",
   path: "/corporate-meals",
 });
 

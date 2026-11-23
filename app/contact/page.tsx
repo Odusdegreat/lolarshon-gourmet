@@ -72,7 +72,7 @@ export default function ContactPage() {
               </p>
             </address>
             <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
-              Our Surulere restaurant is convenient for nearby neighborhoods such as Ojuelegba, Aguda, Lawanson, Itire, Ijeshatedo and Iponri, as well as nearby Yaba, Mushin and Oshodi.
+              Our Surulere restaurant is convenient for nearby neighborhoods such as Bode Thomas, Masha, Ojuelegba, Aguda, Lawanson, Itire, Ijeshatedo and Iponri, as well as nearby Yaba, Mushin and Oshodi.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <WhatsAppButton size="lg" label="Message on WhatsApp" message="Hello Lolar Shon's Gourmet, I would like to make an enquiry." />
