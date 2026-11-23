@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 import Link from "next/link";
 import { ArrowRight, FilePlus2, Settings2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogManagerOverviewPage() {
+  await connection();
+
   let overview: BlogManagerOverview;
   let error: string | null = null;
   try {

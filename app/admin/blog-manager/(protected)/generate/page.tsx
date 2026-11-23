@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 import { getBlogManagerGenerationSetupIssue, getBlogManagerOverview } from "@/lib/blog-manager/data";
 import type { BlogManagerOverview } from "@/types/blog-manager";
 import { GenerationDashboard } from "@/components/blog-manager/generation-dashboard";
@@ -9,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogManagerGeneratePage() {
+  await connection();
+
   let overview: BlogManagerOverview;
   try {
     overview = await getBlogManagerOverview();

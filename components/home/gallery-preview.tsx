@@ -9,7 +9,7 @@ import { galleryEntries } from "@/data/gallery";
 
 export function GalleryPreview() {
   const imagePicks = galleryEntries.filter((entry) =>
-    ["g1", "g13", "light-tails", "martell"].includes(entry.id),
+    ["yam-chips", "g13", "light-tails", "martell"].includes(entry.id),
   );
   const videoPick = galleryEntries.find((entry) => entry.video);
   const picks = videoPick ? [...imagePicks, videoPick] : imagePicks;

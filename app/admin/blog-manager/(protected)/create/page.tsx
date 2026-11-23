@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 import { ManualArticleEditor, type ExistingArticle } from "@/components/blog-manager/manual-article-editor";
 import { getBlogManagerReadClient } from "@/lib/blog-manager/sanity";
 import type { PortableTextBlock } from "@portabletext/editor";
@@ -29,6 +30,8 @@ export default async function BlogManagerCreatePage({
 }: {
   searchParams: Promise<{ id?: string }>;
 }) {
+  await connection();
+
   const { id } = await searchParams;
   const safeId = typeof id === "string" && /^[a-zA-Z0-9._-]{1,120}$/.test(id.replace(/^drafts\./, ""))
     ? id.replace(/^drafts\./, "")

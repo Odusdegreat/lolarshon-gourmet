@@ -62,6 +62,13 @@ const events = [
         alt: "Birthday party celebration at Lolar Shon's Gourmet",
         caption: "Birthday party moments at Lolar Shon's Gourmet.",
       },
+      {
+        type: "video",
+        src: "/images/menu/spot-lights-video.mp4",
+        poster: "/images/menu/spot-lights.jpeg",
+        alt: "Guests enjoying the lights and atmosphere at Lolar Shon's Gourmet",
+        caption: "A lively night under the spotlights at Lolar Shon's Gourmet.",
+      },
     ],
   },
   {

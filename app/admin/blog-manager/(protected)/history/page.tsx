@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { GenerationHistory } from "@/components/blog-manager/generation-history";
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogManagerHistoryPage() {
+  await connection();
+
   let requests: BlogGenerationRecord[] = [];
   let unavailableReason: string | null = null;
   try {

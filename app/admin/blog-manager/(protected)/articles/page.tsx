@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { getBlogManagerReadClient } from "@/lib/blog-manager/sanity";
@@ -14,6 +15,8 @@ type ArticleRow = {
 };
 
 export default async function BlogManagerArticlesPage() {
+  await connection();
+
   let articles: ArticleRow[] = [];
   let unavailable = false;
   try {

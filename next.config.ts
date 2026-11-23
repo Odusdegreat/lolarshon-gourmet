@@ -1,3 +1,4 @@
+
 import type { NextConfig } from "next";
 
 const sanityProjectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "7914q9uo";
@@ -6,6 +7,11 @@ const sanityDataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
+
+  experimental: {
+    agentUpgrade: "security",
+  },
+
   images: {
     qualities: [75, 90],
     remotePatterns: [
@@ -23,6 +29,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
   turbopack: {
     rules: {
       "*.css": {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
@@ -21,7 +22,20 @@ export default function DeliveryPage() {
       <PageHero title="Food to Your Door" description="Order from the menu and we will arrange delivery with you directly on WhatsApp." />
       <Section className="py-14 sm:py-20">
         <Container>
-          <SectionHeading title="How delivery works" />
+          <div className="grid items-center gap-8 sm:grid-cols-[minmax(0,1fr)_auto]">
+            <SectionHeading
+              title="How delivery works"
+              description="Choose your meal and our team will help arrange your delivery."
+            />
+            <Image
+              src="/images/menu/delivery-bag.jpeg"
+              alt="Lolar Shon's Gourmet branded takeaway bag"
+              width={1920}
+              height={2560}
+              sizes="(min-width: 640px) 240px, 100vw"
+              className="mx-auto h-auto max-h-[22rem] w-full max-w-60 rounded-xl object-contain sm:max-h-[28rem]"
+            />
+          </div>
           <ol className="mt-10 grid gap-6 md:grid-cols-3">
             {deliverySteps.map((s, i) => (
               <li key={s.title} className="rounded-xl border bg-card p-6">
