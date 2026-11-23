@@ -28,11 +28,11 @@ export async function generateMetadata({ params }: PageProps<"/menu/[category]">
       description: "Browse a varied selection of meals, grills, sides, cakes and desserts from Lolar Shon's Gourmet in Surulere, Lagos.",
     },
     beverages: {
-      title: "Drinks and Beverages Menu",
+      title: "Juices and Beverages in Surulere",
       description: "Explore soft drinks, juices, zobo, tea, coffee and energy drinks on the Lolar Shon's Gourmet menu in Surulere, Lagos.",
     },
     mixology: {
-      title: "Cocktails and Mixology Menu",
+      title: "Cocktails, Mocktails and Bar Menu in Surulere",
       description: "Browse cocktails, mocktails, beer, cider, wine and spirits at Lolar Shon's Gourmet in Surulere, Lagos.",
     },
   };

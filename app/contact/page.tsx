@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Contact and Location in Surulere",
-  description: "Find the address, phone, email and WhatsApp for Lolar Shon's Gourmet, a restaurant in Surulere, Lagos. Get directions or send an enquiry.",
+  description: "Find Lolar Shon's Gourmet in Surulere, near Ojuelegba, Yaba, Mushin and Oshodi. View our address, get directions or contact us.",
   path: "/contact",
 });
 
@@ -71,6 +71,9 @@ export default function ContactPage() {
                 </span>
               </p>
             </address>
+            <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
+              Our Surulere restaurant is convenient for nearby neighborhoods such as Ojuelegba, Aguda, Lawanson, Itire, Ijeshatedo and Iponri, as well as nearby Yaba, Mushin and Oshodi.
+            </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <WhatsAppButton size="lg" label="Message on WhatsApp" message="Hello Lolar Shon's Gourmet, I would like to make an enquiry." />
               <Button asChild size="lg" variant="outline">

@@ -7,8 +7,8 @@ import { galleryEntries } from "@/data/gallery";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Food, Drinks and Events Gallery",
-  description: "Photos and videos of food, drinks and moments at Lolar Shon's Gourmet.",
+  title: "Food, Cocktails and Events Gallery",
+  description: "See Nigerian and international dishes, cocktails, karaoke, Paint & Sip and party highlights from Lolar Shon's Gourmet in Surulere.",
   path: "/gallery",
 });
 

@@ -8,8 +8,8 @@ import { EnquiryForm, type EnquiryField } from "@/components/forms/enquiry-form"
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Restaurant Events in Surulere, Lagos",
-  description: "Discover lively events and experiences at Lolar Shon's Gourmet in Lagos, and ask about attending.",
+  title: "Events and Entertainment in Surulere",
+  description: "Explore karaoke, Paint & Sip, parties, games and Friday events at Lolar Shon's Gourmet in Surulere, Lagos. Ask about upcoming events.",
   path: "/events",
 });
 
@@ -25,7 +25,7 @@ export default function EventsPage() {
   return (
     <>
       <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Events", path: "/events" }]} />
-      <PageHero title="Events" description="Join us for lively events and memorable experiences at Lolar Shon's Gourmet." />
+      <PageHero title="Events, Karaoke and Parties in Surulere" description="Find karaoke, Paint & Sip, parties, games and Friday event highlights at Lolar Shon's Gourmet in Surulere, Lagos." />
       <Section className="py-10 sm:py-16">
         <Container>
           <SectionHeading title="Explore our events" description="Choose an event to see highlights and moments from Lolar Shon's Gourmet." />

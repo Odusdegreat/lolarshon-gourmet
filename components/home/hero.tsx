@@ -44,24 +44,24 @@ export function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 sm:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-8 lg:py-24">
         <div>
           <p className="mb-5 text-sm font-medium tracking-wide text-brand">
-            Nigerian Food · Restaurant Dining · Intercontinental Cuisine
+            Nigerian & International Cuisine · Cocktails · Surulere, Lagos
           </p>
           <h1 className="text-4xl leading-[1.1] font-semibold sm:text-5xl lg:text-6xl">
-            Lolar Shon&apos;s <span className="text-brand">Gourmet</span> and{" "}
-            <span className="text-champagne">Hangout Spot</span>
+            Lolar Shon&apos;s <span className="text-brand">Gourmet</span>: Restaurant &{" "}
+            <span className="text-champagne">Hangout Spot</span> in Surulere
           </h1>
           <div className="mt-6 max-w-lg space-y-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
-              Discover exceptional dining and a vibrant hangout at Lolar Shon&apos;s Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine.
+              Visit our Surulere restaurant for Nigerian favourites and international dishes, freshly prepared for dine-in and takeaway.
             </p>
             <p>
-              Enjoy freshly prepared gourmet dishes, refreshing drinks, cocktails, alcoholic beverages, exciting games and talented DJs spinning dynamic mixes across diverse music genres in a relaxed, welcoming atmosphere.
+              Enjoy cocktails, mocktails, karaoke, Paint & Sip, parties and games in a relaxed, welcoming atmosphere.
             </p>
             <p>
-              Perfect for casual hangouts, memorable meals, pre-club nights out, special celebrations and corporate events, we combine great food, drinks, music and entertainment for unforgettable experiences.
+              Join us for a casual meal, a night out, a celebration or a corporate gathering. Ask our team about upcoming events and reservations.
             </p>
             <p>
-              Takeaway and catering available, with delivery subject to location confirmation.
+              Takeaway, catering and delivery are available; ask us to confirm delivery to your location.
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

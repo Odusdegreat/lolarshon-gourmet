@@ -10,8 +10,8 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata = buildMetadata({
-  title: "Corporate Meals and Platters",
-  description: "Office lunch boxes, boardroom platters and meal plans from Lolar Shon's Gourmet in Lagos.",
+  title: "Corporate Catering in Surulere",
+  description: "Order office lunch boxes, meeting platters and catering for company events from Lolar Shon's Gourmet in Surulere, Lagos.",
   path: "/corporate-meals",
 });
 

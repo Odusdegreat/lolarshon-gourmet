@@ -10,8 +10,8 @@ import { deliverySteps } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Food Delivery and Takeaway Orders",
-  description: "Order from Lolar Shon's Gourmet in Surulere, Lagos. Ask our team to confirm delivery availability for your address, plus fees and timing, on WhatsApp.",
+  title: "Food and Drinks Delivery in Surulere",
+  description: "Order food and drinks from Lolar Shon's Gourmet in Surulere, near Yaba, Mushin and Oshodi. Ask us to confirm delivery for your address.",
   path: "/delivery",
 });
 
@@ -19,13 +19,13 @@ export default function DeliveryPage() {
   return (
     <>
       <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Delivery", path: "/delivery" }]} />
-      <PageHero title="Food to Your Door" description="Order from the menu and we will arrange delivery with you directly on WhatsApp." />
+      <PageHero title="Food and Drinks Delivery" description="Order dishes, beverages or cocktails from our Surulere menu. We confirm delivery availability for your address on WhatsApp." />
       <Section className="py-14 sm:py-20">
         <Container>
           <div className="grid items-center gap-8 sm:grid-cols-[minmax(0,1fr)_auto]">
             <SectionHeading
               title="How delivery works"
-              description="Choose your meal and our team will help arrange your delivery."
+              description="Choose food or drinks from our menu and our team will help arrange delivery to your location."
             />
             <Image
               src="/images/menu/delivery-bag.jpeg"
@@ -49,7 +49,7 @@ export default function DeliveryPage() {
           <div className="mt-12 rounded-xl border border-champagne/60 bg-accent/40 p-6 sm:p-8">
             <h2 className="text-2xl font-semibold">Communication and payment on WhatsApp</h2>
             <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
-              Delivery details and payment are arranged with our team on WhatsApp. We do not take card payments on this website. Delivery areas, fees and timings are confirmed with you in the chat.
+              Delivery details and payment are arranged with our team on WhatsApp. If you are in Surulere or nearby areas such as Yaba, Mushin or Oshodi, send us your address and we will confirm availability, fees and timing. We do not take card payments on this website.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">

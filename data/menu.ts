@@ -14,7 +14,7 @@ export const menuSections: Record<MenuSection, MenuSectionConfig> = {
   food: {
     slug: "food",
     title: "Food Menu",
-    description: "Signature dishes, desserts and cocktails prepared fresh to order.",
+    description: "Explore Nigerian and intercontinental dishes, grills, rice meals, pasta, sides and desserts at our Surulere restaurant.",
     categories: [
       { id: "appetizer", label: "Appetizer" },
       { id: "sides", label: "Sides" },
