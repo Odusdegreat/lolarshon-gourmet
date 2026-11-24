@@ -52,16 +52,16 @@ export function Hero() {
           </h1>
           <div className="mt-6 max-w-lg space-y-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
-              Visit our Surulere restaurant for Nigerian favourites and international dishes, freshly prepared for dine-in and takeaway.
+              Discover exceptional dining and a vibrant hangout at Lolar Shon’s Gourmet in Surulere, Lagos, where authentic Nigerian flavours meet exquisite intercontinental cuisine.
             </p>
             <p>
-              Enjoy cocktails, mocktails, karaoke, Paint & Sip, parties and games in a relaxed, welcoming atmosphere.
+              Enjoy freshly prepared gourmet dishes, refreshing drinks, cocktails, alcoholic beverages, exciting games and talented DJs spinning dynamic mixes across diverse music genres in a relaxed, welcoming atmosphere.
             </p>
             <p>
-              Find a restaurant for date night, family dining, group hangouts and celebrations. Ask about reservations and upcoming events.
+              Perfect for casual hangouts, memorable meals, pre-club nights out, special celebrations and corporate events, we combine great food, drinks, music and entertainment for unforgettable experiences.
             </p>
             <p>
-              Takeaway, catering and delivery are available; ask us to confirm delivery to your location.
+              Takeaway and catering available, with delivery subject to location confirmation.
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

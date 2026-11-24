@@ -44,7 +44,7 @@ export function StoryPreview() {
     <Section>
       <Container ref={containerRef} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
-          <Photo src="/images/hero/kitchen.jpg" alt="Food being prepared in the Lolar Shon's Gourmet kitchen" aspect="aspect-[4/3]" className="shadow-md" sizes="(min-width: 1024px) 50vw, 100vw" />
+          <Photo src="/images/menu/grass-gourmet.jpeg" alt="Lolar Shon's Gourmet entrance with its illuminated sign and green wall" aspect="aspect-[4/3]" className="shadow-md" sizes="(min-width: 1024px) 50vw, 100vw" />
         </div>
         <div>
           <h2 className="text-3xl leading-tight font-semibold sm:text-4xl">A Passion for Great Food</h2>

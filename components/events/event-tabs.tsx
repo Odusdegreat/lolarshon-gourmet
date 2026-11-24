@@ -23,7 +23,7 @@ const events = [
       {
         type: "video",
         src: "/images/menu/white-karaoke.mov",
-        poster: "/images/menu/partying.webp",
+        poster: "/images/menu/white-shout.jpeg",
         alt: "Guests singing karaoke at Lolar Shon's Gourmet",
         caption: "More karaoke fun at Lolar Shon's Gourmet.",
       },
@@ -58,7 +58,7 @@ const events = [
       {
         type: "video",
         src: "/images/menu/birthday-party.mov",
-        poster: "/images/menu/lolar-smile.webp",
+        poster: "/images/menu/birthday-pics.jpeg",
         alt: "Birthday party celebration at Lolar Shon's Gourmet",
         caption: "Birthday party moments at Lolar Shon's Gourmet.",
       },
