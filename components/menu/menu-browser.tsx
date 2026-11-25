@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   CakeSlice,
@@ -58,6 +58,12 @@ export function MenuBrowser({ section, items }: { section: MenuSectionConfig; it
   const requested = params.get("category");
   const active = section.categories.some((c) => c.id === requested) ? (requested as string) : "all";
 
+  useEffect(() => {
+    const targetId = decodeURIComponent(window.location.hash.slice(1));
+    if (!targetId) return;
+    document.getElementById(targetId)?.scrollIntoView({ block: "start" });
+  }, [active]);
+
   const selectCategory = (id: string) => {
     const search = new URLSearchParams(params.toString());
     if (id === "all") {
@@ -73,7 +79,7 @@ export function MenuBrowser({ section, items }: { section: MenuSectionConfig; it
   const visible = normalizedQuery
     ? menuItems.filter((item) => {
         const categoryLabel = menuSections[item.section].categories.find((category) => category.id === item.category)?.label ?? "";
-        return `${item.name} ${item.description} ${menuSections[item.section].title} ${categoryLabel}`
+        return `${item.name} ${item.ingredients ?? ""} ${item.description} ${menuSections[item.section].title} ${categoryLabel}`
           .toLocaleLowerCase()
           .includes(normalizedQuery);
       })

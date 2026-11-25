@@ -25,6 +25,8 @@ export type MenuCategoryId =
 export type MenuItem = {
   id: string;
   name: string;
+  /** Optional ingredient note shown beside the name on the menu card. */
+  ingredients?: string;
   description: string;
   /** Price in NGN. */
   price: number;

@@ -12,7 +12,7 @@ export function FreshPalmWineFeature() {
             width={1080}
             height={1350}
             sizes="(min-width: 640px) 576px, 100vw"
-            className="h-auto w-full rounded-xl shadow-sm"
+            className="aspect-[4/3] w-full rounded-xl object-cover object-center shadow-sm"
           />
           <figcaption className="mt-5 text-lg font-semibold tracking-wide text-brand sm:text-xl">
             FRESH...No sweeteners or Preservatives!

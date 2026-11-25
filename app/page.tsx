@@ -5,7 +5,6 @@ import { Offerings } from "@/components/home/offerings";
 import { StoryPreview } from "@/components/home/story-preview";
 import { BrandQuote } from "@/components/home/brand-quote";
 import { FeaturedMenu } from "@/components/home/featured-menu";
-import { FreshPalmWineFeature } from "@/components/home/fresh-palm-wine-feature";
 import { GalleryPreview } from "@/components/home/gallery-preview";
 import { BlogPreview } from "@/components/home/blog-preview";
 import { ContactCta } from "@/components/home/contact-cta";
@@ -42,7 +41,6 @@ export default async function HomePage() {
       <StoryPreview />
       <BrandQuote />
       <FeaturedMenu />
-      <FreshPalmWineFeature />
       <GalleryPreview />
       <BlogPreview posts={posts} />
       <ContactCta />

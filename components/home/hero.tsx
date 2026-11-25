@@ -75,7 +75,17 @@ export function Hero() {
         </div>
 
         <div className="relative">
-          {/* Image section removed - text-focused hero layout */}
+          <video
+            controls
+            playsInline
+            preload="none"
+            poster="/images/menu/intro-pics.jpeg"
+            aria-label="Introduction to Lolar Shon's Gourmet"
+            className="aspect-video w-full rounded-xl object-cover shadow-lg"
+          >
+            <source src="/images/menu/passion.mp4" type="video/mp4" />
+            Your browser does not support embedded videos.
+          </video>
         </div>
       </div>
     </section>

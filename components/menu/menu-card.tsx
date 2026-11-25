@@ -22,7 +22,7 @@ export function MenuCard({ item }: { item: MenuItem }) {
   }
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
+    <article id={`menu-${item.id}`} className="group scroll-mt-28 flex h-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
       <div className="overflow-hidden">
         <Photo
           src={item.image}
@@ -36,7 +36,9 @@ export function MenuCard({ item }: { item: MenuItem }) {
       </div>
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="text-lg leading-snug font-semibold">{item.name}</h3>
+          <h3 className="text-lg leading-snug font-semibold">
+            {item.name}{item.ingredients ? ` - ${item.ingredients}` : ""}
+          </h3>
           <p className="shrink-0 font-medium text-brand tabular-nums">{formatPrice(item.price)}</p>
         </div>
         <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{item.description}</p>

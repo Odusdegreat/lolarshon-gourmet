@@ -9,8 +9,15 @@ import { Photo } from "@/components/shared/photo";
 import * as anime from "animejs";
 
 const featuredImages = [
-  { src: "/images/menu/isiewu.webp", alt: "Isiewu (Goat Head) from Lolar Shon's Gourmet" },
-  { src: "/images/menu/martell.webp", alt: "Martell at Lolar Shon's Gourmet" },
+  { src: "/images/menu/barbecue-turkey.jpg", alt: "Barbecue turkey from Lolar Shon's Gourmet", href: "/menu/food?category=grills#menu-barbecue-turkey" },
+  { src: "/images/menu/martell.webp", alt: "Martell at Lolar Shon's Gourmet", href: "/menu/mixology?category=mixology-cocktails" },
+  { src: "/images/menu/isiewu.webp", alt: "Isiewu (Goat Head) from Lolar Shon's Gourmet", href: "/menu/food?category=africana#menu-isiewu" },
+  {
+    src: "/images/menu/freshly-palm-wine.jpeg",
+    alt: "Fresh palm wine available at Lolar Shon's Gourmet",
+    href: "/menu/mixology?category=mixology-spirits#menu-palm-wine",
+    caption: "FRESH...No sweeteners or Preservatives!",
+  },
 ];
 
 export function FeaturedMenu() {
@@ -58,14 +65,23 @@ export function FeaturedMenu() {
         <ul className="mt-12 grid gap-6 sm:grid-cols-2">
           {featuredImages.map((image) => (
             <li key={image.src}>
-              <Photo
-                src={image.src}
-                alt={image.alt}
-                aspect="aspect-[4/3]"
-                className="shadow-sm"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                quality={90}
-              />
+              <figure>
+                <Link href={image.href} aria-label={`View ${image.alt} in the menu`} className="block rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+                  <Photo
+                    src={image.src}
+                    alt={image.alt}
+                    aspect="aspect-[4/3]"
+                    className="shadow-sm transition-transform duration-300 hover:scale-[1.02]"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    quality={90}
+                  />
+                </Link>
+                {"caption" in image && image.caption && (
+                  <figcaption className="mt-5 text-center text-lg font-semibold tracking-wide text-brand sm:text-xl">
+                    {image.caption}
+                  </figcaption>
+                )}
+              </figure>
             </li>
           ))}
         </ul>
