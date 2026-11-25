@@ -42,7 +42,7 @@ export const menuSections: Record<MenuSection, MenuSectionConfig> = {
   mixology: {
     slug: "mixology",
     title: "Bar & Mixology",
-    description: "Mojitos, Margaritas, Pina Coladas, mocktails, beers, wines and spirits for every occasion.",
+    description: "Find the best cocktails and mocktails in Surulere, including Mojitos, Margaritas, Pina Coladas, beers, wines and spirits.",
     categories: [
       { id: "mixology-cocktails", label: "Cocktails" },
       { id: "mixology-mocktails", label: "Mocktails" },

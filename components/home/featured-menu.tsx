@@ -4,10 +4,14 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container, Section } from "@/components/shared/container";
-import { MenuCard } from "@/components/menu/menu-card";
 import { SectionHeading } from "@/components/shared/section-heading";
-import { getFeaturedItems } from "@/data/menu";
+import { Photo } from "@/components/shared/photo";
 import * as anime from "animejs";
+
+const featuredImages = [
+  { src: "/images/menu/isiewu.webp", alt: "Isiewu (Goat Head) from Lolar Shon's Gourmet" },
+  { src: "/images/menu/martell.webp", alt: "Martell at Lolar Shon's Gourmet" },
+];
 
 export function FeaturedMenu() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,10 +55,17 @@ export function FeaturedMenu() {
             <Link href="/menu/food">View full menu</Link>
           </Button>
         </div>
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {getFeaturedItems().map((item) => (
-            <li key={item.id} className="opacity-0 transform scale-95">
-              <MenuCard item={item} />
+        <ul className="mt-12 grid gap-6 sm:grid-cols-2">
+          {featuredImages.map((image) => (
+            <li key={image.src}>
+              <Photo
+                src={image.src}
+                alt={image.alt}
+                aspect="aspect-[4/3]"
+                className="shadow-sm"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                quality={90}
+              />
             </li>
           ))}
         </ul>

@@ -32,8 +32,8 @@ export async function generateMetadata({ params }: PageProps<"/menu/[category]">
       description: "Explore zobo, palm wine, soft drinks, juices, tea, coffee and energy drinks at Lolar Shon's Gourmet in Surulere, Lagos.",
     },
     mixology: {
-      title: "Cocktails, Mocktails and Bar Menu in Surulere",
-      description: "Find Mojitos, Margaritas, Pina Coladas, mocktails, beer, wine and spirits at Lolar Shon's Gourmet in Surulere, Lagos.",
+      title: "Best Cocktails and Mocktails in Surulere",
+      description: "Searching for the best cocktails or best mocktails in Surulere, Lagos? Explore Mojitos, Margaritas, Pina Coladas, beer, wine and spirits.",
     },
   };
   return buildMetadata({ ...seoContent[section.slug], path: `/menu/${section.slug}` });

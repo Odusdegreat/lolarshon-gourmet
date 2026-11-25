@@ -18,7 +18,7 @@ export const galleryEntries: GalleryEntry[] = [
   { id: "freshly-palm-wine", title: "Fresh Palm Wine", alt: "Fresh palm wine served at Lolar Shon's Gourmet", category: "drinks", image: "/images/menu/freshly-palm-wine.jpeg" },
   { id: "g14", title: "Lolar Shon's Gourmet video 1", alt: "Video from Lolar Shon's Gourmet", category: "videos", image: "/images/gallery/video-lolar.jpg", video: "/images/menu/lolar.mov" },
   { id: "g15", title: "Lolar Shon's Gourmet video 2", alt: "Video from Lolar Shon's Gourmet", category: "videos", image: "/images/gallery/video-shon.jpg", video: "/images/menu/shon.mov" },
-  { id: "ama", title: "At Lolar Shon's Gourmet", alt: "A guest enjoying a moment at Lolar Shon's Gourmet", category: "events", image: "/images/menu/ama.webp" },
+  { id: "ama", title: "At Lolar Shon's Gourmet", alt: "A guest enjoying a moment at Lolar Shon's Gourmet", category: "events", image: "/images/menu/look-paint.webp" },
   { id: "blue-guy", title: "A moment with friends", alt: "A guest enjoying a moment with friends", category: "events", image: "/images/menu/blue-guy.webp" },
   { id: "chicken-light", title: "Chicken dish", alt: "A chicken dish freshly prepared at Lolar Shon's Gourmet", category: "food", image: "/images/menu/chicken-light.webp" },
   { id: "chips-chicken", title: "Chicken and chips", alt: "Chicken served with chips at Lolar Shon's Gourmet", category: "food", image: "/images/menu/chips-chicken.webp" },

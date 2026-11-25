@@ -9,8 +9,8 @@ import * as anime from "animejs";
 
 const offerings = [
   { title: "Signature Dishes", description: "Hearty, beautifully plated meals prepared fresh to order.", href: "/menu/food?category=signature-dishes", action: "Order dishes", image: "/images/menu/suya.jpg", alt: "Suya and other Nigerian dishes served at Lolar Shon's Gourmet" },
-  { title: "Events", description: "Join us for lively events and experiences at Lolar Shon's Gourmet.", href: "/events", action: "See our events", image: "/images/menu/ama.webp", alt: "Guests enjoying a paint-and-sip event at Lolar Shon's Gourmet" },
-  { title: "Takeaway & Delivery", description: "Enjoy freshly prepared meals as takeaway or ask us to confirm delivery for your address.", href: "/delivery", action: "Order for delivery", image: "/images/menu/rice-sauce.webp", alt: "Rice, chicken, vegetables and sauce served at Lolar Shon's Gourmet" },
+  { title: "Events", description: "Join us for lively events and experiences at Lolar Shon's Gourmet.", href: "/events", action: "See our events", image: "/images/menu/look-paint.webp", alt: "Guests enjoying a paint-and-sip event at Lolar Shon's Gourmet" },
+  { title: "Takeaway & Delivery", description: "Enjoy freshly prepared meals as takeaway or ask us to confirm delivery for your address.", href: "/delivery", action: "Order for delivery", image: "/images/menu/delivery-bag.jpeg", alt: "Rice, chicken, vegetables and sauce served at Lolar Shon's Gourmet" },
 ];
 
 export function Offerings() {
