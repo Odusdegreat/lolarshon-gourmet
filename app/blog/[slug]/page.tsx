@@ -16,7 +16,31 @@ import { buildMetadata, OG_IMAGE } from "@/lib/seo";
 import type { BlogPost } from "@/types";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
+function getArticleLinks(post: BlogPost) {
+  const topic = `${post.title} ${post.excerpt} ${post.category} ${post.tags.join(" ")}`.toLocaleLowerCase();
+  const links: { href: string; label: string }[] = [];
+  if (/food|dish|meal|rice|jollof|recipe|restaurant|menu/.test(topic)) links.push({ href: "/menu/food", label: "Browse the Nigerian and intercontinental food menu" });
+  if (/cocktail|mocktail|drink|beverage|wine|bar|mixology/.test(topic)) links.push({ href: "/menu/mixology", label: "Explore cocktails and mocktails" }, { href: "/menu/beverages", label: "Browse other drinks" });
+  if (/delivery|takeaway|order/.test(topic)) links.push({ href: "/delivery", label: "Ask about food delivery in Surulere" });
+  if (/event|party|birthday|karaoke|paint|gathering|celebrat/.test(topic)) links.push({ href: "/events", label: "See events and entertainment" });
+  if (/corporate|office|catering|private dining|meeting/.test(topic)) links.push({ href: "/corporate-meals", label: "Explore corporate meals and private dining enquiries" });
+  links.push({ href: "/reservations", label: "Request a restaurant reservation" });
+  return links.slice(0, 3);
+}
+
 export const instant = false;
+
+function withBrandSuffix(title: string) {
+  return title.toLocaleLowerCase().includes(siteConfig.name.toLocaleLowerCase())
+    ? title
+    : `${title} | ${siteConfig.name}`;
+}
+
+function metaDescription(value: string) {
+  const description = value.trim();
+  if (description.length <= 160) return description;
+  return `${description.slice(0, 157).replace(/\s+\S*$/, "").trimEnd()}…`;
+}
 
 export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const { slug } = await params;
@@ -28,11 +52,17 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
     return {};
   }
   if (!post) return {};
+  const title = post.seoTitle?.trim() || post.title;
+  const description = metaDescription(post.seoDescription?.trim() || post.excerpt);
   const metadata = buildMetadata({
-    title: post.seoTitle ?? post.title,
-    description: post.seoDescription ?? post.excerpt,
+    title,
+    description,
     path: `/blog/${post.slug}`,
   });
+  const brandedTitle = withBrandSuffix(title);
+  metadata.title = { absolute: brandedTitle };
+  metadata.openGraph = { ...metadata.openGraph, title: brandedTitle };
+  metadata.twitter = { ...metadata.twitter, title: brandedTitle };
   const image = post.openGraphImage ?? (post.image === "/images/logo.png" ? absoluteUrl(OG_IMAGE) : post.image);
   const absoluteImage = image.startsWith("http") ? image : absoluteUrl(image);
   metadata.openGraph = {
@@ -68,7 +98,8 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
 
   const image = post.openGraphImage ?? (post.image === "/images/logo.png" ? absoluteUrl(OG_IMAGE) : post.image);
   const absoluteImage = image.startsWith("http") ? image : absoluteUrl(image);
-  const description = post.seoDescription ?? post.excerpt;
+  const description = post.seoDescription?.trim() || post.excerpt.trim();
+  const articleLinks = getArticleLinks(post);
 
   return (
     <>
@@ -121,6 +152,13 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
             <p className="text-sm text-muted-foreground">Have a question or an event in mind? Message us.</p>
             <WhatsAppButton variant="outline" label="Ask on WhatsApp" message={`Hello Lolar Shon's Gourmet, I read "${post.title}" and have a question.`} />
           </div>
+          <nav aria-label="Related Lolar Shon's Gourmet pages" className="mt-8 rounded-xl border bg-card p-6">
+            <h2 className="text-lg font-semibold">Explore related pages</h2>
+            <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              {articleLinks.map((item) => <li key={item.href}><Link className="text-brand underline underline-offset-4" href={item.href}>{item.label}</Link></li>)}
+              <li><Link className="text-brand underline underline-offset-4" href="/contact">Find our Surulere location and contact details</Link></li>
+            </ul>
+          </nav>
         </Container>
       </article>
       {related.length > 0 && (

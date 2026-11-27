@@ -10,8 +10,8 @@ import { deliverySteps } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Food and Drinks Delivery in Surulere",
-  description: "Order food and drinks from Lolar Shon's Gourmet in Surulere, near Yaba, Mushin and Oshodi. Ask us to confirm delivery for your address.",
+  title: "Food Delivery in Surulere, Lagos",
+  description: "Ask about food and drinks delivery from Lolar Shon's Gourmet in Surulere. Send your address on WhatsApp so our team can confirm coverage, fees and timing.",
   path: "/delivery",
 });
 
@@ -57,6 +57,9 @@ export default function DeliveryPage() {
               </Button>
               <WhatsAppButton size="lg" variant="outline" label="Chat on WhatsApp" message="Hello Lolar Shon's Gourmet, I would like to ask about delivery." />
             </div>
+            <p className="mt-5 text-sm text-muted-foreground">
+              Browse the <Link className="text-brand underline underline-offset-4" href="/menu/beverages">beverages menu</Link> or <Link className="text-brand underline underline-offset-4" href="/menu/mixology">cocktails and mocktails</Link> as well. Delivery depends on address confirmation.
+            </p>
           </div>
         </Container>
       </Section>

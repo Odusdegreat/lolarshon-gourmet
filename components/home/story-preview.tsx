@@ -44,7 +44,7 @@ export function StoryPreview() {
     <Section>
       <Container ref={containerRef} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
-          <Photo src="/images/menu/exotic-platter.jpg" alt="Exotic platter from Lolar Shon's Gourmet" aspect="aspect-[4/3]" className="shadow-md" sizes="(min-width: 1024px) 50vw, 100vw" />
+          <Photo src="/images/menu/exotic-platter.webp" alt="Exotic platter from Lolar Shon's Gourmet" aspect="aspect-[4/3]" className="shadow-md" sizes="(min-width: 1024px) 50vw, 100vw" />
         </div>
         <div>
           <h2 className="text-3xl leading-tight font-semibold sm:text-4xl">A Passion for Great Food</h2>

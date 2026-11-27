@@ -84,7 +84,7 @@ export function EnquiryForm({ heading, fields, submitLabel, note, closing, toast
           <div key={f.name} className={cn("grid content-start gap-2", !f.half && "sm:col-span-2")}>
             <Label htmlFor={id}>
               {f.label}
-              {f.required ? <span aria-hidden> *</span> : <span className="font-normal text-muted-foreground"> (optional)</span>}
+              {f.required ? <><span aria-hidden> *</span><span className="sr-only"> (required)</span></> : <span className="font-normal text-muted-foreground"> (optional)</span>}
             </Label>
             {f.type === "textarea" ? (
               <Textarea {...common} placeholder={f.placeholder} maxLength={700} />
@@ -99,15 +99,19 @@ export function EnquiryForm({ heading, fields, submitLabel, note, closing, toast
               </Select>
             ) : f.type === "date" ? (
               <DatePicker
-                {...common}
-                required={f.required}
+                id={id}
+                name={f.name}
+                invalid={!!error}
+                aria-describedby={error ? `${id}-err` : undefined}
                 value={dateTime[f.name] ?? ""}
                 onChange={(value) => setDateTime((current) => ({ ...current, [f.name]: value }))}
               />
             ) : f.type === "time" ? (
               <TimePicker
-                {...common}
-                required={f.required}
+                id={id}
+                name={f.name}
+                invalid={!!error}
+                aria-describedby={error ? `${id}-err` : undefined}
                 value={dateTime[f.name] ?? ""}
                 onChange={(value) => setDateTime((current) => ({ ...current, [f.name]: value }))}
               />

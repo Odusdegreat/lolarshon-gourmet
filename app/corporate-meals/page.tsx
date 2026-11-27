@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import { Mail } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
@@ -10,8 +12,8 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata = buildMetadata({
-  title: "Corporate Catering in Surulere",
-  description: "Get office lunch boxes, meeting platters, wedding and birthday catering, private dining and company event meals from Lolar Shon's Gourmet in Surulere, Lagos.",
+  title: "Corporate Meals, Catering and Private Dining in Surulere",
+  description: "Ask Lolar Shon's Gourmet in Surulere about office lunch boxes, meeting platters, private dining and catering for weddings, birthdays and company events.",
   path: "/corporate-meals",
 });
 
@@ -31,7 +33,7 @@ export default function CorporateMealsPage() {
   return (
     <>
       <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Corporate Meals", path: "/corporate-meals" }]} />
-      <PageHero title="Corporate Meals" description="Reliable, well-presented food for your team, your meetings and your company events." />
+      <PageHero title="Corporate Meals and Private Dining in Surulere" description="Plan office meals, meeting platters or a private dining enquiry with Lolar Shon's Gourmet. Tell us your guest count and location so our team can discuss availability and options." />
       <Section className="py-14 sm:py-20">
         <Container>
           <SectionHeading title="Options for your business" description="Packages and pricing are tailored to your numbers and schedule." />
@@ -43,6 +45,9 @@ export default function CorporateMealsPage() {
               </li>
             ))}
           </ul>
+          <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+            For individual meals, see our <Link className="text-brand underline underline-offset-4" href="/menu/food">current food menu</Link>. For a table at the restaurant, <Link className="text-brand underline underline-offset-4" href="/reservations">send a reservation request</Link>; availability is confirmed by our team.
+          </p>
         </Container>
       </Section>
       <Section className="bg-secondary/40 py-14 sm:py-20">
@@ -55,14 +60,16 @@ export default function CorporateMealsPage() {
               </a>
             </Button>
           </div>
-          <EnquiryForm
-            heading="Corporate meals enquiry"
-            fields={fields}
-            submitLabel="Send enquiry on WhatsApp"
-            toastTitle="Corporate enquiry ready"
-            closing="Please share options and pricing. Thank you!"
-            note="Your enquiry is only sent once you press send in WhatsApp."
-          />
+          <Suspense fallback={<p role="status" className="rounded-lg border p-4 text-sm text-muted-foreground">Loading enquiry form…</p>}>
+            <EnquiryForm
+              heading="Corporate meals enquiry"
+              fields={fields}
+              submitLabel="Send enquiry on WhatsApp"
+              toastTitle="Corporate enquiry ready"
+              closing="Please share options and pricing. Thank you!"
+              note="Your enquiry is only sent once you press send in WhatsApp."
+            />
+          </Suspense>
         </Container>
       </Section>
     </>

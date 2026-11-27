@@ -7,7 +7,7 @@ import type { BlogPost } from "@/types";
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
-      <Photo src={post.image} alt={post.title} aspect="aspect-[16/10]" className="rounded-none" imgClassName="transition-transform duration-500 group-hover:scale-[1.04]" sizes="(min-width: 768px) 33vw, 100vw" />
+      <Photo src={post.image} alt={post.imageAlt || post.title} aspect="aspect-[16/10]" className="rounded-none" imgClassName="transition-transform duration-500 group-hover:scale-[1.04]" sizes="(min-width: 768px) 33vw, 100vw" />
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-center gap-3 text-xs text-muted-foreground">
           <Badge>{post.category}</Badge>

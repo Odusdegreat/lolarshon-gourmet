@@ -9,8 +9,8 @@ import { buildMetadata } from "@/lib/seo";
 import { ContactRound } from "lucide-react";
 
 export const metadata = buildMetadata({
-  title: "Our Story and Values",
-  description: "The story and values behind Lolar Shon's Gourmet, a restaurant serving a varied menu in Surulere, Lagos.",
+  title: "Our Story | Surulere Restaurant and Hangout",
+  description: "Meet Lolar Shon's Gourmet, a Surulere restaurant bringing Nigerian favourites, intercontinental dishes, drinks and warm hospitality together.",
   path: "/our-story",
 });
 
@@ -24,13 +24,13 @@ export default function OurStoryPage() {
   return (
     <>
       <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Our Story", path: "/our-story" }]} />
-      <PageHero title="A Passion for Great Food" description="The thinking behind Lolar Shon's Gourmet." />
+      <PageHero title="Our Story: A Restaurant in Surulere" description="The care behind the food, hospitality and welcoming atmosphere at Lolar Shon's Gourmet." />
       <Section className="py-14 sm:py-20">
         <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Photo src="/images/menu/nkwobi.jpg" alt="A serving of nkwobi at Lolar Shon's Gourmet" aspect="aspect-[4/3]" className="shadow-md" sizes="(min-width: 1024px) 50vw, 100vw" />
           <div className="space-y-5 leading-relaxed text-muted-foreground">
             {/* TODO: client to supply their real brand story. This is placeholder copy. */}
-            <p>Lolar Shon&apos;s Gourmet serves a varied menu for everyday meals and special occasions in Lagos, with local favourites, global dishes, cakes and drinks.</p>
+            <p>Lolar Shon&apos;s Gourmet is a Surulere restaurant serving Nigerian favourites and intercontinental dishes alongside drinks and cocktails. Explore our <Link className="text-brand underline underline-offset-4" href="/menu/food">food menu</Link> and <Link className="text-brand underline underline-offset-4" href="/menu/mixology">cocktail menu</Link>.</p>
             <p>Our approach is simple: use good ingredients, cook with care and present every dish as if it were for our own table. Whether you are dining in or ordering takeaway, you deal directly with our team.</p>
             <p>We are based in Surulere, Lagos, and take orders, reservations and enquiries through WhatsApp so you can speak to a real person.</p>
           </div>

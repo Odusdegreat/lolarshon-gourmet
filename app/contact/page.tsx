@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Container, Section } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
@@ -9,8 +10,8 @@ import { addressLines, mapsDirectionsUrl, siteConfig } from "@/lib/site-config";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Contact and Location in Surulere",
-  description: "Find Lolar Shon's Gourmet in Surulere, near Ojuelegba, Yaba, Mushin and Oshodi. View our address, get directions or contact us.",
+  title: "Restaurant and Bar Location in Surulere, Lagos",
+  description: "Find Lolar Shon's Gourmet, a restaurant and bar in Surulere near Aguda, Ojuelegba and Lawanson. View the address, get directions or contact us.",
   path: "/contact",
 });
 
@@ -25,7 +26,7 @@ export default function ContactPage() {
   return (
     <>
       <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]} />
-      <PageHero title="Contact Us" description="Call, email or message us on WhatsApp. We are happy to help with orders, events and questions." />
+      <PageHero title="Visit Our Restaurant and Bar in Surulere" description="Get directions to Lolar Shon's Gourmet, near Aguda and Lawanson. Call, email or message us on WhatsApp about food, drinks, reservations and events." />
       <Section className="py-14 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
           <div className="space-y-8">
@@ -72,7 +73,7 @@ export default function ContactPage() {
               </p>
             </address>
             <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
-              Our Surulere restaurant is convenient for nearby neighborhoods such as Bode Thomas, Masha, Ojuelegba, Aguda, Lawanson, Itire, Ijeshatedo and Iponri, as well as nearby Yaba, Mushin and Oshodi.
+              If you are looking for restaurants near Aguda or Yaba, our restaurant is at 29 James Robertson Street in Surulere, close to Bode Thomas, Masha, Ojuelegba, Lawanson, Itire, Ijeshatedo and Iponri, with Mushin and Oshodi also in the surrounding area.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <WhatsAppButton size="lg" label="Message on WhatsApp" message="Hello Lolar Shon's Gourmet, I would like to make an enquiry." />
@@ -82,6 +83,11 @@ export default function ContactPage() {
                 </a>
               </Button>
             </div>
+            <nav aria-label="Contact page services" className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              <Link className="text-brand underline underline-offset-4" href="/reservations">Request a reservation</Link>
+              <Link className="text-brand underline underline-offset-4" href="/delivery">Ask about food delivery</Link>
+              <Link className="text-brand underline underline-offset-4" href="/events">Explore events and entertainment</Link>
+            </nav>
           </div>
           <div className="rounded-xl border bg-card p-6 sm:p-8">
             <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold">

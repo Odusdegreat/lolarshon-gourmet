@@ -10,8 +10,8 @@ import type { BlogPost } from "@/types";
 export const instant = false;
 
 export const metadata = buildMetadata({
-  title: "Food and Dining Articles",
-  description: "Read practical ideas from Lolar Shon's Gourmet about food, menu discoveries, restaurant dining and feeding your team well.",
+  title: "Food, Cocktails and Dining Articles in Lagos",
+  description: "Read Lolar Shon's Gourmet articles about Nigerian food, intercontinental dishes, cocktails, events, restaurant dining and catering in Lagos.",
   path: "/blog",
 });
 
@@ -31,7 +31,7 @@ export default async function BlogPage() {
     <>
       <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }]} />
       {preview && <DraftPreviewBanner />}
-      <PageHero title="Blog" description="Ideas for planning events, gifting and feeding your team well." />
+      <PageHero title="Food, Dining and Events Articles" description="Ideas and stories from Lolar Shon's Gourmet about food, drinks, dining and gatherings in Lagos." />
       <Section className="py-12 sm:py-20">
         <Container>
           {posts.length === 0 ? (

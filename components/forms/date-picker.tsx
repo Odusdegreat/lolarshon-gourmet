@@ -9,10 +9,9 @@ import { cn } from "@/lib/utils";
 type DatePickerProps = {
   id: string;
   name: string;
-  required?: boolean;
   value?: string;
   onChange?: (value: string) => void;
-  "aria-invalid"?: boolean;
+  invalid?: boolean;
   "aria-describedby"?: string;
 };
 
@@ -27,7 +26,7 @@ function toDateValue(date: Date) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
 
-export function DatePicker({ id, name, required, value = "", onChange, "aria-invalid": invalid, "aria-describedby": describedBy }: DatePickerProps) {
+export function DatePicker({ id, name, value = "", onChange, invalid, "aria-describedby": describedBy }: DatePickerProps) {
   const [open, setOpen] = useState(false);
   const [month, setMonth] = useState(() => parseDate(value) ?? new Date());
   const selected = parseDate(value);
@@ -59,10 +58,8 @@ export function DatePicker({ id, name, required, value = "", onChange, "aria-inv
           <button
             type="button"
             id={id}
-            aria-required={required}
-            aria-invalid={invalid}
             aria-describedby={describedBy}
-            className="flex h-11 w-full items-center justify-between rounded-md border border-input bg-card px-3.5 text-left text-sm text-foreground shadow-xs outline-none transition-[border-color,box-shadow] focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/30"
+            className={cn("flex h-11 w-full items-center justify-between rounded-md border border-input bg-card px-3.5 text-left text-sm text-foreground shadow-xs outline-none transition-[border-color,box-shadow] focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40", invalid && "border-destructive ring-2 ring-destructive/30")}
           >
             <span className={cn(!selected && "text-muted-foreground")}>
               {selected ? selected.toLocaleDateString("en-NG", { weekday: "short", day: "numeric", month: "short", year: "numeric" }) : "Choose a date"}

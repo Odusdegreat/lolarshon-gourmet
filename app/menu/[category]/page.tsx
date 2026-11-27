@@ -24,16 +24,16 @@ export async function generateMetadata({ params }: PageProps<"/menu/[category]">
   if (!section) return {};
   const seoContent: Record<MenuSection, { title: string; description: string }> = {
     food: {
-      title: "Restaurant Food Menu in Surulere",
-      description: "Find jollof and Ofada rice, grilled fish and chicken, Nigerian soups, seafood, pasta and desserts at Lolar Shon's Gourmet in Surulere, Lagos.",
+      title: "Nigerian and Intercontinental Food Menu in Surulere",
+      description: "See Nigerian favourites and intercontinental meals at Lolar Shon's Gourmet, a Surulere restaurant serving rice, soups, grills, seafood, pasta and desserts.",
     },
     beverages: {
-      title: "Juices, Zobo and Beverages in Surulere",
-      description: "Explore zobo, palm wine, soft drinks, juices, tea, coffee and energy drinks at Lolar Shon's Gourmet in Surulere, Lagos.",
+      title: "Drinks, Zobo and Beverages in Surulere",
+      description: "Browse palm wine, zobo, soft drinks, juices, tea, coffee and energy drinks at Lolar Shon's Gourmet in Surulere, Lagos.",
     },
     mixology: {
-      title: "Best Cocktails and Mocktails in Surulere",
-      description: "Searching for the best cocktails or best mocktails in Surulere, Lagos? Explore Mojitos, Margaritas, Pina Coladas, beer, wine and spirits.",
+      title: "Cocktails, Mocktails and Bar Menu in Surulere",
+      description: "Explore cocktails, mocktails, beer, wine and spirits at Lolar Shon's Gourmet, a restaurant and bar in Surulere, Lagos.",
     },
   };
   return buildMetadata({ ...seoContent[section.slug], path: `/menu/${section.slug}` });
@@ -65,6 +65,12 @@ export default async function MenuCategoryPage({ params }: PageProps<"/menu/[cat
               </Link>
             ))}
           </nav>
+
+          <p className="mb-8 max-w-3xl leading-relaxed text-muted-foreground">
+            {section.slug === "food" && <>Looking for a Nigerian restaurant in Surulere or intercontinental food nearby? Browse our current dishes, then <Link className="text-brand underline underline-offset-4" href="/reservations">request a table</Link> or <Link className="text-brand underline underline-offset-4" href="/delivery">ask about food delivery in Surulere</Link>.</>}
+            {section.slug === "beverages" && <>Pair your meal with a refreshing drink, or explore our <Link className="text-brand underline underline-offset-4" href="/menu/mixology">cocktail and mocktail menu</Link>. Visit our <Link className="text-brand underline underline-offset-4" href="/contact">Surulere restaurant and bar</Link> or ask about delivery availability.</>}
+            {section.slug === "mixology" && <>Explore the drinks menu at our Surulere restaurant and bar. For a table or group visit, <Link className="text-brand underline underline-offset-4" href="/reservations">send a reservation request</Link>; our team will confirm availability.</>}
+          </p>
 
           {section.notice && <p className="mb-6 rounded-lg border border-champagne/60 bg-accent/50 px-4 py-3 text-sm">{section.notice}</p>}
           <Suspense fallback={<p className="py-10 text-center text-muted-foreground">Loading menu…</p>}>

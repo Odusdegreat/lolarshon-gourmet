@@ -47,8 +47,10 @@ export function Hero() {
             Nigerian & International Cuisine · Cocktails · Surulere, Lagos
           </p>
           <h1 className="text-4xl leading-[1.1] font-semibold sm:text-5xl lg:text-6xl">
-            Lolar Shon&apos;s <span className="text-brand">Gourmet</span>: Restaurant &{" "}
-            <span className="text-champagne">Hangout Spot</span> in Surulere
+            <span className="block whitespace-pre">Lolar Shon’s Gourmet:</span>
+            <span className="block whitespace-pre">          Restaurant </span>
+            <span className="block whitespace-pre">                    &amp;</span>
+            <span className="block whitespace-pre text-champagne">         Hangout Spot</span>
           </h1>
           <div className="mt-6 max-w-lg space-y-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
@@ -62,6 +64,9 @@ export function Hero() {
             </p>
             <p>
               Takeaway and catering available, with delivery subject to location confirmation.
+            </p>
+            <p>
+              Looking for places to eat in Lagos? Visit us in Surulere for a meal, cocktails or a relaxed group hangout.
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

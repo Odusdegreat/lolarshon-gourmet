@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Link from "next/link";
 import { Container, Section } from "@/components/shared/container";
 import { EventTabs } from "@/components/events/event-tabs";
 import { PageHero } from "@/components/shared/page-hero";
@@ -8,8 +9,8 @@ import { EnquiryForm, type EnquiryField } from "@/components/forms/enquiry-form"
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Events and Entertainment in Surulere",
-  description: "Find karaoke, Paint & Sip, birthday parties, games and High Voltage Friday events at Lolar Shon's Gourmet in Surulere, Lagos. Ask about upcoming events.",
+  title: "Lounge Events, Karaoke and Parties in Surulere",
+  description: "Explore karaoke, Paint & Sip, birthday parties, games and Friday event highlights at Lolar Shon's Gourmet, a lounge and hangout in Surulere, Lagos.",
   path: "/events",
 });
 
@@ -25,7 +26,7 @@ export default function EventsPage() {
   return (
     <>
       <BreadcrumbStructuredData items={[{ name: "Home", path: "/" }, { name: "Events", path: "/events" }]} />
-      <PageHero title="Events, Karaoke and Parties in Surulere" description="Find karaoke, Paint & Sip, parties, games and Friday event highlights at Lolar Shon's Gourmet in Surulere, Lagos." />
+      <PageHero title="Events, Karaoke and Parties at Our Surulere Lounge" description="See event highlights and ask about upcoming karaoke, Paint & Sip, parties and games at Lolar Shon's Gourmet. Contact our team to confirm dates and attendance." />
       <Section className="py-10 sm:py-16">
         <Container>
           <SectionHeading title="Explore our events" description="Choose an event to see highlights and moments from Lolar Shon's Gourmet." />
@@ -50,6 +51,13 @@ export default function EventsPage() {
             closing="Please share details about upcoming events and how I can attend. Thank you!"
             note="Your enquiry opens in WhatsApp and is only sent when you press send. Attendance is not confirmed until our team replies."
           />
+        </Container>
+      </Section>
+      <Section className="py-8">
+        <Container>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Planning a celebration? <Link className="text-brand underline underline-offset-4" href="/reservations">Request a table</Link> or ask about <Link className="text-brand underline underline-offset-4" href="/corporate-meals">private dining and catering options</Link>. Contact our team to confirm dates and availability.
+          </p>
         </Container>
       </Section>
     </>

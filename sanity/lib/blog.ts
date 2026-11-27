@@ -126,7 +126,32 @@ export async function getBlogPost(slug: string, preview = false): Promise<BlogPo
 }
 
 export async function getRelatedBlogPosts(slug: string, preview = false): Promise<BlogPost[]> {
-  return (await getBlogPosts(preview)).filter((post) => post.slug !== slug).slice(0, 2);
+  const posts = await getBlogPosts(preview);
+  const current = posts.find((post) => post.slug === slug);
+  if (!current) return posts.filter((post) => post.slug !== slug).slice(0, 2);
+
+  const currentCategories = new Set(current.categories.map((category) => category.slug));
+  const currentTags = new Set(current.tags.map((tag) => tag.trim().toLocaleLowerCase()));
+  const stopWords = new Set(["about", "after", "also", "from", "have", "into", "that", "their", "there", "these", "this", "with", "your", "lolar", "shons", "gourmet"]);
+  const terms = new Set(
+    `${current.title} ${current.excerpt}`
+      .toLocaleLowerCase()
+      .match(/[a-z0-9]{4,}/g)
+      ?.filter((term) => !stopWords.has(term)) ?? [],
+  );
+
+  return posts
+    .filter((post) => post.slug !== slug)
+    .map((post) => {
+      const sharedCategories = post.categories.filter((category) => currentCategories.has(category.slug)).length;
+      const sharedTags = post.tags.filter((tag) => currentTags.has(tag.trim().toLocaleLowerCase())).length;
+      const text = `${post.title} ${post.excerpt}`.toLocaleLowerCase();
+      const sharedTerms = [...terms].filter((term) => text.includes(term)).length;
+      return { post, score: sharedCategories * 5 + sharedTags * 3 + sharedTerms };
+    })
+    .sort((a, b) => b.score - a.score || new Date(b.post.date).getTime() - new Date(a.post.date).getTime())
+    .slice(0, 2)
+    .map(({ post }) => post);
 }
 
 export async function isDraftPreviewEnabled(): Promise<boolean> {

@@ -13,13 +13,13 @@ import { siteConfig } from "@/lib/site-config";
 import { getBlogPosts } from "@/sanity/lib/blog";
 import type { BlogPost } from "@/types";
 
-const homeTitle = "Restaurant & Hangout in Surulere, Lagos";
+const homeTitle = "Restaurant, Bar & Lounge in Surulere, Lagos";
 
 export const metadata: Metadata = {
   ...buildMetadata({
     title: homeTitle,
     description:
-      "Nigerian and international food, cocktails, karaoke, Paint & Sip and games at Lolar Shon's in Surulere, Lagos. Book a table or ask about delivery.",
+      "Visit Lolar Shon's Gourmet, a restaurant and hangout in Surulere for Nigerian and intercontinental dishes, cocktails, drinks, games and events. Book a table or ask about delivery availability.",
     path: "/",
   }),
   title: { absolute: `${homeTitle} | ${siteConfig.name}` },

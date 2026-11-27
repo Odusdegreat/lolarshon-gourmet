@@ -14,7 +14,7 @@ export const menuSections: Record<MenuSection, MenuSectionConfig> = {
   food: {
     slug: "food",
     title: "Food Menu",
-    description: "Explore jollof and Ofada rice, Nigerian soups, grilled fish and chicken, seafood, pasta, sides and desserts at our Surulere restaurant.",
+    description: "Explore Nigerian favourites and intercontinental dishes, including jollof and Ofada rice, soups, grills, seafood, pasta and desserts at our restaurant in Surulere, Lagos.",
     categories: [
       { id: "appetizer", label: "Appetizer" },
       { id: "sides", label: "Sides" },
@@ -31,7 +31,7 @@ export const menuSections: Record<MenuSection, MenuSectionConfig> = {
   beverages: {
     slug: "beverages",
     title: "Beverages",
-    description: "Zobo, palm wine, soft drinks, juices, local refreshers, tea, coffee and energy drinks.",
+    description: "Browse drinks in Surulere, from zobo, palm wine, juices and soft drinks to tea, coffee and energy drinks at Lolar Shon's Gourmet.",
     categories: [
       { id: "beverages", label: "Soft Drinks & Water" },
       { id: "beverage-refreshments", label: "Juices & Refreshments" },
@@ -42,7 +42,7 @@ export const menuSections: Record<MenuSection, MenuSectionConfig> = {
   mixology: {
     slug: "mixology",
     title: "Bar & Mixology",
-    description: "Find the best cocktails and mocktails in Surulere, including Mojitos, Margaritas, Pina Coladas, beers, wines and spirits.",
+    description: "Explore cocktails, mocktails, beers, wines and spirits at the Lolar Shon's Gourmet bar in Surulere, Lagos, including Mojitos, Margaritas and Pina Coladas.",
     categories: [
       { id: "mixology-cocktails", label: "Cocktails" },
       { id: "mixology-mocktails", label: "Mocktails" },
@@ -89,7 +89,7 @@ export const menuItems: MenuItem[] = [
   // Platter
   { id: "mini-platter", name: "Mini Platter", description: "Yam chips, plantain, sausages, and goat meat, served with ketchup and pepper sauce.", price: 15000, section: "food", category: "platter", image: "", orderable: true },
   { id: "gourmet-special", name: "Gourmet Special", description: "Yam chips, plantain, sausages, prawns, and spring rolls, served with ketchup and pepper sauce.", price: 25000, section: "food", category: "platter", image: "", orderable: true },
-  { id: "exotic-platter", name: "Exotic Platter", description: "Plantain, french fries, sausages, goat meat, crab, and prawns, served with ketchup and pepper sauce.", price: 30000, section: "food", category: "platter", image: "/images/menu/exotic-platter.jpg", orderable: true },
+  { id: "exotic-platter", name: "Exotic Platter", description: "Plantain, french fries, sausages, goat meat, crab, and prawns, served with ketchup and pepper sauce.", price: 30000, section: "food", category: "platter", image: "/images/menu/exotic-platter.webp", orderable: true },
   { id: "assorted-starters", name: "Assorted Starters", description: "French fries, plantain, fried gizzard skewers, prawns, samosas, spring rolls, and chicken wings.", price: 50000, section: "food", category: "platter", image: "", orderable: true },
 
   // Lolar shon [ls] specials
@@ -184,8 +184,8 @@ export const menuItems: MenuItem[] = [
   { id: "power-horse", name: "Power Horse", description: "A chilled Power Horse energy drink.", price: 2000, section: "beverages", category: "beverage-energy", image: "/images/menu/powerhorse.cutout.png", orderable: true },
 
   // Mixology (Cocktails & Mocktails)
-  { id: "hibiscus-spritz", name: "Hibiscus Spritz", ingredients: "Hibiscus, sparkling mixer", description: "A sparkling cocktail with bright, floral hibiscus notes.", price: 4500, section: "mixology", category: "mixology-cocktails", image: "/images/menu/zobo-juice.jpg", orderable: true },
-  { id: "mango-mule", name: "Mango Mule", ingredients: "Mango, ginger", description: "A lively mango cocktail with a mule-inspired ginger kick.", price: 5500, section: "mixology", category: "mixology-cocktails", image: "/images/menu/mangoo-mule.jpg", orderable: true },
+  { id: "hibiscus-spritz", name: "Hibiscus Spritz", ingredients: "Hibiscus, sparkling mixer", description: "A sparkling cocktail with bright, floral hibiscus notes.", price: 4500, section: "mixology", category: "mixology-cocktails", image: "/images/menu/zobo-juice.webp", orderable: true },
+  { id: "mango-mule", name: "Mango Mule", ingredients: "Mango, ginger", description: "A lively mango cocktail with a mule-inspired ginger kick.", price: 5500, section: "mixology", category: "mixology-cocktails", image: "/images/menu/mangoo-mule.webp", orderable: true },
   { id: "lagos-sunset", name: "Lagos Sunset", ingredients: "Fruit blend", description: "A vibrant, fruit-forward cocktail inspired by a Lagos sunset.", price: 6000, section: "mixology", category: "mixology-cocktails", image: "/images/menu/lagos-sunset.jpg", orderable: true },
   { id: "spiced-old-fashioned", name: "Spiced Old Fashioned", ingredients: "Whisky, spices, bitters", description: "A classic whisky cocktail with warming spice and bittersweet notes.", price: 6500, section: "mixology", category: "mixology-cocktails", image: "/images/menu/old-spiced.webp", orderable: true },
   // Cocktails

@@ -9,10 +9,9 @@ import { cn } from "@/lib/utils";
 type TimePickerProps = {
   id: string;
   name: string;
-  required?: boolean;
   value?: string;
   onChange?: (value: string) => void;
-  "aria-invalid"?: boolean;
+  invalid?: boolean;
   "aria-describedby"?: string;
 };
 
@@ -23,7 +22,7 @@ function formatTime(value: string) {
   return `${String(hour).padStart(2, "0")}:${String(minutes).padStart(2, "0")} ${hours >= 12 ? "PM" : "AM"}`;
 }
 
-export function TimePicker({ id, name, required, value = "", onChange, "aria-invalid": invalid, "aria-describedby": describedBy }: TimePickerProps) {
+export function TimePicker({ id, name, value = "", onChange, invalid, "aria-describedby": describedBy }: TimePickerProps) {
   const [open, setOpen] = useState(false);
   const [hour, setHour] = useState(() => value ? String((Number(value.slice(0, 2)) % 12) || 12) : "");
   const [minute, setMinute] = useState(() => value ? value.slice(3, 5) : "");
@@ -50,10 +49,8 @@ export function TimePicker({ id, name, required, value = "", onChange, "aria-inv
           <button
             type="button"
             id={id}
-            aria-required={required}
-            aria-invalid={invalid}
             aria-describedby={describedBy}
-            className="flex h-11 w-full items-center justify-between rounded-md border border-input bg-card px-3.5 text-left text-sm text-foreground shadow-xs outline-none transition-[border-color,box-shadow] focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/30"
+            className={cn("flex h-11 w-full items-center justify-between rounded-md border border-input bg-card px-3.5 text-left text-sm text-foreground shadow-xs outline-none transition-[border-color,box-shadow] focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40", invalid && "border-destructive ring-2 ring-destructive/30")}
           >
             <span className={cn(!value && "text-muted-foreground")}>{value ? formatTime(value) : "Choose a time"}</span>
             <Clock3 aria-hidden className="size-4 text-brand" />
