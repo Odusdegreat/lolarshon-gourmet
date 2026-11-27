@@ -8,9 +8,10 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { galleryEntries } from "@/data/gallery";
 
 export function GalleryPreview() {
-  const imagePicks = galleryEntries.filter((entry) =>
-    ["yam-chips", "g13", "light-tails", "martell"].includes(entry.id),
-  );
+  const imagePicks = ["noodles-table", "g13", "light-tails"].flatMap((id) => {
+    const entry = galleryEntries.find((item) => item.id === id);
+    return entry ? [entry] : [];
+  });
   const videoPick = galleryEntries.find((entry) => entry.video);
   const picks = videoPick ? [...imagePicks, videoPick] : imagePicks;
   return (

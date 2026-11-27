@@ -69,6 +69,13 @@ const events = [
         alt: "Guests enjoying the lights and atmosphere at Lolar Shon's Gourmet",
         caption: "A lively night under the spotlights at Lolar Shon's Gourmet.",
       },
+      {
+        type: "video",
+        src: "/images/menu/games-video.mov",
+        poster: "/images/menu/game-pics.jpeg",
+        alt: "Guests playing games at Lolar Shon's Gourmet",
+        caption: "Guests enjoying games at Lolar Shon's Gourmet.",
+      },
     ],
   },
   {

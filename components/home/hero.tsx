@@ -2,8 +2,28 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Photo } from "@/components/shared/photo";
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import * as anime from "animejs";
+
+const heroPhotos = [
+  {
+    src: "/images/menu/table-sets.jpeg",
+    alt: "Dining tables set for guests at Lolar Shon's Gourmet",
+    title: "Table settings",
+    width: 817,
+    height: 1047,
+  },
+  {
+    src: "/images/menu/gourmet-design.jpg",
+    alt: "The dining space at Lolar Shon's Gourmet",
+    title: "Lolar Shon's Gourmet",
+    width: 828,
+    height: 1017,
+  },
+];
 
 export function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -76,7 +96,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative space-y-3">
           <video
             controls
             playsInline
@@ -88,6 +108,35 @@ export function Hero() {
             <source src="/images/menu/passion.mp4" type="video/mp4" />
             Your browser does not support embedded videos.
           </video>
+          <div className="grid grid-cols-2 gap-3">
+            {heroPhotos.map((photo) => (
+              <Dialog key={photo.src}>
+                <DialogTrigger asChild>
+                  <button type="button" aria-label={`View full image: ${photo.alt}`} className="block w-full rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
+                    <Photo
+                      src={photo.src}
+                      alt={photo.alt}
+                      aspect="aspect-[4/5]"
+                      imgClassName="object-contain transition-transform duration-300 hover:scale-[1.02]"
+                      sizes="(min-width: 1024px) 24vw, 50vw"
+                    />
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-5xl">
+                  <DialogTitle>{photo.title}</DialogTitle>
+                  <DialogDescription>{photo.alt}</DialogDescription>
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    width={photo.width}
+                    height={photo.height}
+                    sizes="(min-width: 1024px) 80vw, 96vw"
+                    className="max-h-[80dvh] w-full rounded-lg object-contain"
+                  />
+                </DialogContent>
+              </Dialog>
+            ))}
+          </div>
         </div>
       </div>
     </section>

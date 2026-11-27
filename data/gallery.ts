@@ -35,6 +35,7 @@ export const galleryEntries: GalleryEntry[] = [
   { id: "lights", title: "An evening at Lolar Shon's Gourmet", alt: "Restaurant lights creating a welcoming evening atmosphere", category: "events", image: "/images/menu/lights.webp" },
   { id: "lolar-smile", title: "A warm welcome", alt: "A smiling guest at Lolar Shon's Gourmet", category: "events", image: "/images/menu/lolar-smile.webp" },
   { id: "martell", title: "Martell", alt: "A bottle of Martell at Lolar Shon's Gourmet", category: "drinks", image: "/images/menu/martell.webp" },
+  { id: "noodles-table", title: "Noodles at the table", alt: "A serving of noodles on a table at Lolar Shon's Gourmet", category: "food", image: "/images/menu/noodles-table.jpeg" },
   { id: "onions-light", title: "Fresh ingredients", alt: "Fresh ingredients prepared for a Lolar Shon's Gourmet meal", category: "food", image: "/images/menu/onions-light.webp" },
   { id: "onions", title: "Kitchen ingredients", alt: "Ingredients being prepared in the Lolar Shon's Gourmet kitchen", category: "food", image: "/images/menu/onions.webp" },
   { id: "plantain-roll", title: "Plantain roll", alt: "Plantain roll prepared at Lolar Shon's Gourmet", category: "food", image: "/images/menu/plantain-roll.webp" },
