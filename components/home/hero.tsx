@@ -47,10 +47,7 @@ export function Hero() {
             Nigerian & International Cuisine · Cocktails · Surulere, Lagos
           </p>
           <h1 className="text-4xl leading-[1.1] font-semibold sm:text-5xl lg:text-6xl">
-            <span className="block whitespace-pre">Lolar Shon’s Gourmet:</span>
-            <span className="block whitespace-pre">          Restaurant </span>
-            <span className="block whitespace-pre">                    &amp;</span>
-            <span className="block whitespace-pre text-champagne">         Hangout Spot</span>
+            Lolar Shon&apos;s <span className="text-brand">Gourmet:</span> Restaurant <span className="text-champagne">&amp; Hangout Spot</span>
           </h1>
           <div className="mt-6 max-w-lg space-y-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
