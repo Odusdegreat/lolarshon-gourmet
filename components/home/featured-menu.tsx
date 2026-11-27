@@ -9,9 +9,24 @@ import { Photo } from "@/components/shared/photo";
 import * as anime from "animejs";
 
 const featuredImages = [
-  { src: "/images/menu/barbecue-turkey.jpg", alt: "Barbecue turkey from Lolar Shon's Gourmet", href: "/menu/food?category=grills#menu-barbecue-turkey" },
-  { src: "/images/menu/martell.webp", alt: "Martell at Lolar Shon's Gourmet", href: "/menu/mixology?category=mixology-cocktails" },
-  { src: "/images/menu/isiewu.webp", alt: "Isiewu (Goat Head) from Lolar Shon's Gourmet", href: "/menu/food?category=africana#menu-isiewu" },
+  {
+    src: "/images/menu/singapore-noodles.jpg",
+    alt: "Singapore noodles from Lolar Shon's Gourmet",
+    href: "/menu/food?category=pastas-noodles-dishes#menu-Singapore%20Noodles",
+    caption: "Singapore Noodles",
+  },
+  {
+    src: "/images/menu/martell.webp",
+    alt: "Martell at Lolar Shon's Gourmet",
+    href: "/menu/mixology?category=mixology-cocktails",
+    caption: "Cocktails and Martell",
+  },
+  {
+    src: "/images/menu/isiewu.webp",
+    alt: "Isiewu (Goat Head) from Lolar Shon's Gourmet",
+    href: "/menu/food?category=africana#menu-isiewu",
+    caption: "Isiewu (Goat Head)",
+  },
   {
     src: "/images/menu/freshly-palm-wine.jpeg",
     alt: "Fresh palm wine available at Lolar Shon's Gourmet",
